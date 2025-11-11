@@ -14,12 +14,19 @@ const vertexShader = `
 `
 
 const fragmentShader = `
+  #ifdef GL_ES
+  precision mediump float;
+  #endif
+  
   uniform float uTime;
   uniform float uDissolve;
   uniform float uFFT;
   varying vec2 vUv;
   
-  vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+  vec3 permute(vec3 x) { 
+    return mod(((x * 34.0) + 1.0) * x, 289.0); 
+  }
+  
   float snoise(vec2 v) {
     const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
     vec2 i = floor(v + dot(v, C.uu));
@@ -36,7 +43,7 @@ const fragmentShader = `
     vec3 h = abs(x) - 0.5;
     vec3 ox = floor(x + 0.5);
     vec3 a0 = x - ox;
-    m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+    m *= 1.79284291400159 - 0.85373472095314 * (a0 * a0 + h * h);
     vec3 g;
     g.x = a0.x * x0.x + h.x * x0.y;
     g.yz = a0.yz * x12.xz + h.yz * x12.yw;
@@ -89,10 +96,10 @@ export default function ShaderBackground({ isActive }: ShaderBackgroundProps) {
     }
   }, [isActive])
 
-  useFrame(({ clock }) => {
+  useFrame((state: any) => {
     if (materialRef.current) {
-      materialRef.current.uniforms.uTime.value = clock.elapsedTime
-      const fftValue = 0.15 + Math.sin(clock.elapsedTime * 1.5) * 0.2 + Math.sin(clock.elapsedTime * 0.5) * 0.1
+      materialRef.current.uniforms.uTime.value = state.clock.elapsedTime
+      const fftValue = 0.15 + Math.sin(state.clock.elapsedTime * 1.5) * 0.2 + Math.sin(state.clock.elapsedTime * 0.5) * 0.1
       materialRef.current.uniforms.uFFT.value = fftValue
     }
   })

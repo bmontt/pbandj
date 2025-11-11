@@ -40,8 +40,8 @@
     "@radix-ui/react-toggle-group": "1.1.1",
     "@radix-ui/react-tooltip": "1.1.6",
     "@react-email/render": "latest",
-    "@react-three/fiber": "latest",
     "@supabase/supabase-js": "latest",
+    "@types/three": "^0.181.0",
     "@vercel/analytics": "latest",
     "@vercel/blob": "latest",
     "autoprefixer": "^10.4.20",
@@ -77,6 +77,7 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
+    "@react-three/fiber": "latest",
     "@tailwindcss/postcss": "^4.1.9",
     "@types/node": "^22",
     "@types/react": "^19",
