@@ -12,11 +12,6 @@ export default function ArtistBPage() {
       <div className="ml-8">
         <h1 className="text-4xl font-light">Welcome to {artist.name}'s Portfolio</h1>
         <p className="mt-4 text-gray-400">{artist.quote}</p>
-        <video
-          src={artist.videoUrl}
-          controls
-          className="mt-8 w-full max-w-2xl rounded-md shadow-md"
-        />
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export default function PortfolioCard({ artist }: PortfolioCardProps) {
       />
       <h2 className="text-xl font-semibold">{artist.name}</h2>
       <p className="text-sm text-gray-400">{artist.role}</p>
-      <p className="mt-4 text-sm">{artist.bio}</p>
+      <p className="mt-4 text-sm">{artist.quote}</p>
       <div className="mt-4 flex gap-4">
         <a
           href={artist.socialLinks.instagram}
