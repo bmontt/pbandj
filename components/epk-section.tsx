@@ -1,10 +1,12 @@
 "use client"
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 import { useRef, useState, useEffect } from "react"
 import ArtistCard from "./artist-card"
 import ParticleBackground from "./particle-background"
 import { PBJ_COLORS } from "@/lib/colors"
+import { artists } from "@/lib/artists";
 
 export default function EPKSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -27,48 +29,6 @@ export default function EPKSection() {
     window.addEventListener('scroll', updateScrollY)
     return () => window.removeEventListener('scroll', updateScrollY)
   }, [])
-
-  const artists = [
-    {
-      id: 1,
-      name: "Peter Gomes",
-      role: "Sound Design & Mixing",
-      bio: "Creating immersive audio experiences",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerBlazes.mp4",
-      quote: "Up the Stuss",
-      image: "/pj.JPG",
-      socialLinks: {
-        instagram: "https://www.instagram.com/peterjacobmusic/",
-        spotify: "https://on.soundcloud.com/o4XsvYTdPIszv5EKCF",
-      },
-    },
-    {
-      id: 2,
-      name: "Brody Montag",
-      role: "Lead DJ & Producer",
-      bio: "Crafting sonic landscapes since 2013",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerBlazes.mp4",
-      quote: "I spent way too long making this website.",
-      image: "/brody.JPG",
-      socialLinks: {
-        instagram: "https://www.instagram.com/brodymontag/",
-        spotify: "https://open.spotify.com/artist/3uIzwP6Ab6TgP61naHtDMO?si=M5QYA5cjQDqtxIUvM2HZ8A",
-      },
-    },
-    {
-      id: 3,
-      name: "Jack Humphreys",
-      role: "Visual Direction & Tech",
-      bio: "Blending visuals with sound",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerBlazes.mp4",
-      quote: "Ferda is simply a state of being.",
-      image: "/jack.jpg",
-      socialLinks: {
-        instagram: "https://www.instagram.com/jack_humphreys_/",
-        spotify: "https://open.spotify.com/user/xxboomboomxx/",
-      },
-    },
-  ]
 
   return (
     <div ref={containerRef} className="relative w-full bg-transparent" id="epk">
@@ -122,55 +82,42 @@ export default function EPKSection() {
             >
               {artists.map((artist, index) => (
                 <div key={artist.id} className="flex items-center gap-8 md:gap-12">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="cursor-pointer"
-                    onClick={() => setExpandedArtist(expandedArtist === artist.id ? null : artist.id)}
-                  >
-                    <div className="transition-all">
-                      <div className="p-6">
-                        <div className="flex flex-col items-center text-center space-y-4">
-                          <img
-                            src={artist.image || "/placeholder.svg"}
-                            alt={artist.name}
-                            className="w-100 h-100 rounded-sm object-cover opacity-90"
-                            style={{ objectPosition: "center top" }}
-                          />
-                          <div>
-                            <h3 className="text-xl font-light text-white/95">
-                              {artist.id === 1 && (
-                                <>
-                                  <span className="text-3xl font-black text-[#B58657]/90">P</span>
-                                  {artist.name.slice(1)}
-                                </>
-                              )}
-                              {artist.id === 2 && (
-                                <>
-                                  <span className="text-3xl font-black text-[#C44D58]/90">B</span>
-                                  {artist.name.slice(1)}
-                                </>
-                              )}
-                              {artist.id === 3 && (
-                                <>
-                                  <span className="text-3xl font-black text-[#935BAD]/90">J</span>
-                                  {artist.name.slice(1)}
-                                </>
-                              )}
-                            </h3>
-                            <p className="text-[#C69A6C]/70 font-light text-sm">{artist.role}</p>
-                          </div>
-                          <motion.div
-                            animate={{ rotate: expandedArtist === artist.id ? 180 : 0 }}
-                            className="text-gray-500"
-                          >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            </svg>
-                          </motion.div>
+                  <Link href={`/artists/${artist.id}`} className="block">
+                    <motion.div whileHover={{ scale: 1.02 }} className="cursor-pointer transition-all p-6">
+                      <div className="flex flex-col items-center text-center space-y-4">
+                        <img
+                          src={artist.image || "/placeholder.svg"}
+                          alt={artist.name}
+                          className="w-100 h-100 rounded-sm object-cover opacity-90"
+                          style={{ objectPosition: "center top" }}
+                        />
+                        <div>
+                          <h3 className="text-xl font-light text-white/95">
+                            {artist.id === "p" && (
+                              <>
+                                <span className="text-3xl font-black text-[#B58657]/90">P</span>
+                                {artist.name.slice(1)}
+                              </>
+                            )}
+                            {artist.id === "b" && (
+                              <>
+                                <span className="text-3xl font-black text-[#C44D58]/90">B</span>
+                                {artist.name.slice(1)}
+                              </>
+                            )}
+                            {artist.id === "j" && (
+                              <>
+                                <span className="text-3xl font-black text-[#935BAD]/90">J</span>
+                                {artist.name.slice(1)}
+                              </>
+                            )}
+                          </h3>
+                          <p className="text-[#C69A6C]/70 font-light text-sm">{artist.role}</p>
                         </div>
                       </div>
-                    </div>
-                  </motion.div>
-                  
+                    </motion.div>
+                  </Link>
+
                   {/* Add ampersand only between B and J */}
                   {index === 1 && (
                     <motion.span 
@@ -192,87 +139,6 @@ export default function EPKSection() {
                 </div>
               ))}
             </motion.div>
-
-            {/* Expanded Artist Detail */}
-            <AnimatePresence>
-              {expandedArtist && (
-                <motion.div
-                  key={expandedArtist}
-                  initial={{ opacity: 0, height: 0, y: -20 }}
-                  animate={{ opacity: 1, height: "auto", y: 0 }}
-                  exit={{ opacity: 0, height: 0, y: -20 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  {(() => {
-                    const artist = artists.find(a => a.id === expandedArtist)
-                    if (!artist) return null
-                    
-                    return (
-                      <div className="p-8">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                          <div className="space-y-6">
-                            <div className="flex items-start gap-6">
-                              <img
-                                src={artist.image || "/placeholder.svg"}
-                                alt={artist.name}
-                                className="w-24 h-24 rounded-sm object-cover opacity-90"
-                              />
-                              <div>
-                                <h3 className="text-2xl font-light text-white/95">{artist.name}</h3>
-                                <p className="text-[#C69A6C]/70 font-light mb-2">{artist.role}</p>
-                                <p className="text-gray-400 font-light text-sm leading-relaxed">{artist.bio}</p>
-                              </div>
-                            </div>
-                            
-                            <div className="pl-6">
-                              <p className="text-gray-400 italic font-light">"{artist.quote}"</p>
-                            </div>
-
-                            <div className="flex gap-6">
-                              <a
-                                href={artist.socialLinks.instagram}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`Open ${artist.name} on Instagram`}
-                                className="text-gray-500 hover:text-[#B58657]/70 transition-all flex items-center gap-2 text-sm font-light"
-                              >
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m5.521 17.561a6.684 6.684 0 01-13.042 0V6.439a6.684 6.684 0 0113.042 0z" />
-                                </svg>
-                                Instagram
-                              </a>
-                              <a
-                                href={artist.socialLinks.spotify}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`Open ${artist.name} on Spotify`}
-                                className="text-gray-500 hover:text-[#935BAD]/70 transition-all flex items-center gap-2 text-sm font-light"
-                              >
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.7 17.3c-.4.5-1.1.7-1.7.3-4.7-2.9-10.6-3.5-17.6-1.9-.6.2-1.3-.1-1.5-.7-.2-.6.1-1.3.7-1.5 7.5-1.8 14-1 19.1 2.2.5.3 1 .7 1.3 1.3.3.6 0 1.3-.5 1.7z" />
-                                </svg>
-                                Spotify
-                              </a>
-                            </div>
-                          </div>
-
-                          <div className="space-y-4">
-                            <h4 className="text-xs font-light text-gray-500 uppercase tracking-widest">Behind the Scenes</h4>
-                            <video 
-                              src={artist.videoUrl} 
-                              controls 
-                              className="w-full rounded-sm bg-black aspect-video" 
-                              playsInline 
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  })()}
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
 
           <motion.div
