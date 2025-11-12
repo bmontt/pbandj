@@ -38,8 +38,8 @@ export default function EPKSection() {
       quote: "Up the Stuss",
       image: "/pj.JPG",
       socialLinks: {
-        instagram: "#",
-        spotify: "#",
+        instagram: "https://www.instagram.com/peterjacobmusic/",
+        spotify: "https://on.soundcloud.com/o4XsvYTdPIszv5EKCF",
       },
     },
     {
@@ -51,8 +51,8 @@ export default function EPKSection() {
       quote: "I spent way too long making this website.",
       image: "/brody.JPG",
       socialLinks: {
-        instagram: "#",
-        spotify: "#",
+        instagram: "https://www.instagram.com/brodymontag/",
+        spotify: "https://open.spotify.com/artist/3uIzwP6Ab6TgP61naHtDMO?si=M5QYA5cjQDqtxIUvM2HZ8A",
       },
     },
     {
@@ -64,8 +64,8 @@ export default function EPKSection() {
       quote: "Ferda is simply a state of being.",
       image: "/jack.jpg",
       socialLinks: {
-        instagram: "#",
-        spotify: "#",
+        instagram: "https://www.instagram.com/jack_humphreys_/",
+        spotify: "https://open.spotify.com/user/xxboomboomxx/",
       },
     },
   ]
@@ -232,6 +232,9 @@ export default function EPKSection() {
                             <div className="flex gap-6">
                               <a
                                 href={artist.socialLinks.instagram}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`Open ${artist.name} on Instagram`}
                                 className="text-gray-500 hover:text-[#B58657]/70 transition-all flex items-center gap-2 text-sm font-light"
                               >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -241,6 +244,9 @@ export default function EPKSection() {
                               </a>
                               <a
                                 href={artist.socialLinks.spotify}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`Open ${artist.name} on Spotify`}
                                 className="text-gray-500 hover:text-[#935BAD]/70 transition-all flex items-center gap-2 text-sm font-light"
                               >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
