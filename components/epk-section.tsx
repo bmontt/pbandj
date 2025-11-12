@@ -107,7 +107,7 @@ export default function EPKSection() {
             <p className="text-xs text-gray-500 uppercase tracking-widest">The Collective</p>
             <h2 className="text-5xl md:text-6xl font-light text-white/95">PB&J Sounds</h2>
             <p className="text-lg text-gray-400 font-light max-w-3xl leading-relaxed">
-              Bringing a fresh new sound to the electronic music scene, PB&J Sounds is a dynamic collective of artists and producers dedicated to crafting immersive audio experiences. With a focus on innovative sound design and genre-blending compositions, PB&J Sounds aims to captivate audiences worldwide and redefine the boundaries of electronic music.
+              Bringing a fresh new sound to the electronic music scene, PB&J Sounds is a dynamic collective of artists and producers dedicated to crafting immersive audio experiences. With a focus on innovative sound design and genre-blending compositions, PB&J Sounds aims to captivate audiences and redefine the boundaries of electronic music.
             </p>
           </motion.div>
 
