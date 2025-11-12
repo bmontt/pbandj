@@ -18,12 +18,6 @@ export default function ArtistPPage() {
 
   return (
     <div className="relative">
-      <ParticleBackground scrollY={0} />
-      <ParallaxBackground
-        backgroundY={backgroundY}
-        secondLayerY={secondLayerY}
-        thirdLayerY={thirdLayerY}
-      />
       <div className="relative z-10 flex items-start p-8">
         <PortfolioCard artist={artist} />
         <div className="ml-8">
