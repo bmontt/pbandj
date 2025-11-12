@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
+import React from "react"
 import { resend } from "@/lib/resend"
 import { supabaseServer } from "@/lib/supabase"
 import { DemoSubmissionEmail } from "@/components/demo-submission-email"
@@ -27,7 +28,7 @@ export async function POST(request: NextRequest) {
       from: process.env.EMAIL_FROM || "PB&J Sounds <noreply@pbjsounds.com>",
       to: process.env.DEMO_RECIPIENT_EMAIL || "demos@pbjsounds.com",
       subject: `New Demo Submission from ${name}`,
-      react: DemoSubmissionEmail({
+      react: React.createElement(DemoSubmissionEmail, {
         name,
         email,
         message,

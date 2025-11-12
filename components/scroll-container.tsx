@@ -22,11 +22,8 @@ const ScrollContainer = forwardRef<HTMLDivElement, ScrollContainerProps>(({ audi
     <div ref={ref} className="relative w-full bg-black">
       <ParallaxBackground backgroundY={backgroundY} secondLayerY={secondLayerY} thirdLayerY={thirdLayerY} />
 
-      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      <div className="relative z-10">
         <HeaderWithCountdown audioReactivity={audioReactivity} />
-      </div>
-
-      <div className="relative z-10 pt-20">
         {/* EPK Section - seamlessly blended */}
         <motion.div
           initial={{ opacity: 0 }}

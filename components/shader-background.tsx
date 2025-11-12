@@ -1,122 +1,152 @@
 "use client"
 
+import { animated, useSpring } from "@react-spring/three"
 import { useFrame, useThree } from "@react-three/fiber"
-import { useRef, useEffect } from "react"
-import type * as THREE from "three"
+import { useEffect, useRef, useState } from "react"
+import * as THREE from "three"
 
-const vertexShader = `
-  varying vec2 vUv;
-  
-  void main() {
-    vUv = uv;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  }
-`
-
-const fragmentShader = `
-  #ifdef GL_ES
-  precision mediump float;
-  #endif
-  
-  uniform float uTime;
-  uniform float uDissolve;
-  uniform float uFFT;
-  varying vec2 vUv;
-  
-  vec3 permute(vec3 x) { 
-    return mod(((x * 34.0) + 1.0) * x, 289.0); 
-  }
-  
-  float snoise(vec2 v) {
-    const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
-    vec2 i = floor(v + dot(v, C.uu));
-    vec2 x0 = v - i + dot(i, C.zz);
-    vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-    vec4 x12 = x0.xyxy + C.zwzw;
-    x12.xy -= i1;
-    i = mod(i, 289.0);
-    vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
-    vec3 m = max(0.5 - vec3(dot(x0, x0), dot(x12.xy, x12.xy), dot(x12.zw, x12.zw)), 0.0);
-    m = m * m;
-    m = m * m;
-    vec3 x = 2.0 * fract(p * C.www) - 1.0;
-    vec3 h = abs(x) - 0.5;
-    vec3 ox = floor(x + 0.5);
-    vec3 a0 = x - ox;
-    m *= 1.79284291400159 - 0.85373472095314 * (a0 * a0 + h * h);
-    vec3 g;
-    g.x = a0.x * x0.x + h.x * x0.y;
-    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-    return 130.0 * dot(m, g);
-  }
-  
-  void main() {
-    vec2 uv = vUv;
-    
-    float noise1 = snoise(uv * 2.5 + uTime * 0.2);
-    float noise2 = snoise(uv * 1.8 - uTime * 0.15 + 10.0);
-    float noise3 = snoise(uv * 1.2 + uTime * 0.1);
-    
-    vec2 distortion = vec2(noise1, noise2) * 0.08 * (0.3 + uFFT * 0.9);
-    uv += distortion;
-    
-    float wave = sin(uv.y * 8.0 + uTime * 1.5) * 0.5 + 0.5;
-    wave *= cos(uv.x * 6.0 - uTime * 1.2) * 0.5 + 0.5;
-    wave *= noise3;
-    
-    float intensity = 0.2 + uFFT * 0.6;
-    
-    // Grayscale base
-    float gray = mix(0.15, 0.35, wave * intensity);
-    vec3 color = vec3(gray);
-    
-    float yellowMask = mix(0.0, 0.15, wave * intensity);
-    color += vec3(yellowMask * 0.6, yellowMask * 0.5, 0.0);
-    
-    // Dissolve effect
-    float dissolve = snoise(uv * 5.0) + uDissolve * 2.0;
-    if (dissolve < 0.5) discard;
-    
-    gl_FragColor = vec4(color, 1.0);
-  }
-`
-
-interface ShaderBackgroundProps {
+interface VinylBackgroundProps {
   isActive: boolean
 }
 
-export default function ShaderBackground({ isActive }: ShaderBackgroundProps) {
-  const meshRef = useRef<THREE.Mesh>(null)
-  const materialRef = useRef<THREE.ShaderMaterial>(null)
-  const { size } = useThree()
+export default function VinylBackground({ isActive }: VinylBackgroundProps) {
+  const groupRef = useRef<THREE.Group>(null)
+  const vinylRef = useRef<THREE.Mesh>(null)
+  const labelRef = useRef<THREE.Mesh>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [rotation, setRotation] = useState({ x: 0, y: 0 })
+  const [autoRotation, setAutoRotation] = useState(0)
+  
+  const { size, camera } = useThree()
 
-  useEffect(() => {
-    if (materialRef.current) {
-      materialRef.current.uniforms.uFFT.value = isActive ? 0.3 : 0.1
+  // Spring animation for vinyl spinning
+  const { rotationZ } = useSpring({
+    rotationZ: isActive ? autoRotation : autoRotation * 0.3,
+    config: { tension: 120, friction: 14 }
+  })
+
+  // Mouse interaction handlers
+  const handlePointerDown = (event: any) => {
+    setIsDragging(true)
+    event.stopPropagation()
+  }
+
+  const handlePointerUp = () => {
+    setIsDragging(false)
+  }
+
+  const handlePointerMove = (event: any) => {
+    if (!isDragging) return
+    
+    const { movementX, movementY } = event
+    setRotation(prev => ({
+      x: Math.max(-Math.PI / 3, Math.min(Math.PI / 3, prev.x + movementY * 0.01)),
+      y: prev.y + movementX * 0.01
+    }))
+  }
+
+  // Auto-rotation when active
+  useFrame((state, delta) => {
+    if (isActive && !isDragging) {
+      setAutoRotation(prev => prev + delta * 2) // 2 radians per second
+    } else if (!isActive && !isDragging) {
+      setAutoRotation(prev => prev + delta * 0.5) // Slower when inactive
     }
-  }, [isActive])
-
-  useFrame((state: any) => {
-    if (materialRef.current) {
-      materialRef.current.uniforms.uTime.value = state.clock.elapsedTime
-      const fftValue = 0.15 + Math.sin(state.clock.elapsedTime * 1.5) * 0.2 + Math.sin(state.clock.elapsedTime * 0.5) * 0.1
-      materialRef.current.uniforms.uFFT.value = fftValue
+    
+    // Apply manual rotation
+    if (groupRef.current && !isDragging) {
+      groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, rotation.x, 0.1)
+      groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, rotation.y, 0.1)
+    } else if (groupRef.current && isDragging) {
+      groupRef.current.rotation.x = rotation.x
+      groupRef.current.rotation.y = rotation.y
     }
   })
 
+  useEffect(() => {
+    const handleGlobalPointerUp = () => setIsDragging(false)
+    const handleGlobalPointerMove = (event: MouseEvent) => {
+      if (!isDragging) return
+      setRotation(prev => ({
+        x: Math.max(-Math.PI / 3, Math.min(Math.PI / 3, prev.x + event.movementY * 0.01)),
+        y: prev.y + event.movementX * 0.01
+      }))
+    }
+
+    window.addEventListener('pointerup', handleGlobalPointerUp)
+    window.addEventListener('pointermove', handleGlobalPointerMove)
+
+    return () => {
+      window.removeEventListener('pointerup', handleGlobalPointerUp)
+      window.removeEventListener('pointermove', handleGlobalPointerMove)
+    }
+  }, [isDragging])
+
   return (
-    <mesh ref={meshRef}>
-      <planeGeometry args={[2, 2]} />
-      <shaderMaterial
-        ref={materialRef}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-        uniforms={{
-          uTime: { value: 0 },
-          uDissolve: { value: 0 },
-          uFFT: { value: 0.2 },
-        }}
-      />
-    </mesh>
+    <group 
+      ref={groupRef}
+      position={[0, 0, -2]}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerMove={handlePointerMove}
+    >
+      {/* Vinyl Record */}
+      <animated.mesh 
+        ref={vinylRef}
+        rotation-z={rotationZ}
+        position={[0, 0, 0]}
+      >
+        <cylinderGeometry args={[3, 3, 0.1, 64]} />
+        <meshStandardMaterial 
+          color="#1a1a1a"
+          roughness={0.8}
+          metalness={0.2}
+        />
+      </animated.mesh>
+
+      {/* Vinyl Grooves (multiple rings) */}
+      {[...Array(12)].map((_, i) => (
+        <animated.mesh 
+          key={i}
+          rotation-z={rotationZ}
+          position={[0, 0, 0.051]}
+        >
+          <ringGeometry args={[0.5 + i * 0.2, 0.52 + i * 0.2, 64]} />
+          <meshBasicMaterial 
+            color="#0a0a0a" 
+            transparent
+            opacity={0.3}
+          />
+        </animated.mesh>
+      ))}
+
+      {/* Center Label */}
+      <animated.mesh 
+        ref={labelRef}
+        rotation-z={rotationZ}
+        position={[0, 0, 0.06]}
+      >
+        <cylinderGeometry args={[0.8, 0.8, 0.02, 32]} />
+        <meshStandardMaterial 
+          color="#8B4513"
+          roughness={0.3}
+          metalness={0.1}
+        />
+      </animated.mesh>
+
+      {/* Center Hole */}
+      <animated.mesh 
+        rotation-z={rotationZ}
+        position={[0, 0, 0.07]}
+      >
+        <cylinderGeometry args={[0.1, 0.1, 0.03, 16]} />
+        <meshBasicMaterial color="#000000" />
+      </animated.mesh>
+
+      {/* Ambient lighting for the vinyl */}
+      <ambientLight intensity={0.4} />
+      <pointLight position={[5, 5, 5]} intensity={0.8} />
+      <pointLight position={[-5, -5, 2]} intensity={0.3} color="#ff6b35" />
+    </group>
   )
 }

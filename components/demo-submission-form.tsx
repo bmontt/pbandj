@@ -122,7 +122,7 @@ export default function DemoSubmissionForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="relative space-y-8 z-20">{/* Ensure form is above particle filter */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Name Field */}
         <motion.div
@@ -131,7 +131,7 @@ export default function DemoSubmissionForm() {
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: false }}
         >
-          <label className="block text-xs font-light text-gray-400 mb-3 uppercase tracking-widest">Your Name</label>
+          <label className="block text-xs font-light text-[#A07E54] mb-3 uppercase tracking-widest">Your Name</label>
           <input
             type="text"
             name="name"
@@ -140,7 +140,7 @@ export default function DemoSubmissionForm() {
             required
             disabled={submitState.status === "loading"}
             placeholder="Enter your name"
-            className="w-full px-4 py-3 bg-gray-900/20 border border-gray-700/30 rounded-sm text-white placeholder-gray-600 focus:outline-none focus:border-yellow-600/50 focus:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all disabled:opacity-50"
+            className="w-full px-4 py-3 bg-gray-900/20 border border-gray-700/30 rounded-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#B58657]/50 focus:shadow-[0_0_15px_rgba(181,134,87,0.2)] transition-all disabled:opacity-50"
           />
         </motion.div>
 
@@ -151,7 +151,7 @@ export default function DemoSubmissionForm() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: false }}
         >
-          <label className="block text-xs font-light text-gray-400 mb-3 uppercase tracking-widest">Email Address</label>
+          <label className="block text-xs font-light text-[#A07E54] mb-3 uppercase tracking-widest">Email Address</label>
           <input
             type="email"
             name="email"
@@ -160,7 +160,7 @@ export default function DemoSubmissionForm() {
             required
             disabled={submitState.status === "loading"}
             placeholder="your@email.com"
-            className="w-full px-4 py-3 bg-gray-900/20 border border-gray-700/30 rounded-sm text-white placeholder-gray-600 focus:outline-none focus:border-yellow-600/50 focus:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all disabled:opacity-50"
+            className="w-full px-4 py-3 bg-gray-900/20 border border-gray-700/30 rounded-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#C44D58]/50 focus:shadow-[0_0_15px_rgba(196,77,88,0.2)] transition-all disabled:opacity-50"
           />
         </motion.div>
       </div>
@@ -172,7 +172,7 @@ export default function DemoSubmissionForm() {
         transition={{ duration: 0.6, delay: 0.3 }}
         viewport={{ once: false }}
       >
-        <label className="block text-xs font-light text-gray-400 mb-3 uppercase tracking-widest">
+        <label className="block text-xs font-light text-[#A07E54] mb-3 uppercase tracking-widest">
           Message (Optional)
         </label>
         <textarea
@@ -182,7 +182,7 @@ export default function DemoSubmissionForm() {
           disabled={submitState.status === "loading"}
           placeholder="Tell us about your track..."
           rows={4}
-          className="w-full px-4 py-3 bg-gray-900/20 border border-gray-700/30 rounded-sm text-white placeholder-gray-600 focus:outline-none focus:border-yellow-600/50 focus:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all disabled:opacity-50 resize-none"
+          className="w-full px-4 py-3 bg-gray-900/20 border border-gray-700/30 rounded-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#935BAD]/50 focus:shadow-[0_0_15px_rgba(147,91,173,0.2)] transition-all disabled:opacity-50 resize-none"
         />
       </motion.div>
 
@@ -272,9 +272,9 @@ export default function DemoSubmissionForm() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
         viewport={{ once: false }}
-        whileHover={{ scale: 0.98, boxShadow: "0 0 20px rgba(234,179,8,0.3)" }}
+        whileHover={{ scale: 0.98, boxShadow: "0 0 20px rgba(181,134,87,0.3)" }}
         whileTap={{ scale: 0.95 }}
-        className="w-full px-6 py-4 bg-yellow-600/60 hover:bg-yellow-600/70 text-black font-light rounded-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed text-lg glow-yellow"
+        className="relative w-full px-6 py-4 bg-[#B58657]/60 hover:bg-[#B58657]/70 text-white font-light rounded-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed text-lg z-30"
       >
         {submitState.status === "loading" ? "Submitting..." : "Submit Demo"}
       </motion.button>

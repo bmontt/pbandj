@@ -1,9 +1,8 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
 import { motion } from "framer-motion"
+import type React from "react"
+import { useState } from "react"
 
 export default function NewsletterSidebar() {
   const [email, setEmail] = useState("")

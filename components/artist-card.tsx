@@ -35,7 +35,7 @@ export default function ArtistCard({ artist }: ArtistCardProps) {
           <img
             src={artist.image || "/placeholder.svg"}
             alt={artist.name}
-            className="w-28 h-28 rounded-sm object-cover opacity-90"
+            className="w-100 h-48 rounded-sm object-cover opacity-90"
           />
           <div className="flex-1">
             <h3 className="text-2xl font-light text-white/95">{artist.name}</h3>

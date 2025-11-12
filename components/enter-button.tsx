@@ -18,7 +18,7 @@ export default function EnterButton({ onClick }: EnterButtonProps) {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="relative px-12 py-4 text-lg font-bold text-black bg-white rounded-full hover:bg-pink-600 hover:text-white transition-all duration-300 cursor-pointer"
+      className="relative px-12 py-4 text-lg font-bold text-black bg-white rounded-full hover:bg-zinc-700 hover:text-white transition-all duration-300 cursor-pointer"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -35,9 +35,9 @@ export default function EnterButton({ onClick }: EnterButtonProps) {
 
       {/* Glow effect */}
       <motion.div
-        className="absolute inset-0 rounded-full border-2 border-pink-600"
+        className="absolute inset-0 rounded-full border-2 border-purple-600"
         animate={{
-          boxShadow: isHovering ? "0 0 30px rgba(255, 0, 81, 0.8)" : "0 0 15px rgba(255, 0, 81, 0.3)",
+          boxShadow: isHovering ? "0 0 30px rgba(121, 4, 156, 0.8)" : "0 0 15px rgba(121, 4, 156, 0.3)",
         }}
         transition={{ duration: 0.3 }}
       />

@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
+import React from "react"
 import { resend } from "@/lib/resend"
 import { supabaseServer } from "@/lib/supabase"
 import { NewsletterConfirmationEmail } from "@/components/newsletter-confirmation-email"
@@ -31,7 +32,7 @@ export async function POST(request: NextRequest) {
       from: process.env.EMAIL_FROM || "PB&J Sounds <noreply@pbjsounds.com>",
       to: email,
       subject: "Welcome to PB&J Sounds Newsletter",
-      react: NewsletterConfirmationEmail({ email }),
+      react: React.createElement(NewsletterConfirmationEmail, { email }),
     })
 
     if (emailError) {

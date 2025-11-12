@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 interface CountdownState {
@@ -17,7 +17,7 @@ interface EventCountdownProps {
 }
 
 export default function EventCountdown({
-  eventDate = process.env.NEXT_PUBLIC_EVENT_DATE || "2025-12-31T23:59:59Z",
+  eventDate = process.env.NEXT_PUBLIC_EVENT_DATE || "2026-01-01T00:00:00Z",
   audioReactivity = 0,
 }: EventCountdownProps) {
   const [countdown, setCountdown] = useState<CountdownState>({
@@ -27,7 +27,6 @@ export default function EventCountdown({
     seconds: 0,
     isLive: false,
   })
-  const animationRef = useRef<NodeJS.Timeout>()
 
   useEffect(() => {
     const calculateCountdown = () => {
@@ -55,38 +54,10 @@ export default function EventCountdown({
     }
 
     calculateCountdown()
-    animationRef.current = setInterval(calculateCountdown, 1000)
+    const interval = setInterval(calculateCountdown, 1000)
 
-    return () => clearInterval(animationRef.current)
+    return () => clearInterval(interval)
   }, [eventDate])
-
-  const CountdownUnit = ({
-    value,
-    label,
-    index,
-  }: {
-    value: number
-    label: string
-    index: number
-  }) => (
-    <motion.div
-      className="flex flex-col items-center"
-      animate={{
-        scale: 1 + audioReactivity * 0.1,
-      }}
-      transition={{ duration: 0.1 }}
-    >
-      <motion.div
-        className="text-3xl md:text-5xl font-bold text-pink-600 tabular-nums"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-      >
-        {String(value).padStart(2, "0")}
-      </motion.div>
-      <span className="text-xs md:text-sm text-gray-400 uppercase tracking-wider mt-2">{label}</span>
-    </motion.div>
-  )
 
   return (
     <div className="w-full">
@@ -96,17 +67,139 @@ export default function EventCountdown({
           animate={{ opacity: 1, scale: 1 }}
           className="text-center py-8"
         >
-          <h3 className="text-4xl md:text-6xl font-bold text-pink-600 animate-pulse">EVENT LIVE NOW</h3>
+          <motion.h3 
+            className="text-4xl md:text-6xl font-black text-yellow-600/90 tracking-wider font-cinzel"
+            animate={{
+              textShadow: [
+                "0 0 20px rgba(234,179,8,0.3)",
+                "0 0 30px rgba(234,179,8,0.5)",
+                "0 0 20px rgba(234,179,8,0.3)"
+              ]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            EVENT LIVE NOW
+          </motion.h3>
         </motion.div>
       ) : (
-        <div className="flex justify-center items-center gap-4 md:gap-8 py-8 px-4">
-          <CountdownUnit value={countdown.days} label="Days" index={0} />
-          <span className="text-2xl md:text-4xl text-pink-600 font-bold">:</span>
-          <CountdownUnit value={countdown.hours} label="Hours" index={1} />
-          <span className="text-2xl md:text-4xl text-pink-600 font-bold">:</span>
-          <CountdownUnit value={countdown.minutes} label="Minutes" index={2} />
-          <span className="text-2xl md:text-4xl text-pink-600 font-bold">:</span>
-          <CountdownUnit value={countdown.seconds} label="Seconds" index={3} />
+        <div className="flex justify-center items-center gap-6 md:gap-12 py-8 px-4">
+          {/* Days */}
+          <div className="flex flex-col items-center">
+            <motion.div 
+              className="text-3xl md:text-5xl font-black text-white/95 font-cinzel"
+              key={countdown.days}
+              initial={{ scale: 1.2, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {String(countdown.days).padStart(2, '0')}
+            </motion.div>
+            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-3 font-light font-cinzel">
+              Days
+            </span>
+          </div>
+
+          <motion.span 
+            className="text-3xl md:text-5xl text-gray-600/70 font-light font-cinzel mb-8"
+            animate={{ 
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              repeatType: "reverse"
+            }}
+          >
+            :
+          </motion.span>
+
+          {/* Hours */}
+          <div className="flex flex-col items-center">
+            <motion.div 
+              className="text-3xl md:text-5xl font-black text-white/95 font-cinzel"
+              key={countdown.hours}
+              initial={{ scale: 1.2, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {String(countdown.hours).padStart(2, '0')}
+            </motion.div>
+            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-3 font-light font-cinzel">
+              Hours
+            </span>
+          </div>
+
+          <motion.span 
+            className="text-3xl md:text-5xl text-gray-600/70 font-light font-cinzel mb-8"
+            animate={{ 
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut", 
+              delay: 0.4,
+              repeatType: "reverse"
+            }}
+          >
+            :
+          </motion.span>
+
+          {/* Minutes */}
+          <div className="flex flex-col items-center">
+            <motion.div 
+              className="text-3xl md:text-5xl font-black text-white/95 font-cinzel"
+              key={countdown.minutes}
+              initial={{ scale: 1.2, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {String(countdown.minutes).padStart(2, '0')}
+            </motion.div>
+            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-3 font-light font-cinzel">
+              Minutes
+            </span>
+          </div>
+
+          <motion.span 
+            className="text-3xl md:text-5xl text-gray-600/70 font-light font-cinzel mb-8"
+            animate={{ 
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut", 
+              delay: 0.8,
+              repeatType: "reverse"
+            }}
+          >
+            :
+          </motion.span>
+
+          {/* Seconds */}
+          <div className="flex flex-col items-center">
+            <motion.div 
+              className="text-3xl md:text-5xl font-black text-white/95 font-cinzel"
+              key={countdown.seconds}
+              initial={{ scale: 1.2, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {String(countdown.seconds).padStart(2, '0')}
+            </motion.div>
+            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-3 font-light font-cinzel">
+              Seconds
+            </span>
+          </div>
         </div>
       )}
     </div>
