@@ -9,23 +9,24 @@ export interface Event {
 export const events: Event[] = [
   {
     id: "event1",
-    title: "Summer Music Festival",
-    date: "July 15, 2025",
-    description: "An unforgettable night of music, dancing, and fun under the stars.",
+    title: "Bonnaroo Renegade Stage",
+    date: "June 2025",
+    description: "Jack rented a truck and hauled all of his gear down to Tennessee to set up an insane stage for his 125-person campsite. When Bonnaroo got cancelled due to weather, Jack threw an 18 hour rave for the devastated campers, and it turned out to be one of the most memorable events of the year.",
     media: [
-      { type: "image", src: "/images/event1.jpg" },
-      { type: "image", src: "/images/event2.jpg" },
-      { type: "video", src: "/videos/event1.mp4" },
+      { type: "image", src: "/JackEvents/rooAftermath.jpg" },
+      { type: "video", src: "/JackEvents/coolLights.mp4" },
+      { type: "image", src: "/JackEvents/rooParty.jpg" },
+      { type: "video", src: "/JackEvents/rooReel.mp4" },
     ],
   },
   {
     id: "event2",
-    title: "Winter Wonderland Concert",
-    date: "December 20, 2025",
-    description: "A magical evening of music and holiday cheer.",
+    title: "Rooftop Party",
+    date: "April 2025",
+    description: "We partnered with a apartment building to throw a rooftop party for 70 people, complete with a full suite of production gear including lights, sound, and DJs.",
     media: [
-      { type: "image", src: "/images/event3.jpg" },
-      { type: "video", src: "/videos/event2.mp4" },
+      { type: "image", src: "/JackEvents/rooftop1.jpg" },
+      { type: "video", src: "/JackEvents/rooftop2.mp4" },
     ],
   },
   {
