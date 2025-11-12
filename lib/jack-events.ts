@@ -25,8 +25,9 @@ export const events: Event[] = [
     date: "April 2025",
     description: "We partnered with a apartment building to throw a rooftop party for 70 people, complete with a full suite of production gear including lights, sound, and DJs.",
     media: [
-      { type: "image", src: "/JackEvents/rooftop1.jpg" },
-      { type: "video", src: "/JackEvents/rooftop2.mp4" },
+      { type: "video", src: "/JackEvents/rooftopSunset.mp4" },
+      { type: "image", src: "/JackEvents/rooftopSetup.jpg" },
+      { type: "video", src: "/JackEvents/rooftopDance.mp4" },
     ],
   },
   {
