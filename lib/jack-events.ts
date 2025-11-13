@@ -42,6 +42,17 @@ export const events: Event[] = [
     ],
   },
   {
+    id: "event5",
+    title: "House Party",
+    date: "January 2025",
+    description: "Jack setup his full truss system in a friend's house for an intimate dance party. The lighting design transformed the living room into a vibrant dance floor, setting the precendent for future production to come.",
+    media: [
+      { type: "video", src: "/JackEvents/housePartyDance.mp4" },
+      { type: "video", src: "/JackEvents/houseVintage.mp4" },
+      { type: "video", src: "/JackEvents/houseVibes.mp4" },
+    ],
+  },
+  {
     id: "event3",
     title: "Office Jam Session",
     date: "September 2025",
