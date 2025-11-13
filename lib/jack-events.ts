@@ -53,6 +53,15 @@ export const events: Event[] = [
     ],
   },
   {
+    id: "event6",
+    title: "Friend's Wedding",
+    date: "October 2025",
+    description: "Jack and Brody teamed up to provide a full suite of production at a friend's wedding on the Eastern Shore of MD. We danced the night away and we can officially say 'Yea, we're wedding DJs now' (jk)",
+    media: [
+      { type: "image", src: "/JackEvents/wedding.jpg" },
+    ],
+  },
+  {
     id: "event3",
     title: "Office Jam Session",
     date: "September 2025",
