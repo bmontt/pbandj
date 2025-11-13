@@ -28,19 +28,6 @@ export default function ArtistJPage() {
 
   return (
     <div className="relative bg-black text-white">
-      {/* Home Button */}
-      <div className="absolute top-4 right-4 z-10">
-        <Link href="/">
-          <motion.button
-            whileHover={{ scale: 1.05, opacity: 0.9 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 px-6 py-3 text-sm font-light text-white bg-blue-500 rounded hover:bg-blue-600 transition-all"
-          >
-            Back to PB&J
-          </motion.button>
-        </Link>
-      </div>
-
       <div className="relative z-10 flex items-start p-8">
         <PortfolioCard artist={artist} />
         <div className="ml-8">
