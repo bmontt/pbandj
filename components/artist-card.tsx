@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 interface Artist {
   id: number
@@ -102,6 +103,13 @@ export default function ArtistCard({ artist }: ArtistCardProps) {
                   </svg>
                   Spotify
                 </a>
+                <Link
+                  href={`/artists/${artist.id}`}
+                  className="ml-4 inline-flex items-center gap-2 px-3 py-1 text-sm text-white bg-gray-800/40 rounded-sm hover:bg-gray-800/60 transition"
+                  aria-label={`Open ${artist.name} portfolio`}
+                >
+                  View Portfolio
+                </Link>
               </div>
             </div>
           </motion.div>
