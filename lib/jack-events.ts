@@ -13,10 +13,10 @@ export const events: Event[] = [
     date: "June 2025",
     description: "Jack rented a truck and hauled all of his gear down to Tennessee to set up an insane stage for his 125-person campsite. When Bonnaroo got cancelled due to weather, Jack threw an 18 hour rave for the devastated campers, and it turned out to be one of the most memorable events of the year.",
     media: [
-      { type: "image", src: "/JackEvents/rooAftermath.jpg" },
+      { type: "image", src: "/JackEvents/rooAftermath.JPG" },
       { type: "video", src: "/JackEvents/coolLights.mp4" },
       { type: "image", src: "/JackEvents/rooParty.jpg" },
-      { type: "video", src: "/JackEvents/rooReel.mp4" },
+      { type: "video", src: "/JackEvents/rooReel.MP4" },
     ],
   },
   {
