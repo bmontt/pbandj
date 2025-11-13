@@ -32,12 +32,24 @@ export const events: Event[] = [
   },
   {
     id: "event3",
-    title: "Spring Jam Session",
-    date: "April 10, 2025",
-    description: "A lively jam session featuring talented local artists.",
+    title: "Office Jam Session",
+    date: "September 2025",
+    description: "When Jack moved to DC, he setup his lighting rig in his new office space and had friends over to show off the new apartment and lighting scenes. It was a great way to pregame for our Echostage debut :)",
     media: [
-      { type: "image", src: "/images/event4.jpg" },
-      { type: "image", src: "/images/event5.jpg" },
+      { type: "video", src: "/JackEvents/officeSetup.mp4" },
+      { type: "video", src: "/JackEvents/officeJam.mp4" },
+      { type: "video", src: "/JackEvents/officeDance.mp4" },
+    ],
+  },
+  {
+    id: "event4",
+    title: "PB&J Disco Anniversary",
+    date: "March 2025",
+    description: "To celebrate the 1 year anniversary of PB&J, Jack went all out in his house with a disco-themed party. The lighting, video and crowd was sublime, and it represented the first true coming together of the truss setup.",
+    media: [
+      { type: "image", src: "/JackEvents/discoNight.jpg" },
+      { type: "image", src: "/JackEvents/discoParty.jpg" },
+      { type: "video", src: "/JackEvents/discoJam.mp4" },
     ],
   },
 ];
