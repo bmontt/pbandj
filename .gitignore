@@ -25,3 +25,29 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Original images (keeping only optimized WebP versions)
+public/**/*.jpg
+public/**/*.jpeg
+public/**/*.png
+public/**/*.JPG
+public/**/*.JPEG
+public/**/*.PNG
+public/**/*.gif
+public/**/*.GIF
+# Intermediate optimized files (keep only WebP)
+public/**/*.optimized.jpg
+public/**/*.optimized.jpeg
+public/**/*.optimized.png
+public/**/*.optimized.JPG
+public/**/*.optimized.JPEG
+public/**/*.optimized.PNG
+public/**/*.optimized.gif
+public/**/*.optimized.GIF
+# Keep WebP and SVG files
+!public/**/*.webp
+!public/**/*.svg
+!public/**/*.ico
+
+# Windows zone identifier files
+**/*:Zone.Identifier

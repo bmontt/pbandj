@@ -10,19 +10,26 @@ interface HeaderWithCountdownProps {
 
 export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithCountdownProps) {
   return (
-    <header className="relative w-full bg-black/80 border-b border-gray-800/20 z-50">
-      <div className="max-w-7xl mx-auto px-8 md:px-16 py-6">
+    <header className="fixed top-0 w-full z-50">
+      {/* Enhanced glassy backdrop */}
+      <div className="absolute inset-0 glass-nav"></div>
+      
+      {/* Subtle shimmer overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-30"></div>
+      
+      {/* Content */}
+      <div className="relative max-w-7xl mx-auto px-8 md:px-16 py-6">
         <div className="flex items-center justify-between mb-3">
           <div className="flex gap-8">
             <a
               href="#epk"
-              className="text-gray-500 hover:text-gray-300 transition-colors text-xs uppercase tracking-widest font-light"
+              className="text-gray-200/90 hover:text-white transition-all duration-300 text-xs uppercase tracking-widest font-light glass-text hover:scale-105"
             >
               Artists
             </a>
             <a
               href="#demo"
-              className="text-gray-500 hover:text-gray-300 transition-colors text-xs uppercase tracking-widest font-light"
+              className="text-gray-200/90 hover:text-white transition-all duration-300 text-xs uppercase tracking-widest font-light glass-text hover:scale-105"
             >
               Submit
             </a>
@@ -31,30 +38,30 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-lg font-light text-white/80 tracking-wider"
+            className="text-lg font-light text-white/95 tracking-wider glass-text"
           >
-            <Image src="pbj_logo_transparent.png" alt="PB&J" width={120} height={30} />
+            <Image src="/pbj_logo_transparent.optimized.webp" alt="PB&J" width={120} height={30} />
           </motion.div>
 
           <div className="flex gap-8">
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-300 transition-colors text-xs uppercase tracking-widest font-light"
+              className="text-gray-200/90 hover:text-white transition-all duration-300 text-xs uppercase tracking-widest font-light glass-text hover:scale-105"
             >
               Events
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-300 transition-colors text-xs uppercase tracking-widest font-light"
+              className="text-gray-200/90 hover:text-white transition-all duration-300 text-xs uppercase tracking-widest font-light glass-text hover:scale-105"
             >
               About
             </a>
           </div>
         </div>
 
-        <div className="border-t border-gray-800/20 pt-3">
+        <div className="border-t glass-border pt-3">
           <EventCountdown audioReactivity={audioReactivity} />
-          <h3 className="text-center text-xs text-gray-600 uppercase tracking-widest mb-2">2.0 Launch Countdown</h3>
+          <h3 className="text-center text-xs text-gray-300/70 uppercase tracking-widest mb-2 glass-text">2.0 Launch Countdown</h3>
         </div>
       </div>
     </header>

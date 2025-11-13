@@ -36,7 +36,7 @@ export default function EPKSection() {
       bio: "Creating immersive audio experiences",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerBlazes.mp4",
       quote: "Up the Stuss",
-      image: "/pj.JPG",
+      image: "/pj.optimized.webp",
       socialLinks: {
         instagram: "#",
         spotify: "#",
@@ -49,7 +49,7 @@ export default function EPKSection() {
       bio: "Crafting sonic landscapes since 2013",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerBlazes.mp4",
       quote: "I spent way too long making this website.",
-      image: "/brody.JPG",
+      image: "/brody.optimized.webp",
       socialLinks: {
         instagram: "#",
         spotify: "#",
@@ -62,7 +62,7 @@ export default function EPKSection() {
       bio: "Blending visuals with sound",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerBlazes.mp4",
       quote: "Ferda is simply a state of being.",
-      image: "/jack.jpg",
+      image: "/jack.optimized.webp",
       socialLinks: {
         instagram: "#",
         spotify: "#",
@@ -80,7 +80,7 @@ export default function EPKSection() {
         <div 
           className="h-[1000px] w-full bg-cover bg-center bg-no-repeat opacity-15 -mt-32"
           style={{
-            backgroundImage: "url('/mosaicDreamy.JPG')",
+            backgroundImage: "url('/mosaicDreamy.optimized.webp')",
             backgroundPosition: "center 40%",
             maskImage: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0.8) 80%, rgba(0,0,0,0) 100%)",
             WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0.8) 80%, rgba(0,0,0,0) 100%)"
@@ -288,7 +288,7 @@ export default function EPKSection() {
                   className="aspect-video rounded-sm overflow-hidden cursor-pointer transition-all"
                 >
                   <img
-                    src={`/echostage.JPG`}
+                    src={`/echostage.optimized.webp`}
                     alt={`Event 1`}
                     className="w-full h-full object-cover opacity-70 hover:opacity-85 transition-opacity"
                   />
@@ -300,7 +300,7 @@ export default function EPKSection() {
                   className="aspect-video rounded-sm overflow-hidden cursor-pointer transition-all"
                 >
                   <img
-                    src={`/charityCrowd.png`}
+                    src={`/charityCrowd.optimized.webp`}
                     alt={`Event 2`}
                     className="w-full h-full object-cover opacity-70 hover:opacity-85 transition-opacity"
                   />
@@ -312,7 +312,7 @@ export default function EPKSection() {
                   className="aspect-video rounded-sm overflow-hidden cursor-pointer transition-all"
                 >
                   <img
-                    src={`/mosaicLockedIn.JPG`}
+                    src={`/mosaicLockedIn.optimized.webp`}
                     alt={`Event 3`}
                     className="w-full h-full object-cover opacity-70 hover:opacity-85 transition-opacity"
                   />
@@ -324,7 +324,7 @@ export default function EPKSection() {
                   className="aspect-video rounded-sm overflow-hidden cursor-pointer transition-all"
                 >
                   <img
-                    src={`/lfsystem.jpg`}
+                    src={`/lfsystem.optimized.webp`}
                     alt={`Event 4`}
                     className="w-full h-full object-cover opacity-70 hover:opacity-85 transition-opacity"
                   />
@@ -336,7 +336,7 @@ export default function EPKSection() {
                   className="aspect-video rounded-sm overflow-hidden cursor-pointer transition-all"
                 >
                   <img
-                    src={`/discoversary.JPG`}
+                    src={`/discoversary.optimized.webp`}
                     alt={`Event 5`}
                     className="w-full h-full object-cover opacity-70 hover:opacity-85 transition-opacity"
                   />
@@ -348,7 +348,7 @@ export default function EPKSection() {
                   className="aspect-video rounded-sm overflow-hidden cursor-pointer transition-all"
                 >
                   <img
-                    src={`/WaywardSnowGlow_Feb1-56.jpg`}
+                    src={`/WaywardSnowGlow_Feb1-56.optimized.webp`}
                     alt={`Event 6`}
                     className="w-full h-full object-cover opacity-70 hover:opacity-85 transition-opacity"
                   />

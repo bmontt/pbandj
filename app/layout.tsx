@@ -19,19 +19,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/pbj_logo_white.png",
+        url: "/pbj_logo_white.optimized.webp",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/pbj_logo_black.png",
+        url: "/pbj_logo_black.optimized.webp",
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/pbj_logo_transparent.png",
+        url: "/pbj_logo_transparent.optimized.webp",
         type: "image/svg+xml",
       },
     ],
-    apple: "/pbj_logo_white.png",
+    apple: "/pbj_logo_white.optimized.webp",
   },
 }
 
