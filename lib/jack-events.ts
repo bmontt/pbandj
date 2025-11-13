@@ -20,14 +20,25 @@ export const events: Event[] = [
     ],
   },
   {
+    id: "event4",
+    title: "PB&J Disco Anniversary",
+    date: "March 2025",
+    description: "To celebrate the 1 year anniversary of PB&J, Jack went all out in his house with a disco-themed party. The lighting, video and crowd was sublime, and it represented the first true coming together of the truss setup.",
+    media: [
+      { type: "image", src: "/JackEvents/discoNight.jpg" },
+      { type: "image", src: "/JackEvents/discoParty.jpg" },
+      { type: "video", src: "/JackEvents/discoJam.mp4" },
+    ],
+  },
+  {
     id: "event2",
     title: "Rooftop Party",
     date: "April 2025",
     description: "We partnered with a apartment building to throw a rooftop party for 70 people, complete with a full suite of production gear including lights, sound, and DJs.",
     media: [
-      { type: "video", src: "/JackEvents/rooftopSunset.mp4" },
+      { type: "video", src: "/JackEvents/rooftopSunset.MOV" },
       { type: "image", src: "/JackEvents/rooftopSetup.jpg" },
-      { type: "video", src: "/JackEvents/rooftopDance.mp4" },
+      { type: "video", src: "/JackEvents/rooftopParty.mp4" },
     ],
   },
   {
@@ -39,17 +50,6 @@ export const events: Event[] = [
       { type: "video", src: "/JackEvents/officeSetup.mp4" },
       { type: "video", src: "/JackEvents/officeJam.mp4" },
       { type: "video", src: "/JackEvents/officeDance.mp4" },
-    ],
-  },
-  {
-    id: "event4",
-    title: "PB&J Disco Anniversary",
-    date: "March 2025",
-    description: "To celebrate the 1 year anniversary of PB&J, Jack went all out in his house with a disco-themed party. The lighting, video and crowd was sublime, and it represented the first true coming together of the truss setup.",
-    media: [
-      { type: "image", src: "/JackEvents/discoNight.jpg" },
-      { type: "image", src: "/JackEvents/discoParty.jpg" },
-      { type: "video", src: "/JackEvents/discoJam.mp4" },
     ],
   },
 ];

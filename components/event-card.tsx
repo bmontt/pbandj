@@ -16,20 +16,20 @@ export default function EventCard({ title, date, description, media }: EventCard
       <p className="mt-4 text-gray-300">{description}</p>
 
       {/* Media List */}
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {media.map((item, index) => (
           <div key={index} className="overflow-hidden rounded-lg">
             {item.type === "image" ? (
               <img
                 src={item.src}
                 alt={`Event media ${index + 1}`}
-                className="w-full h-40 object-cover hover:scale-105 transition-transform"
+                className="w-full h-auto max-h-[400px] object-contain hover:scale-105 transition-transform"
               />
             ) : (
               <video
                 src={item.src}
                 controls
-                className="w-full h-40 object-cover"
+                className="w-full h-auto max-h-[400px] object-contain"
               />
             )}
           </div>
