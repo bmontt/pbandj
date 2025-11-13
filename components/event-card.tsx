@@ -28,45 +28,39 @@ export default function EventCard({ title, date, description, media }: EventCard
 }
 
 function MediaItem({ type, src }: { type: "image" | "video"; src: string }) {
-  const [isLandscape, setIsLandscape] = useState(false);
-  const [naturalWidth, setNaturalWidth] = useState(0);
+  const [aspectRatio, setAspectRatio] = useState(1); // Default aspect ratio is 1:1
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const { naturalWidth, naturalHeight } = e.currentTarget;
-    setIsLandscape(naturalWidth > naturalHeight);
-    setNaturalWidth(naturalWidth);
+    setAspectRatio(naturalWidth / naturalHeight); // Calculate aspect ratio
   };
 
   const handleVideoLoad = (e: React.SyntheticEvent<HTMLVideoElement>) => {
     const { videoWidth, videoHeight } = e.currentTarget;
-    setIsLandscape(videoWidth > videoHeight);
-    setNaturalWidth(videoWidth);
+    setAspectRatio(videoWidth / videoHeight); // Calculate aspect ratio
   };
 
   return (
     <div
-      className={`flex-shrink-0 overflow-hidden rounded-lg ${
-        isLandscape ? "w-auto" : "w-64"
-      }`}
-      style={
-        isLandscape
-          ? { width: `${Math.min(naturalWidth, 800)}px`, maxWidth: "800px" } // Constrain width to a maximum of 800px
-          : {}
-      }
+      className="flex-shrink-0 overflow-hidden rounded-lg"
+      style={{
+        height: "400px", // Fixed height for all media items
+        width: `${400 * aspectRatio}px`, // Dynamic width based on aspect ratio
+      }}
     >
       {type === "image" ? (
         <img
           src={src}
           alt="Event media"
           onLoad={handleImageLoad}
-          className="w-full h-auto object-cover hover:scale-105 transition-transform max-h-[400px]"
+          className="w-full h-full object-contain hover:scale-105 transition-transform"
         />
       ) : (
         <video
           src={src}
           controls
           onLoadedMetadata={handleVideoLoad}
-          className="w-full h-auto object-cover max-h-[400px]"
+          className="w-full h-full object-contain"
         />
       )}
     </div>
