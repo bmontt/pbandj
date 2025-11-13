@@ -2,23 +2,34 @@
 
 import PortfolioCard from "@/components/portfolio-card";
 import EventCard from "@/components/event-card";
+import ParticleBackground from "@/components/particle-background";
 import { artists } from "@/lib/artists";
 import { events } from "@/lib/jack-events";
-import { useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function ArtistJPage() {
   const artist = artists.find((a) => a.id === "j");
 
   if (!artist) return <div>Artist not found</div>;
 
-  const { scrollY } = useScroll();
+  const [scrollYValue, setScrollYValue] = useState(0);
+
+  // Update scroll position for the ParticleBackground
+  useEffect(() => {
+    const updateScrollY = () => {
+      setScrollYValue(window.scrollY);
+    };
+
+    window.addEventListener("scroll", updateScrollY);
+    return () => window.removeEventListener("scroll", updateScrollY);
+  }, []);
 
   return (
-    <div className="relative bg-gradient-to-b from-black via-gray-900 to-black text-white">
+    <div className="relative bg-black text-white">
       {/* Home Button */}
-      <div className="absolute top-4 right-4 z-20">
+      <div className="absolute top-4 right-4 z-10">
         <Link href="/">
           <motion.button
             whileHover={{ scale: 1.05, opacity: 0.9 }}
@@ -26,19 +37,6 @@ export default function ArtistJPage() {
             className="inline-flex items-center gap-3 px-6 py-3 text-sm font-light text-white bg-blue-500 rounded hover:bg-blue-600 transition-all"
           >
             Back to PB&J
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2m-4-4l-4 4m0 0l-4-4m4 4V4"
-              />
-            </svg>
           </motion.button>
         </Link>
       </div>
@@ -84,7 +82,7 @@ export default function ArtistJPage() {
       </div>
 
       {/* Past Events Section */}
-      <div className="mt-16 p-8">
+      <div className=" p-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,22 +91,25 @@ export default function ArtistJPage() {
         >
           Past Events
         </motion.h2>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="flex flex-col gap-8"
-        >
-          {events.map((event) => (
-            <EventCard
+        <div className="flex flex-col gap-8">
+          {events.map((event, index) => (
+            <motion.div
               key={event.id}
-              title={event.title}
-              date={event.date}
-              description={event.description}
-              media={event.media}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
+            >
+              <EventCard
+                title={event.title}
+                date={event.date}
+                description={event.description}
+                media={event.media}
+              />
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );
