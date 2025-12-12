@@ -18,8 +18,8 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-30"></div>
       
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-8 md:px-16 py-6">
-        <div className="flex items-center justify-between mb-3">
+      <div className="relative max-w-7xl mx-auto px-8 md:px-16 py-1">
+        <div className="flex items-center justify-between">
           <div className="flex gap-8">
             <a
               href="#epk"
@@ -59,9 +59,9 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
           </div>
         </div>
 
-        <div className="border-t glass-border pt-3">
+        <div className="-mt-5">
+          <h3 className="text-center text-xs text-gray-300/70 uppercase tracking-widest mt-2 mb-2 glass-text">2.0 Launch Countdown</h3>
           <EventCountdown audioReactivity={audioReactivity} />
-          <h3 className="text-center text-xs text-gray-300/70 uppercase tracking-widest mb-2 glass-text">2.0 Launch Countdown</h3>
         </div>
       </div>
     </header>

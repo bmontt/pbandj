@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/flipdown/0.3.2/flipdown.min.css");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -188,3 +189,33 @@ html::-webkit-scrollbar {
     0 1px 0 rgba(255, 255, 255, 0.05),
     0 -1px 0 rgba(0, 0, 0, 0.3);
 }
+
+@keyframes flipAnimation {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotateX(90deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+/* Hide PQINA branding */
+.tick::after {
+  display: none !important;
+}
+
+.tick a {
+  display: none !important;
+}
+
+.tick a[href*="pqina"],
+.tick a[href*="PQINA"] {
+  display: none !important;
+}
+

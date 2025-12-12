@@ -86,25 +86,27 @@ export default function EventCountdown({
           </motion.h3>
         </motion.div>
       ) : (
-        <div className="flex justify-center items-center gap-6 md:gap-12 py-8 px-4">
+        <div className="flex justify-center items-center gap-2 md:gap-4 py-2 px-4">
           {/* Days */}
           <div className="flex flex-col items-center">
             <motion.div 
-              className="text-3xl md:text-5xl font-black text-white/95 font-cinzel"
+              className="text-2xl md:text-4xl font-black text-white/95 font-cinzel"
               key={countdown.days}
-              initial={{ scale: 1.2, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              initial={{ rotateX: 90, opacity: 0 }}
+              animate={{ rotateX: 0, opacity: 1 }}
+              exit={{ rotateX: -90, opacity: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{ perspective: 1000 }}
             >
               {String(countdown.days).padStart(2, '0')}
             </motion.div>
-            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-3 font-light font-cinzel">
+            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-1 font-light font-cinzel">
               Days
             </span>
           </div>
 
           <motion.span 
-            className="text-3xl md:text-5xl text-gray-600/70 font-light font-cinzel mb-8"
+            className="text-2xl md:text-4xl text-gray-600/70 font-light font-cinzel mb-4"
             animate={{ 
               opacity: [0.3, 0.8, 0.3],
               scale: [1, 1.1, 1]
@@ -122,21 +124,23 @@ export default function EventCountdown({
           {/* Hours */}
           <div className="flex flex-col items-center">
             <motion.div 
-              className="text-3xl md:text-5xl font-black text-white/95 font-cinzel"
+              className="text-2xl md:text-4xl font-black text-white/95 font-cinzel"
               key={countdown.hours}
-              initial={{ scale: 1.2, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              initial={{ rotateX: 90, opacity: 0 }}
+              animate={{ rotateX: 0, opacity: 1 }}
+              exit={{ rotateX: -90, opacity: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{ perspective: 1000 }}
             >
               {String(countdown.hours).padStart(2, '0')}
             </motion.div>
-            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-3 font-light font-cinzel">
+            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-1 font-light font-cinzel">
               Hours
             </span>
           </div>
 
           <motion.span 
-            className="text-3xl md:text-5xl text-gray-600/70 font-light font-cinzel mb-8"
+            className="text-2xl md:text-4xl text-gray-600/70 font-light font-cinzel mb-4"
             animate={{ 
               opacity: [0.3, 0.8, 0.3],
               scale: [1, 1.1, 1]
@@ -155,21 +159,23 @@ export default function EventCountdown({
           {/* Minutes */}
           <div className="flex flex-col items-center">
             <motion.div 
-              className="text-3xl md:text-5xl font-black text-white/95 font-cinzel"
+              className="text-2xl md:text-4xl font-black text-white/95 font-cinzel"
               key={countdown.minutes}
-              initial={{ scale: 1.2, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              initial={{ rotateX: 90, opacity: 0 }}
+              animate={{ rotateX: 0, opacity: 1 }}
+              exit={{ rotateX: -90, opacity: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{ perspective: 1000 }}
             >
               {String(countdown.minutes).padStart(2, '0')}
             </motion.div>
-            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-3 font-light font-cinzel">
+            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-1 font-light font-cinzel">
               Minutes
             </span>
           </div>
 
           <motion.span 
-            className="text-3xl md:text-5xl text-gray-600/70 font-light font-cinzel mb-8"
+            className="text-2xl md:text-4xl text-gray-600/70 font-light font-cinzel mb-4"
             animate={{ 
               opacity: [0.3, 0.8, 0.3],
               scale: [1, 1.1, 1]
@@ -188,15 +194,17 @@ export default function EventCountdown({
           {/* Seconds */}
           <div className="flex flex-col items-center">
             <motion.div 
-              className="text-3xl md:text-5xl font-black text-white/95 font-cinzel"
+              className="text-2xl md:text-4xl font-black text-white/95 font-cinzel"
               key={countdown.seconds}
-              initial={{ scale: 1.2, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              initial={{ rotateX: 90, opacity: 0 }}
+              animate={{ rotateX: 0, opacity: 1 }}
+              exit={{ rotateX: -90, opacity: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{ perspective: 1000 }}
             >
               {String(countdown.seconds).padStart(2, '0')}
             </motion.div>
-            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-3 font-light font-cinzel">
+            <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-1 font-light font-cinzel">
               Seconds
             </span>
           </div>
