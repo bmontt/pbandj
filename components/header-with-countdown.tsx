@@ -19,8 +19,8 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
       
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-8 md:px-16 py-1">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex gap-4 sm:gap-8 text-[10px] sm:text-xs">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+          <div className="flex gap-3 sm:gap-8 text-xs sm:text-sm">
             <a
               href="#epk"
               className="text-gray-200/90 hover:text-white transition-all duration-300 uppercase tracking-widest font-light glass-text hover:scale-105"
@@ -43,7 +43,7 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
             <Image src="/pbj_logo_transparent.optimized.webp" alt="PB&J" width={100} height={25} />
           </motion.div>
 
-          <div className="flex gap-4 sm:gap-8 text-[10px] sm:text-xs">
+          <div className="flex gap-3 sm:gap-8 text-xs sm:text-sm">
             <a
               href="#"
               className="text-gray-200/90 hover:text-white transition-all duration-300 uppercase tracking-widest font-light glass-text hover:scale-105"
@@ -60,7 +60,7 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
         </div>
 
         <div className="-mt-5">
-          <h3 className="text-center text-[10px] sm:text-xs text-gray-300/70 uppercase tracking-widest mt-2 mb-2 glass-text">Event Series Release</h3>
+          <h3 className="text-center text-xs sm:text-sm text-gray-300/70 uppercase tracking-widest mt-2 mb-2 glass-text">Event Series Release</h3>
           <EventCountdown audioReactivity={audioReactivity} />
         </div>
       </div>
