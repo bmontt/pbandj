@@ -79,41 +79,41 @@ export default function EPKSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: false, margin: "-150px" }}
-              className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12"
+              className="flex flex-row justify-center items-center gap-2 sm:gap-6 md:gap-8 lg:gap-12 flex-wrap"
             >
               {artists.map((artist, index) => (
-                <div key={artist.id} className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
+                <div key={artist.id} className="flex flex-row items-center gap-2 sm:gap-6 md:gap-8 lg:gap-12">
                   <Link href={`/artists/${artist.id}`} className="block">
-                    <motion.div whileHover={{ scale: 1.02 }} className="cursor-pointer transition-all p-6">
-                      <div className="flex flex-col items-center text-center space-y-4">
+                    <motion.div whileHover={{ scale: 1.02 }} className="cursor-pointer transition-all p-1 sm:p-6">
+                      <div className="flex flex-col items-center text-center space-y-1 sm:space-y-4">
                         <img
                           src={artist.image || "/placeholder.svg"}
                           alt={artist.name}
-                          className="w-100 h-100 rounded-sm object-cover opacity-90"
+                          className="w-24 sm:w-100 h-24 sm:h-100 rounded-sm object-cover opacity-90"
                           style={{ objectPosition: "center top" }}
                         />
                         <div>
-                          <h3 className="text-xl font-light text-white/95">
+                          <h3 className="text-sm sm:text-xl font-light text-white/95">
                             {artist.id === "p" && (
                               <>
-                                <span className="text-3xl font-black text-[#B58657]/90">P</span>
+                                <span className="text-lg sm:text-3xl font-black text-[#B58657]/90">P</span>
                                 {artist.name.slice(1)}
                               </>
                             )}
                             {artist.id === "b" && (
                               <>
-                                <span className="text-3xl font-black text-[#C44D58]/90">B</span>
+                                <span className="text-lg sm:text-3xl font-black text-[#C44D58]/90">B</span>
                                 {artist.name.slice(1)}
                               </>
                             )}
                             {artist.id === "j" && (
                               <>
-                                <span className="text-3xl font-black text-[#935BAD]/90">J</span>
+                                <span className="text-lg sm:text-3xl font-black text-[#935BAD]/90">J</span>
                                 {artist.name.slice(1)}
                               </>
                             )}
                           </h3>
-                          <p className="text-[#C69A6C]/70 font-light text-sm">{artist.role}</p>
+                          <p className="text-[#C69A6C]/70 font-light text-xs sm:text-sm">{artist.role}</p>
                         </div>
                       </div>
                     </motion.div>
