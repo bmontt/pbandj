@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 
@@ -24,6 +24,20 @@ interface ArtistCardProps {
 
 export default function ArtistCard({ artist }: ArtistCardProps) {
   const [expanded, setExpanded] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const handleVideoMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => console.log("Video play failed:", err));
+    }
+  }
+
+  const handleVideoMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }
 
   return (
     <motion.div
@@ -80,7 +94,19 @@ export default function ArtistCard({ artist }: ArtistCardProps) {
               {/* Video Snippet */}
               <div>
                 <h4 className="text-xs font-light text-gray-500 mb-4 uppercase tracking-widest">Behind the Scenes</h4>
-                <video src={artist.videoUrl} controls className="w-full rounded-sm bg-black aspect-video" playsInline />
+                <div 
+                  className="w-full bg-black rounded-sm overflow-hidden cursor-pointer group aspect-video"
+                  onMouseEnter={handleVideoMouseEnter}
+                  onMouseLeave={handleVideoMouseLeave}
+                >
+                  <video 
+                    ref={videoRef}
+                    src={artist.videoUrl} 
+                    className="w-full h-full object-cover" 
+                    playsInline
+                    preload="metadata"
+                  />
+                </div>
               </div>
 
               {/* Social Links */}

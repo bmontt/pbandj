@@ -18,18 +18,18 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-30"></div>
       
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-8 md:px-16 py-1">
-        <div className="flex items-center justify-between">
-          <div className="flex gap-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 md:px-16 py-1">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex gap-4 sm:gap-8 text-[10px] sm:text-xs">
             <a
               href="#epk"
-              className="text-gray-200/90 hover:text-white transition-all duration-300 text-xs uppercase tracking-widest font-light glass-text hover:scale-105"
+              className="text-gray-200/90 hover:text-white transition-all duration-300 uppercase tracking-widest font-light glass-text hover:scale-105"
             >
-              Artists
+              Team
             </a>
             <a
               href="#demo"
-              className="text-gray-200/90 hover:text-white transition-all duration-300 text-xs uppercase tracking-widest font-light glass-text hover:scale-105"
+              className="text-gray-200/90 hover:text-white transition-all duration-300 uppercase tracking-widest font-light glass-text hover:scale-105"
             >
               Submit
             </a>
@@ -40,19 +40,19 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
             animate={{ opacity: 1, y: 0 }}
             className="text-lg font-light text-white/95 tracking-wider glass-text"
           >
-            <Image src="/pbj_logo_transparent.optimized.webp" alt="PB&J" width={120} height={30} />
+            <Image src="/pbj_logo_transparent.optimized.webp" alt="PB&J" width={100} height={25} />
           </motion.div>
 
-          <div className="flex gap-8">
+          <div className="flex gap-4 sm:gap-8 text-[10px] sm:text-xs">
             <a
               href="#"
-              className="text-gray-200/90 hover:text-white transition-all duration-300 text-xs uppercase tracking-widest font-light glass-text hover:scale-105"
+              className="text-gray-200/90 hover:text-white transition-all duration-300 uppercase tracking-widest font-light glass-text hover:scale-105"
             >
               Events
             </a>
             <a
               href="#"
-              className="text-gray-200/90 hover:text-white transition-all duration-300 text-xs uppercase tracking-widest font-light glass-text hover:scale-105"
+              className="text-gray-200/90 hover:text-white transition-all duration-300 uppercase tracking-widest font-light glass-text hover:scale-105"
             >
               About
             </a>
@@ -60,7 +60,7 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
         </div>
 
         <div className="-mt-5">
-          <h3 className="text-center text-xs text-gray-300/70 uppercase tracking-widest mt-2 mb-2 glass-text">2.0 Launch Countdown</h3>
+          <h3 className="text-center text-[10px] sm:text-xs text-gray-300/70 uppercase tracking-widest mt-2 mb-2 glass-text">Event Series Release</h3>
           <EventCountdown audioReactivity={audioReactivity} />
         </div>
       </div>

@@ -4,8 +4,8 @@ import DemoSubmissionForm from "./demo-submission-form"
 
 export default function DemoSubmissionSection() {
   return (
-    <section className="relative w-full py-32 bg-transparent z-20" id="demo">{/* Higher z-index above particle filter */}
-      <div className="max-w-4xl mx-auto px-8 md:px-16">
+    <section className="relative w-full py-16 sm:py-24 md:py-32 bg-transparent z-20" id="demo">{/* Higher z-index above particle filter */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 md:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -15,10 +15,10 @@ export default function DemoSubmissionSection() {
         >
           <div>
             <p className="text-xs text-[#A07E54] uppercase tracking-widest mb-6">Participate</p>
-            <h2 className="text-5xl md:text-6xl font-light text-white/95">Submit Your Demo</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white/95">Submit Your Demo</h2>
           </div>
           <p className="text-lg text-gray-400 font-light max-w-3xl leading-relaxed">
-            Share your music and become part of the <span className="text-[#B58657]">PB&J Sounds</span> experience
+            We are always looking for fresh talent! Share your music and become part of <span className="text-[#B58657]">PB&J Sounds</span>
           </p>
         </motion.div>
 

@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useRef, useState, useEffect } from "react"
 import ArtistCard from "./artist-card"
 import ParticleBackground from "./particle-background"
+import LatestReleases from "./latest-releases"
 import { PBJ_COLORS } from "@/lib/colors"
 import { artists } from "@/lib/artists";
 
@@ -55,7 +56,7 @@ export default function EPKSection() {
         />
       </div>
       
-      <div className="relative z-10 w-full px-8 md:px-16 py-32">
+      <div className="relative z-10 w-full px-4 sm:px-8 md:px-16 py-16 sm:py-24 md:py-32">
         <motion.div className="w-full max-w-6xl mx-auto" style={{ opacity }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +66,7 @@ export default function EPKSection() {
             className="mb-48 space-y-6"
           >
             <p className="text-xs text-gray-500 uppercase tracking-widest">The Collective</p>
-            <h2 className="text-5xl md:text-6xl font-light text-white/95">PB&J Sounds</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white/95">PB&J Sounds</h2>
             <p className="text-lg text-gray-400 font-light max-w-3xl leading-relaxed">
               Bringing a fresh new sound to the electronic music scene, PB&J Sounds is a dynamic collective of artists and producers dedicated to crafting immersive audio experiences. With a focus on innovative sound design and genre-blending compositions, PB&J Sounds aims to captivate audiences and redefine the boundaries of electronic music.
             </p>
@@ -78,10 +79,10 @@ export default function EPKSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: false, margin: "-150px" }}
-              className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12"
+              className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12"
             >
               {artists.map((artist, index) => (
-                <div key={artist.id} className="flex items-center gap-8 md:gap-12">
+                <div key={artist.id} className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
                   <Link href={`/artists/${artist.id}`} className="block">
                     <motion.div whileHover={{ scale: 1.02 }} className="cursor-pointer transition-all p-6">
                       <div className="flex flex-col items-center text-center space-y-4">
@@ -239,12 +240,12 @@ export default function EPKSection() {
               <p className="text-xs text-gray-500 uppercase tracking-widest mb-6">Music</p>
               <h3 className="text-4xl font-light text-white/95">Latest Releases</h3>
             </div>
-            <div className="p-16">
-              <p className="text-gray-500 text-center text-sm font-light">Spotify playlist embed will appear here</p>
+            <div>
+              <LatestReleases />
             </div>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
@@ -265,7 +266,7 @@ export default function EPKSection() {
                 />
               </svg>
             </a>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </div>

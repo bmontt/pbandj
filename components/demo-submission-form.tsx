@@ -65,22 +65,27 @@ export default function DemoSubmissionForm() {
         throw new Error("Failed to get upload URL")
       }
 
-      const { url } = await uploadUrlResponse.json()
+      const { url, token } = await uploadUrlResponse.json()
 
       // Step 2: Upload file to Vercel Blob
       const uploadResponse = await fetch(url, {
         method: "PUT",
         headers: {
           "Content-Type": file.type,
+          "Authorization": `Bearer ${token}`,
         },
         body: file,
       })
 
       if (!uploadResponse.ok) {
+        const errorText = await uploadResponse.text()
+        console.error("Upload failed:", uploadResponse.status, errorText)
         throw new Error("Failed to upload file")
       }
 
+      // Get the uploaded file URL from the response
       const uploadedFile = await uploadResponse.json()
+      const fileUrl = uploadedFile.url || url
 
       // Step 3: Submit demo with file URL
       const submitResponse = await fetch("/api/submit-demo", {
@@ -88,7 +93,7 @@ export default function DemoSubmissionForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          audioUrl: uploadedFile.url,
+          audioUrl: fileUrl,
         }),
       })
 

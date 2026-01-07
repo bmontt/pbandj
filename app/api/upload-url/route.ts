@@ -1,4 +1,3 @@
-import { put } from "@vercel/blob"
 import { type NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
@@ -13,14 +12,21 @@ export async function POST(request: NextRequest) {
     const timestamp = Date.now()
     const uniqueFilename = `demos/${timestamp}-${filename}`
 
-    // Create signed URL for client-side upload
-    const blob = await put(uniqueFilename, new Blob(), {
-      access: "public",
-    })
+    const token = process.env.BLOB_READ_WRITE_TOKEN
+    if (!token) {
+      console.error("[API] BLOB_READ_WRITE_TOKEN not configured")
+      return NextResponse.json({ error: "Upload service not configured" }, { status: 500 })
+    }
 
-    return NextResponse.json({ url: blob.downloadUrl })
+    // Return the URL and token separately so client can add proper Authorization header
+    const uploadUrl = `https://blob.vercel-storage.com/${uniqueFilename}`
+    
+    return NextResponse.json({ 
+      url: uploadUrl,
+      token: token 
+    })
   } catch (error) {
-    console.error("[v0] Upload URL error:", error)
+    console.error("[API] Upload URL error:", error)
     return NextResponse.json({ error: "Failed to generate upload URL" }, { status: 500 })
   }
 }
