@@ -79,10 +79,10 @@ export default function EPKSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: false, margin: "-150px" }}
-              className="flex flex-row justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8"
+              className="flex flex-row justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 relative"
             >
               {artists.map((artist, index) => (
-                <div key={artist.id} className="flex flex-row items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 flex-shrink-0">
+                <div key={artist.id} className="flex flex-row items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8">
                   <Link href={`/artists/${artist.id}`} className="block">
                     <motion.div whileHover={{ scale: 1.02 }} className="cursor-pointer transition-all p-1 sm:p-6">
                       <div className="flex flex-col items-center text-center space-y-1 sm:space-y-4">
@@ -118,27 +118,13 @@ export default function EPKSection() {
                       </div>
                     </motion.div>
                   </Link>
-
-                  {/* Add ampersand only between B and J */}
-                  {index === 1 && (
-                    <motion.span 
-                      className="text-4xl md:text-5xl font-light text-[#EA9A6C]/50 hidden md:block"
-                      animate={{ 
-                        opacity: [0.3, 0.8, 0.3],
-                        scale: [1, 1.1, 1]
-                      }}
-                      transition={{ 
-                        duration: 3, 
-                        repeat: Infinity, 
-                        ease: "easeInOut",
-                        delay: index * 0.5
-                      }}
-                    >
-                      &amp;
-                    </motion.span>
-                  )}
                 </div>
               ))}
+
+              {/* Add ampersand only between B and J - positioned absolutely */}
+              <span className="absolute text-4xl md:text-5xl font-light text-[#EA9A6C]/50 hidden md:block left-[67.1%] top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                &amp;
+              </span>
             </motion.div>
           </div>
 
