@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
       const { error: emailError } = await resend.emails.send({
         from: process.env.EMAIL_FROM || "PB&J Sounds <noreply@pbjsounds.com>",
         to: process.env.DEMO_RECIPIENT_EMAIL || "demos@pbjsounds.com",
-        reply_to: email,
+        replyTo: email,
         subject: `New Demo Submission from ${name}`,
         react: React.createElement(DemoSubmissionEmail, {
           name,
