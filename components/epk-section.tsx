@@ -84,7 +84,7 @@ export default function EPKSection() {
               {artists.map((artist, index) => (
                 <div key={artist.id} className="flex flex-row items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8">
                   <Link href={`/artists/${artist.id}`} className="block">
-                    <motion.div whileHover={{ scale: 1.02 }} className="cursor-pointer transition-all p-1 sm:p-6">
+                    <motion.div whileHover={{ scale: 1.03 }} className="cursor-pointer transition-all p-1 sm:p-6">
                       <div className="flex flex-col items-center text-center space-y-1 sm:space-y-4">
                         <img
                           src={artist.image || "/placeholder.svg"}
