@@ -79,10 +79,10 @@ export default function EPKSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: false, margin: "-150px" }}
-              className="flex flex-row justify-center items-center gap-2 sm:gap-6 md:gap-8 lg:gap-12 flex-wrap"
+              className="flex flex-row justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8"
             >
               {artists.map((artist, index) => (
-                <div key={artist.id} className="flex flex-row items-center gap-2 sm:gap-6 md:gap-8 lg:gap-12">
+                <div key={artist.id} className="flex flex-row items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 flex-shrink-0">
                   <Link href={`/artists/${artist.id}`} className="block">
                     <motion.div whileHover={{ scale: 1.02 }} className="cursor-pointer transition-all p-1 sm:p-6">
                       <div className="flex flex-col items-center text-center space-y-1 sm:space-y-4">
