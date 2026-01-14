@@ -33,7 +33,7 @@ export interface Release {
       date: "September 2025",
       description: "Opening for Veggi",
       media: [
-        { type: "image", src: "/BrodyEvents/veggi_flyer.webp" },
+        // { type: "image", src: "/BrodyEvents/veggi_flyer.webp" },
         { type: "video", src: "/BrodyEvents/veggi_1.mp4" },
         { type: "image", src: "/BrodyEvents/veggi_empty.webp" },
 
@@ -89,7 +89,7 @@ export interface Release {
       date: "September 2024",
       description: "Opening for Ownboss",
       media: [
-        { type: "image", src: "/BrodyEvents/ownboss_flyer.webp" },
+        // { type: "image", src: "/BrodyEvents/ownboss_flyer.webp" },
         { type: "image", src: "/BrodyEvents/ownboss_focused.webp" },
         // { type: "image", src: "/BrodyEvents/ownboss_mic.webp" },
         { type: "image", src: "/BrodyEvents/silvertone_duo.webp" },
