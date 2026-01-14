@@ -139,7 +139,7 @@ export default function ArtistBPage() {
           transition={{ duration: 1 }}
           className="text-3xl font-light text-white mb-8"
         >
-        Events
+        Past Events
         </motion.h2>
         <div className="flex flex-col gap-8">
           {events.map((event, index) => {

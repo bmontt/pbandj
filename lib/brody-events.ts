@@ -18,15 +18,15 @@ export interface Release {
 }
   
   export const events: Event[] = [
-    {
-      id: "event91",
-      title: "Transmission (DC)",
-      date: "February 2026",
-      description: "Beatprint Residency Debut",
-      media: [
-        { type: "video", src: "" },
-      ],
-    },
+    // {
+    //   id: "event91",
+    //   title: "Transmission (DC)",
+    //   date: "February 2026",
+    //   description: "Beatprint Residency Debut",
+    //   media: [
+    //     { type: "video", src: "" },
+    //   ],
+    // },
     {
       id: "event92",
       title: "Flash Rooftop (DC)",
