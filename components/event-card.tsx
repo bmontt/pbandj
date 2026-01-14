@@ -135,7 +135,6 @@ const MemoMediaItem = memo(function MediaItem({ type, src, poster }: { type: "im
               playsInline
               preload={isMobile ? "metadata" : isInView ? "metadata" : "none"}
               crossOrigin="anonymous"
-              autoPlay={isMobile ? true : undefined}
               muted={false}
               loop={isMobile}
               poster={poster}
