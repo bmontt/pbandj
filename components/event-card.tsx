@@ -71,6 +71,9 @@ const MemoMediaItem = memo(function MediaItem({ type, src, poster }: { type: "im
     const hasVideo = videoElement.videoWidth > 0 && videoElement.videoHeight > 0;
     if (!hasVideo) {
       setVideoError(true);
+    } else {
+      // Seek to first frame to display preview
+      videoElement.currentTime = 0;
     }
   };
 
