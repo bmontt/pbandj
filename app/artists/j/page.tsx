@@ -146,8 +146,8 @@ export default function ArtistJPage() {
         </div>
       </div>
 
-      {/* Contact Section - commented out for now */}
-      {/* <div className="p-4 sm:p-8 md:p-16 bg-gradient-to-b from-black to-gray-950">
+      {/* Contact Section - commented out for now
+      <div className="p-4 sm:p-8 md:p-16 bg-gradient-to-b from-black to-gray-950">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -168,7 +168,8 @@ export default function ArtistJPage() {
             {artist.email}
           </a>
         </motion.div>
-      </div> */
+      </div>
+      */}
     </div>
   );
 }
