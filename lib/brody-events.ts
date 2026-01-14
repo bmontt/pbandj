@@ -63,7 +63,7 @@ export interface Release {
       ],
     },
     {
-      id: "event96",
+      id: "event18",
       title: "Zebbie's Garden (DC)",
       date: "April 2025",
       description: "Opening + Closing for Martin Ikin",
