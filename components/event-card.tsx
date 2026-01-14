@@ -43,7 +43,8 @@ const MemoMediaItem = memo(function MediaItem({ type, src, poster }: { type: "im
   const [videoError, setVideoError] = useState(false);
   const isMobile = useIsMobile();
   const [isInView, setIsInView] = useState(false);
-  const [showPlayIcon, setShowPlayIcon] = useState(!isMobile);
+  const [showPlayIcon, setShowPlayIcon] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -52,15 +53,18 @@ const MemoMediaItem = memo(function MediaItem({ type, src, poster }: { type: "im
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          observer.unobserve(entry.target);
+          // Load metadata to show first frame
+          if (videoRef.current && !isMobile) {
+            videoRef.current.load();
+          }
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.5 }
     );
 
     observer.observe(containerRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile]);
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     // Image loaded
@@ -79,21 +83,16 @@ const MemoMediaItem = memo(function MediaItem({ type, src, poster }: { type: "im
     setVideoError(true);
   };
 
-  const handleMouseEnter = () => {
+  const handlePlay = () => {
     setShowPlayIcon(false);
+    setIsPlaying(true);
     if (videoRef.current && !videoError) {
-      // Upgrade to full preload on hover
-      videoRef.current.preload = "auto";
       videoRef.current.play().catch(err => console.log("Video play failed:", err));
     }
   };
 
-  const handleMouseLeave = () => {
-    setShowPlayIcon(true);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
+  const handlePause = () => {
+    setIsPlaying(false);
   };
 
   // Don't render audio-only videos
@@ -119,22 +118,23 @@ const MemoMediaItem = memo(function MediaItem({ type, src, poster }: { type: "im
         <>
           <div 
             className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center relative"
-            onMouseEnter={!isMobile ? handleMouseEnter : undefined}
-            onMouseLeave={!isMobile ? handleMouseLeave : undefined}
-            onClick={isMobile ? handleMouseEnter : undefined}
+            onMouseEnter={!isMobile ? handlePlay : undefined}
+            onMouseLeave={!isMobile ? handlePause : undefined}
+            onClick={isMobile && showPlayIcon ? handlePlay : undefined}
           >
             <video
               ref={videoRef}
               src={src}
               onLoadedMetadata={handleVideoLoad}
               onError={handleVideoError}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
               className="w-full h-full object-cover"
               playsInline
-              preload={isMobile ? "metadata" : isInView ? "metadata" : "none"}
+              preload="metadata"
               crossOrigin="anonymous"
-              autoPlay={isMobile ? true : undefined}
-              muted={isMobile}
-              loop={isMobile}
+              muted={!isPlaying}
+              loop
               poster={poster}
             />
             {showPlayIcon && type === "video" && (
