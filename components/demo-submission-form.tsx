@@ -14,6 +14,7 @@ export default function DemoSubmissionForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    role: "",
     message: "",
   })
   const [file, setFile] = useState<File | null>(null)
@@ -43,51 +44,45 @@ export default function DemoSubmissionForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!file) {
-      setSubmitState({
-        status: "error",
-        message: "Please select an audio file",
-      })
-      return
-    }
-
     setSubmitState({ status: "loading" })
 
     try {
-      // Step 1: Get upload URL from Vercel Blob
-      const uploadUrlResponse = await fetch("/api/upload-url", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filename: file.name }),
-      })
+      let fileUrl = null
 
-      if (!uploadUrlResponse.ok) {
-        throw new Error("Failed to get upload URL")
+      // Step 1 & 2: Upload file if provided (optional)
+      if (file) {
+        const uploadUrlResponse = await fetch("/api/upload-url", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ filename: file.name }),
+        })
+
+        if (!uploadUrlResponse.ok) {
+          throw new Error("Failed to get upload URL")
+        }
+
+        const { url, token } = await uploadUrlResponse.json()
+
+        const uploadResponse = await fetch(url, {
+          method: "PUT",
+          headers: {
+            "Content-Type": file.type,
+            "Authorization": `Bearer ${token}`,
+          },
+          body: file,
+        })
+
+        if (!uploadResponse.ok) {
+          const errorText = await uploadResponse.text()
+          console.error("Upload failed:", uploadResponse.status, errorText)
+          throw new Error("Failed to upload file")
+        }
+
+        const uploadedFile = await uploadResponse.json()
+        fileUrl = uploadedFile.url || url
       }
 
-      const { url, token } = await uploadUrlResponse.json()
-
-      // Step 2: Upload file to Vercel Blob
-      const uploadResponse = await fetch(url, {
-        method: "PUT",
-        headers: {
-          "Content-Type": file.type,
-          "Authorization": `Bearer ${token}`,
-        },
-        body: file,
-      })
-
-      if (!uploadResponse.ok) {
-        const errorText = await uploadResponse.text()
-        console.error("Upload failed:", uploadResponse.status, errorText)
-        throw new Error("Failed to upload file")
-      }
-
-      // Get the uploaded file URL from the response
-      const uploadedFile = await uploadResponse.json()
-      const fileUrl = uploadedFile.url || url
-
-      // Step 3: Submit demo with file URL
+      // Step 3: Submit application with optional file URL
       const submitResponse = await fetch("/api/submit-demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -103,11 +98,11 @@ export default function DemoSubmissionForm() {
 
       setSubmitState({
         status: "success",
-        message: "Demo submitted successfully! We will review it soon.",
+        message: "Thank you for applying! We'll review your application and get back to you soon.",
       })
 
       // Reset form
-      setFormData({ name: "", email: "", message: "" })
+      setFormData({ name: "", email: "", role: "", message: "" })
       setFile(null)
       if (fileInputRef.current) {
         fileInputRef.current.value = ""
@@ -170,7 +165,7 @@ export default function DemoSubmissionForm() {
         </motion.div>
       </div>
 
-      {/* Message Field */}
+      {/* Role Field */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -178,35 +173,57 @@ export default function DemoSubmissionForm() {
         viewport={{ once: false }}
       >
         <label className="block text-xs font-light text-[#A07E54] mb-3 uppercase tracking-widest">
-          Message (Optional)
+          Role / Position (e.g., Producer, Artist, Engineer)
         </label>
-        <textarea
-          name="message"
-          value={formData.message}
+        <input
+          type="text"
+          name="role"
+          value={formData.role}
           onChange={handleInputChange}
+          required
           disabled={submitState.status === "loading"}
-          placeholder="Tell us about your track..."
-          rows={4}
-          className="w-full px-4 py-3 bg-gray-900/20 border border-gray-700/30 rounded-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#935BAD]/50 focus:shadow-[0_0_15px_rgba(147,91,173,0.2)] transition-all disabled:opacity-50 resize-none"
+          placeholder="What role are you interested in?"
+          className="w-full px-4 py-3 bg-gray-900/20 border border-gray-700/30 rounded-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#935BAD]/50 focus:shadow-[0_0_15px_rgba(147,91,173,0.2)] transition-all disabled:opacity-50"
         />
       </motion.div>
 
-      {/* File Upload */}
+      {/* Message Field */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
         viewport={{ once: false }}
       >
+        <label className="block text-xs font-light text-[#A07E54] mb-3 uppercase tracking-widest">
+          Message
+        </label>
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          required
+          disabled={submitState.status === "loading"}
+          placeholder="Tell us about yourself and why you'd like to join PB&J..."
+          rows={4}
+          className="w-full px-4 py-3 bg-gray-900/20 border border-gray-700/30 rounded-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#935BAD]/50 focus:shadow-[0_0_15px_rgba(147,91,173,0.2)] transition-all disabled:opacity-50 resize-none"
+        />
+      </motion.div>
+
+      {/* File Upload - OPTIONAL */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        viewport={{ once: false }}
+      >
         <label className="block text-xs font-light text-gray-400 mb-3 uppercase tracking-widest">
-          Audio File (MP3, WAV, FLAC - Max 50MB)
+          Attachment (Optional - Portfolio, Demo, CV, etc. Max 50MB)
         </label>
         <div className="relative">
           <input
             ref={fileInputRef}
             type="file"
             onChange={handleFileChange}
-            accept="audio/*"
             disabled={submitState.status === "loading"}
             className="hidden"
           />
@@ -275,13 +292,13 @@ export default function DemoSubmissionForm() {
         disabled={submitState.status === "loading"}
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
         viewport={{ once: false }}
         whileHover={{ scale: 0.98, boxShadow: "0 0 20px rgba(181,134,87,0.3)" }}
         whileTap={{ scale: 0.95 }}
         className="relative w-full px-6 py-4 bg-[#B58657]/60 hover:bg-[#B58657]/70 text-white font-light rounded-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed text-lg z-30"
       >
-        {submitState.status === "loading" ? "Submitting..." : "Submit Demo"}
+        {submitState.status === "loading" ? "Submitting..." : "Submit Application"}
       </motion.button>
     </form>
   )

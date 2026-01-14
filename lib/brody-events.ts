@@ -28,6 +28,17 @@ export interface Release {
     //   ],
     // },
     {
+      id: "event18",
+      title: "Zebbie's Garden (DC)",
+      date: "April 2025",
+      description: "Opening + Closing for Martin Ikin",
+      media: [
+        { type: "image", src: "/BrodyEvents/ikin_trio.webp" },
+        { type: "video", src: "/BrodyEvents/ikin_fiub.mp4" },
+        { type: "video", src: "/BrodyEvents/ikin_percocet.mp4" },
+      ],
+    },
+    {
       id: "event92",
       title: "Flash Rooftop (DC)",
       date: "September 2025",
@@ -60,17 +71,6 @@ export interface Release {
       media: [
         { type: "video", src: "/BrodyEvents/art_space_gas_pedal.mp4" },
         { type: "video", src: "/BrodyEvents/art_space_freakuency.mp4" },
-      ],
-    },
-    {
-      id: "event18",
-      title: "Zebbie's Garden (DC)",
-      date: "April 2025",
-      description: "Opening + Closing for Martin Ikin",
-      media: [
-        { type: "image", src: "/BrodyEvents/ikin_trio.webp" },
-        { type: "video", src: "/BrodyEvents/ikin_fiub.mp4" },
-        { type: "video", src: "/BrodyEvents/ikin_percocet.mp4" },
       ],
     },
     {
