@@ -20,7 +20,7 @@ export default function ArtistPPage() {
   const thirdLayerY = useTransform(scrollY, [0, 500], [0, -50]);
 
   return (
-    <div className="relative">
+    <div className="relative bg-black text-white">
       <Link href="/" className="sticky top-0 z-20 w-full flex items-center gap-2 p-3 sm:p-4 md:p-6 text-gray-400/80 hover:text-white/95 transition-colors bg-black/50 backdrop-blur-sm">
         <motion.div
           initial={{ x: -10, opacity: 0 }}
@@ -36,8 +36,22 @@ export default function ArtistPPage() {
         <PortfolioCard artist={artist} />
         <div className="flex-1 flex flex-col md:flex-row gap-8">
           <div className="flex-1">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-light">Welcome to {artist.name}'s Portfolio</h1>
-            <p className="mt-4 text-gray-400 whitespace-pre-wrap leading-relaxed text-sm sm:text-base">{artist.bio}</p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="text-2xl sm:text-3xl md:text-4xl font-light"
+            >
+              {artist.name}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="mt-4 text-gray-400 whitespace-pre-wrap leading-relaxed"
+            >
+              {artist.bio}
+            </motion.p>
           </div>
           {artist.equipment && artist.equipment.length > 0 && (
             <motion.div
