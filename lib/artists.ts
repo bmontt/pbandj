@@ -8,6 +8,7 @@ export interface Artist {
   image: string;
   equipment: string[];
   supportFor: string[];
+  email: string;
   socialLinks: { instagram?: string; spotify?: string; soundcloud?: string; github?: string };
 }
 
@@ -31,6 +32,7 @@ export const artists: Artist[] = [
     quote: "\"No matter what I play or make, the goal is always to get people grooving and moving.\"",
     image: "/pj.optimized.webp",
     equipment: ["Bose L1"],
+    email: "peter@pbanjsounds.com",
     supportFor: [],
     socialLinks: {
       instagram: "https://www.instagram.com/peterjacobmusic/",
@@ -47,6 +49,7 @@ export const artists: Artist[] = [
     quote: "\"Passionate about the intersection of technology and music\"",
     image: "/brody.optimized.webp",
     equipment: ["Pioneer CDJ-3000", "Pioneer XDJ-XZ"],
+    email: "brody@pbanjsounds.com",
     supportFor: ["Biscits", "Jake Shore", "Madds", "Martin Ikin", "Ownboss", "Side Quest", "Veggi"],
     socialLinks: {
       instagram: "https://www.instagram.com/brodymontag/",
@@ -65,6 +68,7 @@ export const artists: Artist[] = [
     quote: "\"Blending visual creativity with technical expertise to turn any space into an electric atmosphere for dance music\"",
     image: "/jack.optimized.webp",
     equipment: ["ProX Truss System - 10 and 15ft configurations with adjustable height", "5 x 100W Moving Head Lights", "3 x 60W Pixel Light Bars", "10x40W Moving Sweeper", "4 x 120W RGB Strobes/Blinders", "Haze Machine", "DMX Equipment Controlled by Onyx NX1", "JBL EON715 Powered Speaker"],
+    email: "jack@pbanjsounds.com",
     supportFor: [],
     socialLinks: {
       instagram: "https://www.instagram.com/jack_humphreys_/",

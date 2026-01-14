@@ -18,7 +18,7 @@ export default function HeaderWithCountdown({ audioReactivity = 0 }: HeaderWithC
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-30"></div>
       
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 md:px-16 py-1">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 md:px-16 py-1 pb-3 sm:pb-1">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <div className="hidden sm:flex gap-3 sm:gap-8 text-xs sm:text-sm">
             <a

@@ -83,7 +83,7 @@ export default function ArtistBPage() {
       </div>
       {/* Support For Section */}
       {artist.supportFor && artist.supportFor.length > 0 && (
-        <div className="p-8">
+        <div className="p-4 sm:p-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -92,7 +92,46 @@ export default function ArtistBPage() {
           >
             Support For
           </motion.h2>
-          <div className="flex flex-wrap gap-x-8 gap-y-0 justify-center items-center max-w-[calc(4*(var(--logo-width)+3rem))] mx-auto overflow-visible -mt-20" style={{"--logo-width": "280px"} as React.CSSProperties}>
+          {/* Mobile/Tablet layout */}
+          <div className="grid md:hidden grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 justify-items-center mt-6" style={{"--logo-width": "280px"} as React.CSSProperties}>
+            {artist.supportFor.map((supportArtist, index) => {
+              const logoSrc = supportArtistLogos[supportArtist];
+              const isBiscits = supportArtist === "Biscits";
+              const isMadds = supportArtist === "Madds";
+              const sizeClass = isBiscits 
+                ? "w-56 h-56 sm:w-80 sm:h-80" 
+                : isMadds
+                ? "w-40 h-40 sm:w-48 sm:h-48"
+                : "w-44 h-44 sm:w-64 sm:h-64";
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.15 }}
+                  transition={{ duration: 0.5}}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="flex flex-col items-center cursor-pointer">
+                  {logoSrc ? (
+                    <div className={`${sizeClass} relative`}>
+                      <Image
+                        src={logoSrc}
+                        alt={supportArtist}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className={`${sizeClass} bg-gray-700 rounded-lg flex items-center justify-center text-white font-light text-sm text-center px-2`}>
+                      {supportArtist}
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+          {/* Desktop layout - original styling */}
+          <div className="hidden md:flex flex-wrap gap-x-8 gap-y-0 justify-center items-center max-w-[calc(4*(var(--logo-width)+3rem))] mx-auto overflow-visible -mt-20" style={{"--logo-width": "280px"} as React.CSSProperties}>
             {artist.supportFor.map((supportArtist, index) => {
               const logoSrc = supportArtistLogos[supportArtist];
               const isBiscits = supportArtist === "Biscits";
@@ -181,6 +220,31 @@ export default function ArtistBPage() {
           />
         </div>
       </div>
+
+      {/* Contact Section - commented out for now
+      <div className="p-4 sm:p-8 md:p-16 bg-gradient-to-b from-black to-gray-950">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-2xl mx-auto text-center"
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-6">
+            Get in Touch
+          </h2>
+          <p className="text-gray-400 mb-8 text-sm sm:text-base">
+            Have a collaboration opportunity, booking inquiry, or just want to say hello? Reach out!
+          </p>
+          <a
+            href={`mailto:${artist.email}`}
+            className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-white text-black font-light text-sm sm:text-base rounded-lg hover:bg-gray-200 transition-colors duration-300"
+          >
+            {artist.email}
+          </a>
+        </motion.div>
+      </div>
+      */}
     </div>
   )
 };

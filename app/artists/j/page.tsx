@@ -145,6 +145,30 @@ export default function ArtistJPage() {
           })}
         </div>
       </div>
+
+      {/* Contact Section - commented out for now */}
+      {/* <div className="p-4 sm:p-8 md:p-16 bg-gradient-to-b from-black to-gray-950">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-2xl mx-auto text-center"
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-6">
+            Get in Touch
+          </h2>
+          <p className="text-gray-400 mb-8 text-sm sm:text-base">
+            Have a collaboration opportunity, booking inquiry, or just want to say hello? Reach out!
+          </p>
+          <a
+            href={`mailto:${artist.email}`}
+            className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-white text-black font-light text-sm sm:text-base rounded-lg hover:bg-gray-200 transition-colors duration-300"
+          >
+            {artist.email}
+          </a>
+        </motion.div>
+      </div> */
     </div>
   );
 }
