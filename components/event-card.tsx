@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { useIsMobile } from "./ui/use-mobile";
 
 interface EventCardProps {
   title: string;
@@ -40,6 +41,7 @@ function MediaItem({ type, src }: { type: "image" | "video"; src: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const isMobile = useIsMobile();
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     setIsLoading(false);
@@ -94,8 +96,8 @@ function MediaItem({ type, src }: { type: "image" | "video"; src: string }) {
         <>
           <div 
             className="w-full h-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+            onMouseLeave={!isMobile ? handleMouseLeave : undefined}
           >
             <video
               ref={videoRef}
@@ -104,11 +106,11 @@ function MediaItem({ type, src }: { type: "image" | "video"; src: string }) {
               onError={handleVideoError}
               className="w-full h-full object-cover"
               playsInline
-              preload="metadata"
+              preload={isMobile ? "metadata" : "none"}
               crossOrigin="anonymous"
-              autoPlay
-              muted
-              loop
+              autoPlay={isMobile}
+              muted={isMobile}
+              loop={isMobile}
             />
           </div>
           {videoError && (
@@ -116,7 +118,7 @@ function MediaItem({ type, src }: { type: "image" | "video"; src: string }) {
               <p>Audio only</p>
             </div>
           )}
-          {isLoading && (
+          {isLoading && isMobile && (
             <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
               <div className="flex flex-col items-center gap-2">
                 <div className="w-8 h-8 border-2 border-gray-500 border-t-white rounded-full animate-spin"></div>
