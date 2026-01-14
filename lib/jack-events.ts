@@ -3,7 +3,7 @@ export interface Event {
   title: string;
   date: string;
   description: string;
-  media: Array<{ type: "image" | "video"; src: string }>;
+  media: Array<{ type: "image" | "video"; src: string; poster?: string }>;
 }
 
 export const events: Event[] = [
