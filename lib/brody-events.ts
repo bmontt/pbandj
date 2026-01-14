@@ -5,11 +5,22 @@ export interface Event {
     description: string;
     media: Array<{ type: "image" | "video"; src: string }>;
   }
+
+export interface Release {
+  id: string;
+  title: string;
+  artist: string;
+  date: string;
+  description: string;
+  platform: "spotify" | "soundcloud";
+  url: string;
+  artwork?: string;
+}
   
   export const events: Event[] = [
     {
       id: "event91",
-      title: "TBD",
+      title: "Transmission (DC)",
       date: "February 2026",
       description: "Beatprint Residency Debut",
       media: [
@@ -18,74 +29,92 @@ export interface Event {
     },
     {
       id: "event92",
-      title: "Flash Rooftop",
+      title: "Flash Rooftop (DC)",
       date: "September 2025",
       description: "Opening for Veggi",
       media: [
-        { type: "video", src: "" },
+        { type: "image", src: "/BrodyEvents/veggi_flyer.webp" },
+        { type: "video", src: "/BrodyEvents/veggi_1.mp4" },
+        { type: "image", src: "/BrodyEvents/veggi_empty.webp" },
+
       ],
     },
     {
       id: "event93",
-      title: "Soundcheck",
+      title: "Soundcheck (DC)",
       date: "July 2025",
-      description: "Opened for Biscits",
+      description: "Opening for Biscits",
       media: [
-        { type: "video", src: "" },
-      ],
-    },
-    {
-      id: "event94",
-      title: "Sound Garden (Offstage)",
-      date: "July 2025",
-      description: "Opening for LF System",
-      media: [
-        { type: "video", src: "" },
+        // { type: "image", src: "/BrodyEvents/biscits_smile.webp" },
+        { type: "image", src: "/BrodyEvents/biscits_headshot.webp" },
+        { type: "video", src: "/BrodyEvents/biscits_one_pill.mp4" },
+        { type: "video", src: "/BrodyEvents/biscits_crazy.mp4" },
+        // { type: "video", src: "/BrodyEvents/biscits_dimension.mp4" },
       ],
     },
     {
       id: "event95",
-      title: "Public Art Space",
+      title: "Public Art Space (NYC)",
       date: "June 2025",
       description: "",
       media: [
-        { type: "video", src: "" },
+        { type: "video", src: "/BrodyEvents/art_space_gas_pedal.mp4" },
+        { type: "video", src: "/BrodyEvents/art_space_freakuency.mp4" },
       ],
     },
     {
       id: "event96",
-      title: "Zebbie's Garden",
+      title: "Zebbie's Garden (DC)",
       date: "April 2025",
       description: "Opening for Martin Ikin",
       media: [
-        { type: "video", src: "" },
+        { type: "image", src: "/BrodyEvents/ikin_trio.webp" },
+        { type: "video", src: "/BrodyEvents/ikin_fiub.mp4" },
+        { type: "video", src: "/BrodyEvents/ikin_percocet.mp4" },
       ],
     },
     {
       id: "event97",
-      title: "Power Plant Live!",
+      title: "Power Plant Live! (Baltimore)",
       date: "October 2024",
-      description: "",
+      description: "Halloween mainstage set",
       media: [
-        { type: "video", src: "" },
+        { type: "video", src: "/BrodyEvents/powerplant_pump_it.mp4" },
+        { type: "video", src: "/BrodyEvents/powerplant_used_to_know.mp4" },
       ],
     },
     {
       id: "event98",
-      title: "Somewhere Nowhere",
-      date: "July 2024",
-      description: "",
+      title: "Soundcheck (DC)",
+      date: "September 2024",
+      description: "Opening for Ownboss",
       media: [
-        { type: "video", src: "" },
+        { type: "image", src: "/BrodyEvents/ownboss_flyer.webp" },
+        { type: "image", src: "/BrodyEvents/ownboss_focused.webp" },
+        // { type: "image", src: "/BrodyEvents/ownboss_mic.webp" },
+        { type: "image", src: "/BrodyEvents/silvertone_duo.webp" },
+        // { type: "image", src: "/BrodyEvents/ownboss_crowd.webp" },
       ],
     },
     {
       id: "event99",
-      title: "Looney's Pub",
+      title: "Somewhere Nowhere (NYC)",
       date: "July 2024",
-      description: "",
+      description: "4th of July rooftop set",
       media: [
-        { type: "video", src: "" },
+        { type: "video", src: "/BrodyEvents/swnw_kill_bill.mp4" },
+        { type: "image", src: "/BrodyEvents/swnw_bottles.webp" },
+        { type: "video", src: "/BrodyEvents/swnw_hype.mp4" },
+      ],
+    },
+    {
+      id: "event101",
+      title: "Looney's Pub (College Park)",
+      date: "September 2023",
+      description: "Opening for Jake Shore",
+      media: [
+        // { type: "video", src: "/BrodyEvents/jake_shore_1.mp4" },
+        { type: "video", src: "/BrodyEvents/jake_shore_2.mp4" },
       ],
     },
 

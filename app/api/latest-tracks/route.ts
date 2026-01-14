@@ -226,8 +226,11 @@ async function getSoundCloudTracks(
   }
 }
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const limit = parseInt(searchParams.get("limit") || "9", 10);
+    
     console.log("[API] Starting track fetch...");
     const allTracks: Track[] = [];
     let spotifyToken: string | null = null;
@@ -271,15 +274,15 @@ export async function GET() {
       return Response.json([], { status: 200 });
     }
 
-    // Sort by release date (newest first) and get top 9
+    // Sort by release date (newest first) and get top N (default 9)
     const sorted = allTracks
       .sort(
         (a, b) =>
           new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
       )
-      .slice(0, 9);
+      .slice(0, limit);
 
-    console.log(`[API] Returning ${sorted.length} top tracks`);
+    console.log(`[API] Returning ${sorted.length} top tracks (limit: ${limit})`);
     return Response.json(sorted, { status: 200 });
   } catch (error) {
     console.error("[API] Unexpected error:", error);

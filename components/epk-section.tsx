@@ -13,6 +13,7 @@ export default function EPKSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [expandedArtist, setExpandedArtist] = useState<number | null>(null)
   const [scrollY, setScrollY] = useState(0)
+  const [hoveredArtist, setHoveredArtist] = useState<string | null>(null)
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -84,31 +85,71 @@ export default function EPKSection() {
               {artists.map((artist, index) => (
                 <div key={artist.id} className="flex flex-row items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8">
                   <Link href={`/artists/${artist.id}`} className="block">
-                    <motion.div whileHover={{ scale: 1.03 }} className="cursor-pointer transition-all p-1 sm:p-6">
+                    <motion.div 
+                      whileHover={{ scale: 1.12, y: -8 }} 
+                      transition={{ duration: 0.3 }} 
+                      className="cursor-pointer transition-all p-1 sm:p-6"
+                      onHoverStart={() => setHoveredArtist(artist.id)}
+                      onHoverEnd={() => setHoveredArtist(null)}
+                      onTap={() => {
+                        setHoveredArtist(artist.id)
+                        setTimeout(() => setHoveredArtist(null), 1000)
+                      }}
+                    >
                       <div className="flex flex-col items-center text-center space-y-1 sm:space-y-4">
-                        <img
-                          src={artist.image || "/placeholder.svg"}
-                          alt={artist.name}
-                          className="w-24 sm:w-100 h-24 sm:h-100 rounded-sm object-cover opacity-90"
-                          style={{ objectPosition: "center top" }}
-                        />
-                        <div>
-                          <h3 className="text-sm sm:text-xl font-light text-white/95">
+                        <motion.div 
+                          className="relative overflow-hidden rounded-sm"
+                          whileHover={{
+                            boxShadow: "0 20px 40px rgba(0,0,0,0.5)"
+                          }}
+                        >
+                          <img
+                            src={artist.image || "/placeholder.svg"}
+                            alt={artist.name}
+                            className="w-24 sm:w-100 h-24 sm:h-100 rounded-sm object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
+                            style={{ objectPosition: "center top" }}
+                          />
+                          <motion.div 
+                            className="absolute top-1 right-1 sm:top-2 sm:right-2 z-10 pointer-events-none"
+                            animate={hoveredArtist === artist.id ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <div 
+                              className="text-lg sm:text-2xl font-bold drop-shadow-lg bg-black/40 rounded-full w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center"
+                              style={{
+                                backgroundImage: artist.id === "p" 
+                                  ? "radial-gradient(circle, rgba(181, 134, 87, 1) 0%, rgba(181, 134, 87, 0.4) 100%)"
+                                  : artist.id === "b"
+                                  ? "radial-gradient(circle, rgba(196, 77, 88, 1) 0%, rgba(196, 77, 88, 0.4) 100%)"
+                                  : "radial-gradient(circle, rgba(147, 91, 173, 1) 0%, rgba(147, 91, 173, 0.4) 100%)",
+                                color: artist.id === "p" 
+                                  ? "#B58657"
+                                  : artist.id === "b"
+                                  ? "#C44D58"
+                                  : "#935BAD"
+                              }}
+                            >
+                              ↗
+                            </div>
+                          </motion.div>
+                        </motion.div>
+                        <div className="transition-colors duration-300">
+                          <h3 className="text-sm sm:text-xl font-light text-white/95 transition-colors duration-300">
                             {artist.id === "p" && (
                               <>
-                                <span className="text-lg sm:text-3xl font-black text-[#B58657]/90">P</span>
+                                <span className="text-lg sm:text-3xl font-black text-[#B58657]/90 transition-colors duration-300">P</span>
                                 {artist.name.slice(1)}
                               </>
                             )}
                             {artist.id === "b" && (
                               <>
-                                <span className="text-lg sm:text-3xl font-black text-[#C44D58]/90">B</span>
+                                <span className="text-lg sm:text-3xl font-black text-[#C44D58]/90 transition-colors duration-300">B</span>
                                 {artist.name.slice(1)}
                               </>
                             )}
                             {artist.id === "j" && (
                               <>
-                                <span className="text-lg sm:text-3xl font-black text-[#935BAD]/90">J</span>
+                                <span className="text-lg sm:text-3xl font-black text-[#935BAD]/90 transition-colors duration-300">J</span>
                                 {artist.name.slice(1)}
                               </>
                             )}

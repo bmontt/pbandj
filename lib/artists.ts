@@ -7,8 +7,19 @@ export interface Artist {
   quote: string;
   image: string;
   equipment: string[];
+  supportFor: string[];
   socialLinks: { instagram?: string; spotify?: string; soundcloud?: string; github?: string };
 }
+
+export const supportArtistLogos: { [key: string]: string } = {
+  "Biscits": "/artistLogos/biscits_logo.webp",
+  "Jake Shore": "/artistLogos/jake_shore.webp",
+  "Madds": "/artistLogos/madds_logo.webp",
+  "Martin Ikin": "/artistLogos/martin_ikin_logo.webp",
+  "Ownboss": "/artistLogos/ownboss_logo.webp",
+  "Side Quest": "/artistLogos/sidequest_logo.webp",
+  "Veggi": "/artistLogos/veggi.webp",
+};
 
 export const artists: Artist[] = [
   {
@@ -20,6 +31,7 @@ export const artists: Artist[] = [
     quote: "\"No matter what I play or make, the goal is always to get people grooving and moving.\"",
     image: "/pj.optimized.webp",
     equipment: ["Bose L1"],
+    supportFor: [],
     socialLinks: {
       instagram: "https://www.instagram.com/peterjacobmusic/",
       soundcloud: "https://soundcloud.com/jake-johns-696075672",
@@ -30,11 +42,12 @@ export const artists: Artist[] = [
     name: "Brody Montag",
     nickname: "Monty",
     role: "DJ & Lead Organizer",
-    bio: "Brody Montag (aka Monty) is a rising house/indie-dance artist from New Jersey rooted in the DMV. With performances across the East Coast at venues like Somewhere Nowhere, Zebbie's Garden, and Soundcheck, Brody has built his reputation on dynamic sets defined by warm basslines, crisp percussion, and an ear for tracks that create forward motion without forfeiting subtlety.\n\nGrowing up, Brody fell in love with music through labels like Monstercat and OWSLA -- playing a variety of instruments including the piano, oboe, viola, and drums. He eventually landed on digital production given the breadth of his interests, and at age 10, learned Garageband and algoriddim's \"djay\". Roughly 2 years later, he transitioned to FL Studio and Rekordbox as well as rap/hip-hop production where he began shipping out beats and instrumentals to local artists for commission. After high school at the University of Maryland, Brody's interest in DJing, and naturally dance music, was reignited. Since then, his sound has been shaped by years of crate-digging -- leaning into deep house, minimal, and disco-influenced cuts.\n\nBeyond his musical background, his formal education/research in signal processing and machine learning gives him a uniquely technical approach to production and DJing.\n\nFrom club basements to sunset rooftops, Brody is drawn to the grassroots, community-driven energy that defines dance music; and as co-founder/lead organizer of PB&J Sounds, he spearheads planning and strategy.",
+    bio: "Brody Montag (aka Monty) is a rising house/indie-dance artist from New Jersey rooted in the DMV. With performances across the East Coast at venues like Somewhere Nowhere, Zebbie's Garden, and Soundcheck, Brody has built his reputation on dynamic sets defined by warm basslines, crisp percussion, and an ear for tracks that create forward motion without forfeiting subtlety.\n\nGrowing up, Brody fell in love with music through labels like Monstercat and OWSLA -- playing a variety of instruments including the piano, oboe, viola, and drums. He eventually landed on digital production given the breadth of his interests, and at age 10, learned Garageband and Algoriddim's \"DJay\". Roughly 2 years later, he transitioned to FL Studio and Rekordbox as well as rap/hip-hop production where he began shipping out beats and instrumentals to local artists for commission. After high school at the University of Maryland, Brody's interest in DJing, and naturally dance music, was reignited. Since then, his sound has been shaped by years of crate-digging -- leaning into deep house, minimal, and disco-influenced cuts.\n\nBeyond his musical background, his formal education/research in signal processing and machine learning gives him a uniquely technical approach to production and DJing. From club basements to sunset rooftops, Brody is drawn to the grassroots, community-driven energy that defines dance music; and as co-founder/lead organizer of PB&J Sounds, he spearheads planning and strategy.",
     
-    quote: "\"I made this website!\"",
+    quote: "\"Passionate about the intersection of technology and music\"",
     image: "/brody.optimized.webp",
     equipment: ["Pioneer CDJ-3000", "Pioneer XDJ-XZ"],
+    supportFor: ["Biscits", "Jake Shore", "Madds", "Martin Ikin", "Ownboss", "Side Quest", "Veggi"],
     socialLinks: {
       instagram: "https://www.instagram.com/brodymontag/",
       spotify:
@@ -52,6 +65,7 @@ export const artists: Artist[] = [
     quote: "\"Blending visual creativity with technical expertise to turn any space into an electric atmosphere for dance music\"",
     image: "/jack.optimized.webp",
     equipment: ["ProX Truss System - 10 and 15ft configurations with adjustable height", "5 x 100W Moving Head Lights", "3 x 60W Pixel Light Bars", "10x40W Moving Sweeper", "4 x 120W RGB Strobes/Blinders", "Haze Machine", "DMX Equipment Controlled by Onyx NX1", "JBL EON715 Powered Speaker"],
+    supportFor: [],
     socialLinks: {
       instagram: "https://www.instagram.com/jack_humphreys_/",
     },

@@ -29,7 +29,7 @@ export default function EventCard({ title, date, description, media, isRightAlig
       {/* Media List */}
       <div className="mt-6 flex flex-wrap gap-3 sm:gap-4">
         {media.map((item, index) => (
-          <MediaItem key={index} type={item.type} src={item.src} />
+          item.src ? <MediaItem key={index} type={item.type} src={item.src} /> : null
         ))}
       </div>
     </motion.div>
