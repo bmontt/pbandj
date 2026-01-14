@@ -93,7 +93,7 @@ function MediaItem({ type, src }: { type: "image" | "video"; src: string }) {
       ) : (
         <>
           <div 
-            className="w-full h-full bg-black flex items-center justify-center"
+            className="w-full h-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -104,8 +104,11 @@ function MediaItem({ type, src }: { type: "image" | "video"; src: string }) {
               onError={handleVideoError}
               className="w-full h-full object-cover"
               playsInline
-              preload="auto"
+              preload="metadata"
               crossOrigin="anonymous"
+              autoPlay
+              muted
+              loop
             />
           </div>
           {videoError && (
@@ -113,14 +116,12 @@ function MediaItem({ type, src }: { type: "image" | "video"; src: string }) {
               <p>Audio only</p>
             </div>
           )}
-          {videoError && (
-            <div className="absolute inset-0 bg-black/80 flex items-center justify-center text-xs text-gray-400 text-center p-2">
-              <p>Audio only</p>
-            </div>
-          )}
           {isLoading && (
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <div className="w-8 h-8 border-2 border-gray-600 border-t-white rounded-full animate-spin"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-8 h-8 border-2 border-gray-500 border-t-white rounded-full animate-spin"></div>
+                <p className="text-xs text-gray-400">Loading...</p>
+              </div>
             </div>
           )}
         </>
