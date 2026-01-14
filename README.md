@@ -97,4 +97,4 @@ Contributions welcome! Please ensure code follows project conventions and test c
 
 ---
 
-Built with ❤️ by PB&J Sounds
+Built with ❤️ by Brody of PB&J Sounds
