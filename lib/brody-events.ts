@@ -43,7 +43,7 @@ export interface Release {
       id: "event93",
       title: "Soundcheck (DC)",
       date: "July 2025",
-      description: "Opening for Biscits",
+      description: "Opening + Closing for Biscits",
       media: [
         // { type: "image", src: "/BrodyEvents/biscits_smile.webp" },
         { type: "image", src: "/BrodyEvents/biscits_headshot.webp" },
@@ -66,7 +66,7 @@ export interface Release {
       id: "event96",
       title: "Zebbie's Garden (DC)",
       date: "April 2025",
-      description: "Opening for Martin Ikin",
+      description: "Opening + Closing for Martin Ikin",
       media: [
         { type: "image", src: "/BrodyEvents/ikin_trio.webp" },
         { type: "video", src: "/BrodyEvents/ikin_fiub.mp4" },
@@ -111,7 +111,7 @@ export interface Release {
       id: "event101",
       title: "Looney's Pub (College Park)",
       date: "September 2023",
-      description: "Opening for Jake Shore",
+      description: "Opening + Closing for Jake Shore",
       media: [
         // { type: "video", src: "/BrodyEvents/jake_shore_1.mp4" },
         { type: "video", src: "/BrodyEvents/jake_shore_2.mp4" },
