@@ -129,9 +129,9 @@ const MemoMediaItem = memo(function MediaItem({ type, src, poster }: { type: "im
               onError={handleVideoError}
               className="w-full h-full object-cover"
               playsInline
-              preload={isMobile ? "metadata" : isInView ? "metadata" : "none"}
+              preload={isMobile ? "auto" : isInView ? "metadata" : "none"}
               crossOrigin="anonymous"
-              autoPlay={isMobile}
+              autoPlay={isMobile ? true : undefined}
               muted={isMobile}
               loop={isMobile}
               poster={poster}
