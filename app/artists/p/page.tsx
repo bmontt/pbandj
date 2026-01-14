@@ -8,6 +8,7 @@ import { artists } from "@/lib/artists";
 import { useScroll, useTransform, motion } from "framer-motion";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
+import Image from "next/image";
 
 export default function ArtistPPage() {
   const artist = artists.find((a) => a.id === "p");
@@ -21,7 +22,7 @@ export default function ArtistPPage() {
 
   return (
     <div className="relative bg-black text-white">
-      <Link href="/" className="sticky top-0 z-20 w-full flex items-center gap-2 p-3 sm:p-4 md:p-6 text-gray-400/80 hover:text-white/95 transition-colors bg-black/50 backdrop-blur-sm">
+      <Link href="/" className="sticky top-0 z-20 w-full flex items-center justify-between px-3 sm:px-4 md:px-6 py-2 sm:py-2 md:py-3 text-gray-400/80 hover:text-white/95 transition-colors bg-black/50 backdrop-blur-sm">
         <motion.div
           initial={{ x: -10, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -30,6 +31,13 @@ export default function ArtistPPage() {
         >
           <FaArrowLeft className="w-4 h-4" />
           <span className="text-sm">Back</span>
+        </motion.div>
+        <motion.div
+          initial={{ x: 10, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Image src="/pbj_logo_transparent.optimized.webp" alt="PB&J" width={60} height={10} />
         </motion.div>
       </Link>
       <div className="relative z-10 flex flex-col md:flex-row items-start gap-4 md:gap-8 p-4 sm:p-6 md:p-8">
