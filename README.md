@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PB&J Sounds
+
+East coast-based music collective and record label focused on bringing underground uk/minimal house to the forefront of electronic music.
+
+## About
+
+PB&J Sounds is a dynamic collective of artists and producers backed by a grassroots team dedicated to crafting immersive audio-visual experiences. With a focus on innovative sound design and genre-blending compositions, we shape the future of underground electronic music.
+
+## Features
+
+- **Artist Profiles**: Showcase of collective members with individual portfolios
+- **Event Gallery**: Video and image galleries of past events and performances
+- **Latest Releases**: Music showcase with SoundCloud integration
+- **Join Our Team**: Application form for artists, producers, engineers, and community contributors
+- **Responsive Design**: Mobile-optimized experience with smooth animations
+- **Audio-Visual Integration**: Immersive multimedia content presentation
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Supabase](https://supabase.com/) - Database & Authentication
+- [Resend](https://resend.com/) - Email service
+- [Vercel Blob](https://vercel.com/storage/blob) - File uploads
 
 ## Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- pnpm (or npm/yarn)
+
+### Installation
+
+```bash
+# Install dependencies
+pnpm install
+
+# Set up environment variables
+cp .env.example .env.local
+```
+
+### Development
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the project.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm build
+pnpm start
+```
+
+## Environment Variables
+
+Required environment variables in `.env.local`:
+- `NEXT_PUBLIC_SOUNDCLOUD_PLAYLIST_URL` - SoundCloud playlist URL
+- `EMAIL_FROM` - Sender email address
+- `DEMO_RECIPIENT_EMAIL` - Email for application submissions
+- Supabase credentials
+- Resend API key
+
+## File Structure
+
+- `/app` - Next.js app directory with API routes
+- `/components` - React components (UI, sections, custom hooks)
+- `/lib` - Utilities, data, and services
+- `/public` - Static assets (images, videos, fonts)
+- `/styles` - Global CSS and Tailwind configuration
+
+## Key Components
+
+- **Header**: Fixed navigation with countdown timer
+- **EPK Section**: Team showcase and past events
+- **Join Our Team**: Application form with optional file attachments
+- **Artist Pages**: Individual artist profiles with event videos
+- **Latest Releases**: Music library and SoundCloud integration
+
+## Deployment
+
+Deployed on [Vercel](https://vercel.com) for optimal Next.js performance and integration with Vercel services (Blob storage, Analytics).
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Next.js, take a look at the [Next.js Documentation](https://nextjs.org/docs).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions welcome! Please ensure code follows project conventions and test changes locally before submitting.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ by PB&J Sounds
