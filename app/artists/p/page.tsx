@@ -59,7 +59,7 @@ export default function ArtistPPage() {
         </div>
       </div>
 
-      {/* Support For Section */}
+      {/* Support Section */}
       {artist.supportFor && artist.supportFor.length > 0 && (
         <div className="p-8">
           <motion.h2
@@ -68,7 +68,7 @@ export default function ArtistPPage() {
             transition={{ duration: 1 }}
             className="text-3xl font-light text-white mb-8"
           >
-            Support For
+            Support
           </motion.h2>
           <div className="flex flex-wrap gap-8 justify-center items-center">
             {artist.supportFor.map((supportArtist, index) => (

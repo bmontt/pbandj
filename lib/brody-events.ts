@@ -34,8 +34,8 @@ export interface Release {
       description: "Opening for Veggi",
       media: [
         // { type: "image", src: "/BrodyEvents/veggi_flyer.webp" },
-        { type: "video", src: "/BrodyEvents/veggi_1.mp4" },
         { type: "image", src: "/BrodyEvents/veggi_empty.webp" },
+        { type: "video", src: "/BrodyEvents/veggi_1.mp4" },
 
       ],
     },

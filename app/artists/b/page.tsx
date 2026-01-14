@@ -81,16 +81,16 @@ export default function ArtistBPage() {
           )}
         </div>
       </div>
-      {/* Support For Section */}
+      {/* Support Section */}
       {artist.supportFor && artist.supportFor.length > 0 && (
-        <div className="p-4 sm:p-8">
+        <div className="p-4 sm:p-8 mt-16 sm:mt-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             className="text-3xl font-light text-white mb-2"
           >
-            Support For
+            Support
           </motion.h2>
           {/* Mobile/Tablet layout */}
           <div className="grid md:hidden grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 justify-items-center mt-6" style={{"--logo-width": "280px"} as React.CSSProperties}>
