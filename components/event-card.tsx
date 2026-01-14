@@ -121,6 +121,7 @@ const MemoMediaItem = memo(function MediaItem({ type, src, poster }: { type: "im
             className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center relative"
             onMouseEnter={!isMobile ? handleMouseEnter : undefined}
             onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+            onClick={isMobile ? handleMouseEnter : undefined}
           >
             <video
               ref={videoRef}
@@ -131,11 +132,12 @@ const MemoMediaItem = memo(function MediaItem({ type, src, poster }: { type: "im
               playsInline
               preload={isMobile ? "metadata" : isInView ? "metadata" : "none"}
               crossOrigin="anonymous"
+              autoPlay={isMobile ? true : undefined}
               muted={isMobile}
               loop={isMobile}
               poster={poster}
             />
-            {showPlayIcon && type === "video" && !isMobile && (
+            {showPlayIcon && type === "video" && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition-colors pointer-events-none">
                 <div className="w-12 h-12 rounded-full bg-white/30 flex items-center justify-center backdrop-blur-sm">
                   <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
