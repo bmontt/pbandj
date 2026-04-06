@@ -8,6 +8,68 @@ export interface Event {
 
 export const events: Event[] = [
   {
+    id: "event11",
+    title: "Waterfront Hotel",
+    date: "February 2026",
+    description: "Jack provided the lighting design for a show at the Waterfront in Baltimore with Offstage, a local DJ collective. The show was a huge success and it was great to see Jack's lighting design come to life in a professional venue.",
+    media: [
+      { type: "image", src: "/JackEvents/compressed/waterfront1.jpg" },
+      { type: "image", src: "/JackEvents/compressed/waterfront2.jpg" },
+      { type: "image", src: "/JackEvents/compressed/waterfront3.jpg" },
+    ],
+  },
+  {
+    id: "event10",
+    title: "Bass Barn",
+    date: "February 2026",
+    description: "Jack provided the lighting design at a friend's bar in Joppa. It was 20 degrees that night and the ice and fire was a beautful sight to see",
+    media: [
+      { type: "video", src: "/JackEvents/compressed/BB1.mp4" },
+      { type: "video", src: "/JackEvents/compressed/BB2.mp4" },
+    ],
+  },
+  {
+    id: "event9",
+    title: "Liv's Taven \"Club Room\"",
+    date: "February 2026",
+    description: "Jack provided the lighting design for a show at Liv's Tavern in Baltimore with Offstage, a local DJ collective.",
+    media: [
+      { type: "image", src: "/JackEvents/compressed/livs1.jpg" },
+      { type: "image", src: "/JackEvents/compressed/livs2.jpg" },
+      { type: "image", src: "/JackEvents/compressed/livs3.jpg" },
+      { type: "image", src: "/JackEvents/compressed/livs4.jpg" },
+    ],
+  },
+  {
+    id: "event8",
+    title: "Chop Shop with Gunpoint",
+    date: "January 2026",
+    description: "Jack provided the lighting design for a show at Chop Shop in Baltimore with Gunpoint, hosted by Dubstep After Dark. Levity afterss",
+    media: [
+      { type: "video", src: "/JackEvents/compressed/chopshop1.mp4" },
+    ],
+  },
+  {
+    id: "event7",
+    title: "SoundGarden",
+    date: "November 2025",
+    description: "Jack provided the lighting design for a show at SoundGarden in Baltimore with Offstage, a local DJ collective.",
+    media: [
+      { type: "image", src: "/JackEvents/compressed/SG1.jpg" },
+      { type: "image", src: "/JackEvents/compressed/SG2.jpg" },
+    ],
+  },
+  {
+    id: "event0",
+    title: "Waterfront Hotel",
+    date: "November 2025",
+    description: "Jack provided the lighting design for a show at the Waterfront in Baltimore with Offstage, a local DJ collective. The show was a huge success and it was great to see Jack's lighting design come to life in a professional venue.",
+    media: [
+      { type: "video", src: "/JackEvents/compressed/WF2.mp4" },
+      { type: "video", src: "/JackEvents/compressed/WF3.mp4" },
+    ],
+  },
+  {
     id: "event1",
     title: "Bonnaroo Renegade Stage",
     date: "June 2025",
