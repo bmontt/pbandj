@@ -13,9 +13,9 @@ export const events: Event[] = [
     date: "February 2026",
     description: "Jack provided the lighting design for a show at the Waterfront in Baltimore with Offstage, a local DJ collective. The show was a huge success and it was great to see Jack's lighting design come to life in a professional venue.",
     media: [
-      { type: "image", src: "/JackEvents/compressed/waterfront1.jpg" },
-      { type: "image", src: "/JackEvents/compressed/waterfront2.jpg" },
-      { type: "image", src: "/JackEvents/compressed/waterfront3.jpg" },
+      { type: "image", src: "/JackEvents/compressed/waterfront1.optimized.optimized.webp" },
+      { type: "image", src: "/JackEvents/compressed/waterfront2.optimized.optimized.webp" },
+      { type: "image", src: "/JackEvents/compressed/waterfront3.optimized.optimized.webp" },
     ],
   },
   {
@@ -34,10 +34,10 @@ export const events: Event[] = [
     date: "February 2026",
     description: "Jack provided the lighting design for a show at Liv's Tavern in Baltimore with Offstage, a local DJ collective.",
     media: [
-      { type: "image", src: "/JackEvents/compressed/livs1.jpg" },
-      { type: "image", src: "/JackEvents/compressed/livs2.jpg" },
-      { type: "image", src: "/JackEvents/compressed/livs3.jpg" },
-      { type: "image", src: "/JackEvents/compressed/livs4.jpg" },
+      { type: "image", src: "/JackEvents/compressed/livs1.optimized.optimized.webp" },
+      { type: "image", src: "/JackEvents/compressed/livs2.optimized.optimized.webp" },
+      { type: "image", src: "/JackEvents/compressed/livs3.optimized.optimized.webp" },
+      { type: "image", src: "/JackEvents/compressed/livs4.optimized.optimized.webp" },
     ],
   },
   {
@@ -55,8 +55,8 @@ export const events: Event[] = [
     date: "November 2025",
     description: "Jack provided the lighting design for a show at SoundGarden in Baltimore with Offstage, a local DJ collective.",
     media: [
-      { type: "image", src: "/JackEvents/compressed/SG1.jpg" },
-      { type: "image", src: "/JackEvents/compressed/SG2.jpg" },
+      { type: "image", src: "/JackEvents/compressed/SG1.optimized.optimized.webp" },
+      { type: "image", src: "/JackEvents/compressed/SG2.optimized.optimized.webp" },
     ],
   },
   {
@@ -75,9 +75,9 @@ export const events: Event[] = [
     date: "June 2025",
     description: "Jack rented a truck and hauled all of his gear down to Tennessee to set up an insane stage for his 125-person campsite. When Bonnaroo got cancelled due to weather, Jack threw an 18 hour rave for the devastated campers, and it turned out to be one of the most memorable events of the year.",
     media: [
-      { type: "image", src: "/JackEvents/rooAftermath.JPG" },
+      { type: "image", src: "/JackEvents/rooAftermath.optimized.optimized.webp" },
       { type: "video", src: "/JackEvents/coolLights.mp4" },
-      { type: "image", src: "/JackEvents/rooParty.jpg" },
+      { type: "image", src: "/JackEvents/rooParty.optimized.optimized.webp" },
       { type: "video", src: "/JackEvents/rooReel.MP4" },
     ],
   },
@@ -87,8 +87,8 @@ export const events: Event[] = [
     date: "March 2025",
     description: "To celebrate the 1 year anniversary of PB&J, Jack went all out in his house with a disco-themed party. The lighting, video and crowd was sublime, and it represented the first true coming together of the truss setup.",
     media: [
-      { type: "image", src: "/JackEvents/discoNight.jpg" },
-      { type: "image", src: "/JackEvents/discoParty.jpg" },
+      { type: "image", src: "/JackEvents/discoNight.optimized.optimized.webp" },
+      { type: "image", src: "/JackEvents/discoParty.optimized.optimized.webp" },
       { type: "video", src: "/JackEvents/discoJam.mp4" },
     ],
   },
@@ -99,7 +99,6 @@ export const events: Event[] = [
     description: "We partnered with a apartment building to throw a rooftop party for 70 people, complete with a full suite of production gear including lights, sound, and DJs.",
     media: [
       { type: "video", src: "/JackEvents/rooftopSunset.MOV" },
-      { type: "image", src: "/JackEvents/rooftopSetup.jpg" },
       { type: "video", src: "/JackEvents/rooftopParty.mp4" },
     ],
   },
@@ -120,7 +119,7 @@ export const events: Event[] = [
     date: "October 2025",
     description: "Jack and Brody teamed up to provide a full suite of production at a friend's wedding on the Eastern Shore of MD. We danced the night away and we can officially say 'Yea, we're wedding DJs now' (jk)",
     media: [
-      { type: "image", src: "/JackEvents/wedding.jpg" },
+      { type: "image", src: "/JackEvents/wedding.optimized.optimized.webp" },
     ],
   },
   {
