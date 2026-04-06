@@ -11,7 +11,7 @@ export const events: Event[] = [
     id: "event11",
     title: "Waterfront Hotel",
     date: "February 2026",
-    description: "Jack provided the lighting design for a show at the Waterfront in Baltimore with Offstage, a local DJ collective. The show was a huge success and it was great to see Jack's lighting design come to life in a professional venue.",
+    description: "Jack provided the lighting design for a show at the Waterfront in Baltimore with Offstage, a local DJ collective. Jack debuted the use of some new, 10W lasers that were provided by a rental company.",
     media: [
       { type: "image", src: "/JackEvents/compressed/waterfront1.optimized.optimized.webp" },
       { type: "image", src: "/JackEvents/compressed/waterfront2.optimized.optimized.webp" },
@@ -22,7 +22,7 @@ export const events: Event[] = [
     id: "event10",
     title: "Bass Barn",
     date: "February 2026",
-    description: "Jack provided the lighting design at a friend's bar in Joppa. It was 20 degrees that night and the ice and fire was a beautful sight to see",
+    description: "Jack provided the lighting design at a friend's barn in Joppa. It was 20 degrees that night and the ice and fire was a beautful sight to see",
     media: [
       { type: "video", src: "/JackEvents/compressed/BB1.mp4" },
       { type: "video", src: "/JackEvents/compressed/BB2.mp4" },
@@ -44,7 +44,7 @@ export const events: Event[] = [
     id: "event8",
     title: "Chop Shop with Gunpoint",
     date: "January 2026",
-    description: "Jack provided the lighting design for a show at Chop Shop in Baltimore with Gunpoint, hosted by Dubstep After Dark. Levity afterss",
+    description: "Jack setup the lighting design for a show at Chop Shop in Baltimore with Gunpoint, hosted by Dubstep After Dark. Levity afterss",
     media: [
       { type: "video", src: "/JackEvents/compressed/chopshop1.mp4" },
     ],
@@ -53,7 +53,7 @@ export const events: Event[] = [
     id: "event7",
     title: "SoundGarden",
     date: "November 2025",
-    description: "Jack provided the lighting design for a show at SoundGarden in Baltimore with Offstage, a local DJ collective.",
+    description: "Jack provided the lighting design for a show at a record store, SoundGarden, in Baltimore with Offstage, a local DJ collective.",
     media: [
       { type: "image", src: "/JackEvents/compressed/SG1.optimized.optimized.webp" },
       { type: "image", src: "/JackEvents/compressed/SG2.optimized.optimized.webp" },
