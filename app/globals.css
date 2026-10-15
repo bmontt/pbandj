@@ -1,6 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/flipdown/0.3.2/flipdown.min.css");
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @font-face {
   font-family: "Neue Haas Grotesk Medium";
