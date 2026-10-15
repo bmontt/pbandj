@@ -51,3 +51,7 @@ public/**/*.optimized.GIF
 
 # Windows zone identifier files
 **/*:Zone.Identifier
+# playwright
+/test-results/
+/playwright-report/
+/e2e/_scratch/
