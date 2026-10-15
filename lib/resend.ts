@@ -2,6 +2,10 @@ import { Resend } from "resend"
 
 let resendInstance: Resend | null = null
 
+export function isResendConfigured(): boolean {
+  return Boolean(process.env.RESEND_API_KEY)
+}
+
 function getResend(): Resend {
   if (!resendInstance) {
     const apiKey = process.env.RESEND_API_KEY
