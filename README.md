@@ -1,100 +1,67 @@
 # PB&J Sounds
 
-East coast-based music collective and record label focused on bringing underground uk/minimal house to the forefront of electronic music.
+pbandjsounds.com: the site of PB&J Sounds, an east coast collective and label
+for underground house. Peter Gomes (Peter Jacob), Brody Montag (Monty) and
+Jack Humphreys.
 
-## About
+Vercel deploys `main`.
 
-PB&J Sounds is a dynamic collective of artists and producers backed by a grassroots team dedicated to crafting immersive audio-visual experiences. With a focus on innovative sound design and genre-blending compositions, we shape the future of underground electronic music.
+## Editing content
 
-## Features
+All copy, events and media references live in **`lib/content.json`**.
+[CONTENT.md](CONTENT.md) explains step by step how to add an event, photos or
+videos.
 
-- **Artist Profiles**: Showcase of collective members with individual portfolios
-- **Event Gallery**: Video and image galleries of past events and performances
-- **Latest Releases**: Music showcase with SoundCloud integration
-- **Join Our Team**: Application form for artists, producers, engineers, and community contributors
-- **Responsive Design**: Mobile-optimized experience with smooth animations
-- **Audio-Visual Integration**: Immersive multimedia content presentation
-
-## Tech Stack
-
-- [Next.js](https://nextjs.org/) - React framework
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Framer Motion](https://www.framer.com/motion/) - Animations
-- [Supabase](https://supabase.com/) - Database & Authentication
-- [Resend](https://resend.com/) - Email service
-- [Vercel Blob](https://vercel.com/storage/blob) - File uploads
-
-## Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- pnpm (or npm/yarn)
-
-### Installation
+## Running it
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Set up environment variables
-cp .env.example .env.local
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build
+npm run start      # serve the build
+npm run e2e        # Playwright: builds and starts a production server on :3200
+npm run media      # after adding media: sizes, video posters, trimmed logos
 ```
 
-### Development
+One lockfile: `package-lock.json` (npm).
 
-First, run the development server:
+## How it's built
 
-```bash
-pnpm dev
-```
+- **Next.js 16 (App Router).** Pages are server components, rendered at build
+  and re-rendered hourly where "next up" depends on the date.
+  - Client code is limited to small islands: the nav's active state, smooth
+    scroll, the motion controller, the countdown and the SoundCloud player.
+- **Design system:** `app/globals.css`.
+  - oklch tokens: cream on near-black, with one accent family per letter and
+    founder (P peanut butter, B bread, J jelly).
+  - A reading-size type scale, a clamp() display scale, a text halo, and
+    reduced-motion rules.
+  - Fonts: Neue Haas Grotesk Display Medium (`app/fonts`, WOFF2) and Geist Mono.
+- **Motion:**
+  - [Lenis](https://lenis.dev) smooth scroll, driven by GSAP's ticker.
+  - GSAP ScrollTrigger is the only scroll-driven writer (`components/motion.tsx`).
+  - Under `prefers-reduced-motion` nothing moves and every word is visible.
+- **Background:**
+  - The root layout has a slot for the ASCII stage (`<StageRoot />`).
+  - Pages tell it where they are with `data-stage-scene`, `data-stage-artist`
+    and `data-stage-anchor`.
+- **SEO:**
+  - Per-page metadata (`lib/meta.ts`).
+  - A share card (`app/opengraph-image.tsx`).
+  - Icons (`scripts/brand.mjs`), the sitemap, robots, JSON-LD (`lib/schema.ts`)
+    and `/llms.txt` (`lib/machine.ts`), all generated from `content.json`.
+- **Backend (`app/api/*`):**
+  - The demo submission, newsletter and latest-tracks routes.
+  - Uses Supabase, Resend and Vercel Blob.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the project.
+## Environment variables
 
-### Build
+Set these in Vercel. They are never committed.
 
-```bash
-pnpm build
-pnpm start
-```
-
-## Environment Variables
-
-Required environment variables in `.env.local`:
-- `NEXT_PUBLIC_SOUNDCLOUD_PLAYLIST_URL` - SoundCloud playlist URL
-- `EMAIL_FROM` - Sender email address
-- `DEMO_RECIPIENT_EMAIL` - Email for application submissions
-- Supabase credentials
-- Resend API key
-
-## File Structure
-
-- `/app` - Next.js app directory with API routes
-- `/components` - React components (UI, sections, custom hooks)
-- `/lib` - Utilities, data, and services
-- `/public` - Static assets (images, videos, fonts)
-- `/styles` - Global CSS and Tailwind configuration
-
-## Key Components
-
-- **Header**: Fixed navigation with countdown timer
-- **EPK Section**: Team showcase and past events
-- **Join Our Team**: Application form with optional file attachments
-- **Artist Pages**: Individual artist profiles with event videos
-- **Latest Releases**: Music library and SoundCloud integration
-
-## Deployment
-
-Deployed on [Vercel](https://vercel.com) for optimal Next.js performance and integration with Vercel services (Blob storage, Analytics).
-
-## Learn More
-
-To learn more about Next.js, take a look at the [Next.js Documentation](https://nextjs.org/docs).
-
-## Contributing
-
-Contributions welcome! Please ensure code follows project conventions and test changes locally before submitting.
-
----
-
-Built with ❤️ by Brody of PB&J Sounds
+| name | used by |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` | submissions, newsletter |
+| `RESEND_API_KEY`, `EMAIL_FROM`, `DEMO_RECIPIENT_EMAIL` | submission and newsletter emails |
+| `BLOB_READ_WRITE_TOKEN` | submission attachments |
+| `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET` | releases on /sounds |
+| `NEXT_PUBLIC_SOUNDCLOUD_PLAYLIST_URL` | the mix playlist on /sounds (optional) |

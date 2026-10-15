@@ -38,7 +38,7 @@ export default function Opener({
           <DisplayWord text={title} tracking={-0.05} />
         </h1>
         {line && (
-          <div className="enter mt-8 max-w-3xl" style={enterStyle({ y: 14, dur: 0.9, delay: 0.3, ease: RISE })}>
+          <div className="enter mt-9 max-w-3xl md:mt-12" style={enterStyle({ y: 14, dur: 0.9, delay: 0.3, ease: RISE })}>
             {line}
           </div>
         )}

@@ -61,7 +61,7 @@ export default async function FounderPage({ params }: PageProps<"/collective/[sl
           <h1 data-drift className="display-hero halo-none mt-5 text-foreground enter" style={enterStyle({ y: 26, blur: 8, dur: 1, delay: 0.08, ease: RISE })}>
             <DisplayWord text={f.alias.toLowerCase()} tracking={-0.05} />
           </h1>
-          <p className="mt-4 font-mono text-xs text-foreground/65 enter" style={enterStyle({ dur: 0.8, delay: 0.3 })}>
+          <p className="mt-8 font-mono text-xs text-foreground/65 enter md:mt-10" style={enterStyle({ dur: 0.8, delay: 0.3 })}>
             {f.role.toLowerCase()}
           </p>
         </header>
