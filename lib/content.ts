@@ -145,3 +145,6 @@ export function coverOf(e: Event): { src: string; w: number; h: number } | null 
 }
 
 export const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
+
+/** "Peter Jacob was born and raised in Silver Spring, MD." — up to the first full stop */
+export const firstSentence = (s: string) => s.match(/^.+?[.!?]['"”’]?(?=\s|$)/)?.[0] ?? s;
