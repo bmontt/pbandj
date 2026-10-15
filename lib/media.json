@@ -1,0 +1,307 @@
+{
+  "/artistLogos/biscits_logo.webp": {
+    "w": 1125,
+    "h": 1125,
+    "trimmed": "/generated/logos/biscits_logo.webp",
+    "tw": 593,
+    "th": 166
+  },
+  "/artistLogos/jake_shore.webp": {
+    "w": 2500,
+    "h": 1619,
+    "trimmed": "/generated/logos/jake_shore.webp",
+    "tw": 2500,
+    "th": 1619
+  },
+  "/artistLogos/madds_logo.webp": {
+    "w": 784,
+    "h": 496,
+    "trimmed": "/generated/logos/madds_logo.webp",
+    "tw": 784,
+    "th": 495
+  },
+  "/artistLogos/martin_ikin_logo.webp": {
+    "w": 1125,
+    "h": 1125,
+    "trimmed": "/generated/logos/martin_ikin_logo.webp",
+    "tw": 1019,
+    "th": 219
+  },
+  "/artistLogos/ownboss_logo.webp": {
+    "w": 360,
+    "h": 360,
+    "trimmed": "/generated/logos/ownboss_logo.webp",
+    "tw": 310,
+    "th": 102
+  },
+  "/artistLogos/sidequest_logo.webp": {
+    "w": 1125,
+    "h": 1125,
+    "trimmed": "/generated/logos/sidequest_logo.webp",
+    "tw": 1001,
+    "th": 324
+  },
+  "/artistLogos/veggi.webp": {
+    "w": 1536,
+    "h": 514,
+    "trimmed": "/generated/logos/veggi.webp",
+    "tw": 1536,
+    "th": 514
+  },
+  "/brody.optimized.webp": {
+    "w": 2160,
+    "h": 1441
+  },
+  "/BrodyEvents/art_space_freakuency.mp4": {
+    "w": 1280,
+    "h": 720,
+    "poster": "/generated/posters/BrodyEvents/art_space_freakuency.webp"
+  },
+  "/BrodyEvents/art_space_gas_pedal.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/BrodyEvents/art_space_gas_pedal.webp"
+  },
+  "/BrodyEvents/biscits_crazy.mp4": {
+    "w": 1280,
+    "h": 720,
+    "poster": "/generated/posters/BrodyEvents/biscits_crazy.webp"
+  },
+  "/BrodyEvents/biscits_headshot.webp": {
+    "w": 4000,
+    "h": 2668
+  },
+  "/BrodyEvents/biscits_one_pill.mp4": {
+    "w": 1080,
+    "h": 1920,
+    "poster": "/generated/posters/BrodyEvents/biscits_one_pill.webp"
+  },
+  "/BrodyEvents/ikin_fiub.mp4": {
+    "w": 1080,
+    "h": 1920,
+    "poster": "/generated/posters/BrodyEvents/ikin_fiub.webp"
+  },
+  "/BrodyEvents/ikin_percocet.mp4": {
+    "w": 1080,
+    "h": 1920,
+    "poster": "/generated/posters/BrodyEvents/ikin_percocet.webp"
+  },
+  "/BrodyEvents/ikin_trio.webp": {
+    "w": 3200,
+    "h": 4000
+  },
+  "/BrodyEvents/jake_shore_2.mp4": {
+    "w": 1080,
+    "h": 1920,
+    "poster": "/generated/posters/BrodyEvents/jake_shore_2.webp"
+  },
+  "/BrodyEvents/ownboss_focused.webp": {
+    "w": 2160,
+    "h": 1728
+  },
+  "/BrodyEvents/powerplant_pump_it.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/BrodyEvents/powerplant_pump_it.webp"
+  },
+  "/BrodyEvents/powerplant_used_to_know.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/BrodyEvents/powerplant_used_to_know.webp"
+  },
+  "/BrodyEvents/silvertone_duo.webp": {
+    "w": 2160,
+    "h": 2700
+  },
+  "/BrodyEvents/swnw_bottles.webp": {
+    "w": 3024,
+    "h": 4032
+  },
+  "/BrodyEvents/swnw_hype.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/BrodyEvents/swnw_hype.webp"
+  },
+  "/BrodyEvents/swnw_kill_bill.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/BrodyEvents/swnw_kill_bill.webp"
+  },
+  "/BrodyEvents/veggi_1.mp4": {
+    "w": 2160,
+    "h": 3840,
+    "poster": "/generated/posters/BrodyEvents/veggi_1.webp"
+  },
+  "/BrodyEvents/veggi_empty.webp": {
+    "w": 3024,
+    "h": 4032
+  },
+  "/charityCrowd.optimized.webp": {
+    "w": 1080,
+    "h": 720
+  },
+  "/discoversary.optimized.webp": {
+    "w": 4000,
+    "h": 2668
+  },
+  "/echostage.optimized.webp": {
+    "w": 2048,
+    "h": 1365
+  },
+  "/jack.optimized.webp": {
+    "w": 1170,
+    "h": 1322
+  },
+  "/JackEvents/compressed/BB1.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/JackEvents/compressed/BB1.webp"
+  },
+  "/JackEvents/compressed/BB2.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/JackEvents/compressed/BB2.webp"
+  },
+  "/JackEvents/compressed/chopshop1.mp4": {
+    "w": 1280,
+    "h": 720,
+    "poster": "/generated/posters/JackEvents/compressed/chopshop1.webp"
+  },
+  "/JackEvents/compressed/livs1.optimized.optimized.webp": {
+    "w": 2784,
+    "h": 4176
+  },
+  "/JackEvents/compressed/livs2.optimized.optimized.webp": {
+    "w": 6367,
+    "h": 4245
+  },
+  "/JackEvents/compressed/livs3.optimized.optimized.webp": {
+    "w": 4480,
+    "h": 6720
+  },
+  "/JackEvents/compressed/livs4.optimized.optimized.webp": {
+    "w": 4265,
+    "h": 6398
+  },
+  "/JackEvents/compressed/SG1.optimized.optimized.webp": {
+    "w": 615,
+    "h": 410
+  },
+  "/JackEvents/compressed/SG2.optimized.optimized.webp": {
+    "w": 615,
+    "h": 410
+  },
+  "/JackEvents/compressed/waterfront1.optimized.optimized.webp": {
+    "w": 4181,
+    "h": 6272
+  },
+  "/JackEvents/compressed/waterfront2.optimized.optimized.webp": {
+    "w": 6720,
+    "h": 4480
+  },
+  "/JackEvents/compressed/waterfront3.optimized.optimized.webp": {
+    "w": 4480,
+    "h": 6720
+  },
+  "/JackEvents/compressed/WF2.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/JackEvents/compressed/WF2.webp"
+  },
+  "/JackEvents/compressed/WF3.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/JackEvents/compressed/WF3.webp"
+  },
+  "/JackEvents/coolLights.mp4": {
+    "w": 1080,
+    "h": 1920,
+    "poster": "/generated/posters/JackEvents/coolLights.webp"
+  },
+  "/JackEvents/discoJam.mp4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/JackEvents/discoJam.webp"
+  },
+  "/JackEvents/discoNight.optimized.optimized.webp": {
+    "w": 4000,
+    "h": 2668
+  },
+  "/JackEvents/discoParty.optimized.optimized.webp": {
+    "w": 4000,
+    "h": 2668
+  },
+  "/JackEvents/housePartyDance.mp4": {
+    "w": 640,
+    "h": 480,
+    "poster": "/generated/posters/JackEvents/housePartyDance.webp"
+  },
+  "/JackEvents/houseVibes.mp4": {
+    "w": 720,
+    "h": 480,
+    "poster": "/generated/posters/JackEvents/houseVibes.webp"
+  },
+  "/JackEvents/houseVintage.mp4": {
+    "w": 640,
+    "h": 480,
+    "poster": "/generated/posters/JackEvents/houseVintage.webp"
+  },
+  "/JackEvents/officeDance.mp4": {
+    "w": 1080,
+    "h": 1920,
+    "poster": "/generated/posters/JackEvents/officeDance.webp"
+  },
+  "/JackEvents/officeJam.mp4": {
+    "w": 2160,
+    "h": 3840,
+    "poster": "/generated/posters/JackEvents/officeJam.webp"
+  },
+  "/JackEvents/officeSetup.mp4": {
+    "w": 1080,
+    "h": 1920,
+    "poster": "/generated/posters/JackEvents/officeSetup.webp"
+  },
+  "/JackEvents/rooAftermath.optimized.optimized.webp": {
+    "w": 4032,
+    "h": 3024
+  },
+  "/JackEvents/rooftopParty.mp4": {
+    "w": 640,
+    "h": 480,
+    "poster": "/generated/posters/JackEvents/rooftopParty.webp"
+  },
+  "/JackEvents/rooftopSunset.MOV": {
+    "w": 1080,
+    "h": 1920,
+    "poster": "/generated/posters/JackEvents/rooftopSunset.webp"
+  },
+  "/JackEvents/rooParty.optimized.optimized.webp": {
+    "w": 4032,
+    "h": 3024
+  },
+  "/JackEvents/rooReel.MP4": {
+    "w": 720,
+    "h": 1280,
+    "poster": "/generated/posters/JackEvents/rooReel.webp"
+  },
+  "/JackEvents/wedding.optimized.optimized.webp": {
+    "w": 5712,
+    "h": 4284
+  },
+  "/lfsystem.optimized.webp": {
+    "w": 3953,
+    "h": 5930
+  },
+  "/mosaicLockedIn.optimized.webp": {
+    "w": 4000,
+    "h": 2668
+  },
+  "/pj.optimized.webp": {
+    "w": 627,
+    "h": 468
+  },
+  "/WaywardSnowGlow_Feb1-56.optimized.webp": {
+    "w": 4672,
+    "h": 7008
+  }
+}

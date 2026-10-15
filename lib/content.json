@@ -1,0 +1,606 @@
+{
+  "_README": "The single source of truth for pbandjsounds.com. Every page, the sitemap, the JSON-LD and /llms.txt read this file through lib/content.ts. How to add an event or media: CONTENT.md. Dates are ISO 8601: \"2026-02\" (month), \"2026-02-14\" (day), or \"2026-02-14T22:00-05:00\" (with doors time, which turns on the countdown). Event order is computed from dates, so position in this list doesn't matter. Media paths are under public/.",
+  "site": {
+    "name": "PB&J Sounds",
+    "short": "PB&J",
+    "domain": "pbandjsounds.com",
+    "description": "East coast-based music collective and record label focused on bringing underground uk/minimal house to the forefront of electronic music.",
+    "tagline": "east coast collective & label",
+    "genres": [
+      "uk house",
+      "minimal",
+      "deep house"
+    ],
+    "founded": "2024",
+    "email": "pbandjmgmt@gmail.com",
+    "_emailNote": "From brodymontag.com (\"pb&j mgmt\"). The founders' own addresses use the unconfirmed domain pbanjsounds.com and are not shown until Brody confirms it.",
+    "instagram": "https://www.instagram.com/pbandjsounds"
+  },
+  "collective": {
+    "blurb": "Bringing a fresh new sound to the electronic music scene, PB&J Sounds is a dynamic collective of artists and producers backed by a grassroots team dedicated to crafting immersive audio-visual experiences. With a focus on innovative sound design and genre-blending compositions, PB&J aims to captivate audiences while shaping the future of underground electronic music.",
+    "moments": [
+      {
+        "src": "/echostage.optimized.webp",
+        "alt": "PB&J on the screens at Echostage"
+      },
+      {
+        "src": "/charityCrowd.optimized.webp",
+        "alt": "A packed crowd with hands up at a charity event"
+      },
+      {
+        "src": "/mosaicLockedIn.optimized.webp",
+        "alt": "Behind the decks in costume"
+      },
+      {
+        "src": "/lfsystem.optimized.webp",
+        "alt": "Three DJs playing under a tent outdoors"
+      },
+      {
+        "src": "/discoversary.optimized.webp",
+        "alt": "At the decks under a row of moving lights"
+      },
+      {
+        "src": "/WaywardSnowGlow_Feb1-56.optimized.webp",
+        "alt": "A DJ in ski goggles celebrating at the decks"
+      }
+    ]
+  },
+  "founders": [
+    {
+      "id": "p",
+      "slug": "peter",
+      "name": "Peter Gomes",
+      "alias": "Peter Jacob",
+      "role": "DJ & Artist Relations",
+      "bio": [
+        "Peter Jacob was born and raised in Silver Spring, MD. For the past year and half he has focused on both music production and DJing. Growing up, PJ always had a passion for music, creating events, and planning parties. Cofounding the collective allowed him to take on event curation as well as DJing. He took piano lessons for 8 years which provided some musical foundation but also made him more interested in creating music. Over the past year and half PJ has been investing much more time into music production. His style right now is \"the 90s inspired tech house sound coming out of Europe and the UK.\" But when it comes to DJing, he \"likes to have a little bit of everything under [his] belt\" whether it be Latin house, deep house, minimal, or tech house."
+      ],
+      "quote": "No matter what I play or make, the goal is always to get people grooving and moving.",
+      "image": "/pj.optimized.webp",
+      "gear": [
+        "Bose L1"
+      ],
+      "supports": [],
+      "email": "peter@pbanjsounds.com",
+      "links": {
+        "instagram": "https://www.instagram.com/peterjacobmusic/",
+        "soundcloud": "https://soundcloud.com/jake-johns-696075672"
+      }
+    },
+    {
+      "id": "b",
+      "slug": "brody",
+      "name": "Brody Montag",
+      "alias": "Monty",
+      "role": "DJ & Lead Organizer",
+      "bio": [
+        "Brody Montag (aka Monty) is a rising house/indie-dance artist from New Jersey rooted in the DMV. With performances across the East Coast at venues like Somewhere Nowhere, Zebbie's Garden, and Soundcheck, Brody has built his reputation on dynamic sets defined by warm basslines, crisp percussion, and an ear for tracks that create forward motion without forfeiting subtlety.",
+        "Growing up, Brody fell in love with music through labels like Monstercat and OWSLA — playing a variety of instruments including the piano, oboe, viola, and drums. He eventually landed on digital production given the breadth of his interests, and at age 10, learned Garageband and Algoriddim's \"DJay\". Roughly 2 years later, he transitioned to FL Studio and Rekordbox as well as rap/hip-hop production where he began shipping out beats and instrumentals to local artists for commission. After high school at the University of Maryland, Brody's interest in DJing, and naturally dance music, was reignited. Since then, his sound has been shaped by years of crate-digging — leaning into deep house, minimal, and disco-influenced cuts.",
+        "Beyond his musical background, his formal education/research in signal processing and machine learning gives him a uniquely technical approach to production and DJing. From club basements to sunset rooftops, Brody is drawn to the grassroots, community-driven energy that defines dance music; and as co-founder/lead organizer of PB&J Sounds, he spearheads planning and strategy."
+      ],
+      "quote": "Passionate about the intersection of technology and music",
+      "image": "/brody.optimized.webp",
+      "gear": [
+        "Pioneer CDJ-3000",
+        "Pioneer XDJ-XZ"
+      ],
+      "supports": [
+        "Biscits",
+        "Jake Shore",
+        "Madds",
+        "Martin Ikin",
+        "Ownboss",
+        "Side Quest",
+        "Veggi"
+      ],
+      "email": "brody@pbanjsounds.com",
+      "links": {
+        "instagram": "https://www.instagram.com/brodymontag/",
+        "spotify": "https://open.spotify.com/artist/3uIzwP6Ab6TgP61naHtDMO?si=M5QYA5cjQDqtxIUvM2HZ8A",
+        "soundcloud": "https://soundcloud.com/brodymontag",
+        "github": "https://github.com/bmontt"
+      }
+    },
+    {
+      "id": "j",
+      "slug": "jack",
+      "name": "Jack Humphreys",
+      "alias": "Humphreys",
+      "role": "DJ & Visual Coordinator",
+      "bio": [
+        "Jack has always been a tech nerd who lives by the motto 'work hard, rave harder.' He got his start in the event production world in 2021, throwing parties for fraternity brothers and friends alike. But in 2024, Jack decided he wanted something more... something that combined his love for dance music and lighting design. That's when he teamed up with Peter and Brody to form PB&J. As the spatial illumination guru of the group, Jack is responsible for creating the light shows and immersive environments that have become a hallmark of PB&J's live performances. He draws inspiration from the countless raves and music festivals he's attended over the past 6 years, always paying attention to the visual effects that are quintessential to the dance music experience. In particular, Jack has his own mobile lighting rig that he's been building over the past two years, and he uses it for PB&J events and for collaborating with other local event producers."
+      ],
+      "quote": "Blending visual creativity with technical expertise to turn any space into an electric atmosphere for dance music",
+      "image": "/jack.optimized.webp",
+      "gear": [
+        "ProX Truss System - 10 and 15ft configurations with adjustable height",
+        "5 x 100W Moving Head Lights",
+        "6 x ApeLabs Neon Pix w/ Wireless DMX",
+        "10x40W Moving Sweeper",
+        "4 x 120W RGB Strobes/Blinders",
+        "Haze Machine",
+        "DMX Equipment Controlled by Onyx Obsidian NX1",
+        "JBL EON715 Powered Speaker"
+      ],
+      "supports": [],
+      "email": "jack@pbanjsounds.com",
+      "links": {
+        "instagram": "https://www.instagram.com/jack_humphreys_/"
+      }
+    }
+  ],
+  "supportArtists": [
+    {
+      "name": "Biscits",
+      "logo": "/artistLogos/biscits_logo.webp"
+    },
+    {
+      "name": "Jake Shore",
+      "logo": "/artistLogos/jake_shore.webp"
+    },
+    {
+      "name": "Madds",
+      "logo": "/artistLogos/madds_logo.webp"
+    },
+    {
+      "name": "Martin Ikin",
+      "logo": "/artistLogos/martin_ikin_logo.webp"
+    },
+    {
+      "name": "Ownboss",
+      "logo": "/artistLogos/ownboss_logo.webp"
+    },
+    {
+      "name": "Side Quest",
+      "logo": "/artistLogos/sidequest_logo.webp"
+    },
+    {
+      "name": "Veggi",
+      "logo": "/artistLogos/veggi.webp"
+    }
+  ],
+  "events": [
+    {
+      "slug": "waterfront-hotel-2026-02",
+      "title": "Waterfront Hotel",
+      "city": "Baltimore",
+      "date": "2026-02",
+      "crew": [
+        "j"
+      ],
+      "description": "Jack provided the lighting design for a show at the Waterfront in Baltimore with Offstage, a local DJ collective. Jack debuted the use of some new, 10W lasers that were provided by a rental company.",
+      "media": [
+        {
+          "type": "image",
+          "src": "/JackEvents/compressed/waterfront1.optimized.optimized.webp"
+        },
+        {
+          "type": "image",
+          "src": "/JackEvents/compressed/waterfront2.optimized.optimized.webp"
+        },
+        {
+          "type": "image",
+          "src": "/JackEvents/compressed/waterfront3.optimized.optimized.webp"
+        }
+      ]
+    },
+    {
+      "slug": "bass-barn-2026-02",
+      "title": "Bass Barn",
+      "city": "Joppa, MD",
+      "date": "2026-02",
+      "crew": [
+        "j"
+      ],
+      "description": "Jack provided the lighting design at a friend's barn in Joppa. It was 20 degrees that night and the ice and fire was a beautiful sight to see",
+      "media": [
+        {
+          "type": "video",
+          "src": "/JackEvents/compressed/BB1.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/compressed/BB2.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "livs-tavern-club-room-2026-02",
+      "title": "Liv's Tavern \"Club Room\"",
+      "city": "Baltimore",
+      "date": "2026-02",
+      "crew": [
+        "j"
+      ],
+      "description": "Jack provided the lighting design for a show at Liv's Tavern in Baltimore with Offstage, a local DJ collective.",
+      "media": [
+        {
+          "type": "image",
+          "src": "/JackEvents/compressed/livs1.optimized.optimized.webp"
+        },
+        {
+          "type": "image",
+          "src": "/JackEvents/compressed/livs2.optimized.optimized.webp"
+        },
+        {
+          "type": "image",
+          "src": "/JackEvents/compressed/livs3.optimized.optimized.webp"
+        },
+        {
+          "type": "image",
+          "src": "/JackEvents/compressed/livs4.optimized.optimized.webp"
+        }
+      ]
+    },
+    {
+      "slug": "chop-shop-with-gunpoint-2026-01",
+      "title": "Chop Shop with Gunpoint",
+      "city": "Baltimore",
+      "date": "2026-01",
+      "crew": [
+        "j"
+      ],
+      "description": "Jack set up the lighting design for a show at Chop Shop in Baltimore with Gunpoint, hosted by Dubstep After Dark. Levity afters",
+      "media": [
+        {
+          "type": "video",
+          "src": "/JackEvents/compressed/chopshop1.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "soundgarden-2025-11",
+      "title": "SoundGarden",
+      "city": "Baltimore",
+      "date": "2025-11",
+      "crew": [
+        "j"
+      ],
+      "description": "Jack provided the lighting design for a show at a record store, SoundGarden, in Baltimore with Offstage, a local DJ collective.",
+      "media": [
+        {
+          "type": "image",
+          "src": "/JackEvents/compressed/SG1.optimized.optimized.webp"
+        },
+        {
+          "type": "image",
+          "src": "/JackEvents/compressed/SG2.optimized.optimized.webp"
+        }
+      ]
+    },
+    {
+      "slug": "waterfront-hotel-2025-11",
+      "title": "Waterfront Hotel",
+      "city": "Baltimore",
+      "date": "2025-11",
+      "crew": [
+        "j"
+      ],
+      "description": "Jack provided the lighting design for a show at the Waterfront in Baltimore with Offstage, a local DJ collective. The show was a huge success and it was great to see Jack's lighting design come to life in a professional venue.",
+      "media": [
+        {
+          "type": "video",
+          "src": "/JackEvents/compressed/WF2.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/compressed/WF3.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "friends-wedding-2025-10",
+      "title": "Friend's Wedding",
+      "city": "Eastern Shore, MD",
+      "date": "2025-10",
+      "crew": [
+        "j",
+        "b"
+      ],
+      "description": "Jack and Brody teamed up to provide a full suite of production at a friend's wedding on the Eastern Shore of MD. We danced the night away and we can officially say 'Yea, we're wedding DJs now' (jk)",
+      "media": [
+        {
+          "type": "image",
+          "src": "/JackEvents/wedding.optimized.optimized.webp"
+        }
+      ]
+    },
+    {
+      "slug": "flash-rooftop-2025-09",
+      "title": "Flash Rooftop",
+      "city": "DC",
+      "date": "2025-09",
+      "crew": [
+        "b"
+      ],
+      "description": "Opening for Veggi",
+      "media": [
+        {
+          "type": "image",
+          "src": "/BrodyEvents/veggi_empty.webp"
+        },
+        {
+          "type": "video",
+          "src": "/BrodyEvents/veggi_1.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "office-jam-session-2025-09",
+      "title": "Office Jam Session",
+      "city": "DC",
+      "date": "2025-09",
+      "crew": [
+        "j"
+      ],
+      "description": "When Jack moved to DC, he set up his lighting rig in his new office space and had friends over to show off the new apartment and lighting scenes. It was a great way to pregame for our Echostage debut :)",
+      "media": [
+        {
+          "type": "video",
+          "src": "/JackEvents/officeSetup.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/officeJam.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/officeDance.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "soundcheck-2025-07",
+      "title": "Soundcheck",
+      "city": "DC",
+      "date": "2025-07",
+      "crew": [
+        "b"
+      ],
+      "description": "Opening + Closing for Biscits",
+      "media": [
+        {
+          "type": "image",
+          "src": "/BrodyEvents/biscits_headshot.webp"
+        },
+        {
+          "type": "video",
+          "src": "/BrodyEvents/biscits_one_pill.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/BrodyEvents/biscits_crazy.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "public-art-space-2025-06",
+      "title": "Public Art Space",
+      "city": "NYC",
+      "date": "2025-06",
+      "crew": [
+        "b"
+      ],
+      "description": "",
+      "media": [
+        {
+          "type": "video",
+          "src": "/BrodyEvents/art_space_gas_pedal.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/BrodyEvents/art_space_freakuency.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "bonnaroo-renegade-stage-2025-06",
+      "title": "Bonnaroo Renegade Stage",
+      "city": "Tennessee",
+      "date": "2025-06",
+      "crew": [
+        "j"
+      ],
+      "description": "Jack rented a truck and hauled all of his gear down to Tennessee to set up an insane stage for his 125-person campsite. When Bonnaroo got cancelled due to weather, Jack threw an 18 hour rave for the devastated campers, and it turned out to be one of the most memorable events of the year.",
+      "media": [
+        {
+          "type": "image",
+          "src": "/JackEvents/rooAftermath.optimized.optimized.webp"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/coolLights.mp4"
+        },
+        {
+          "type": "image",
+          "src": "/JackEvents/rooParty.optimized.optimized.webp"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/rooReel.MP4"
+        }
+      ]
+    },
+    {
+      "slug": "zebbies-garden-2025-04",
+      "title": "Zebbie's Garden",
+      "city": "DC",
+      "date": "2025-04",
+      "crew": [
+        "b"
+      ],
+      "description": "Opening + Closing for Martin Ikin",
+      "media": [
+        {
+          "type": "image",
+          "src": "/BrodyEvents/ikin_trio.webp"
+        },
+        {
+          "type": "video",
+          "src": "/BrodyEvents/ikin_fiub.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/BrodyEvents/ikin_percocet.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "rooftop-party-2025-04",
+      "title": "Rooftop Party",
+      "date": "2025-04",
+      "crew": [
+        "j"
+      ],
+      "description": "We partnered with an apartment building to throw a rooftop party for 70 people, complete with a full suite of production gear including lights, sound, and DJs.",
+      "media": [
+        {
+          "type": "video",
+          "src": "/JackEvents/rooftopSunset.MOV"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/rooftopParty.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "pbandj-disco-anniversary-2025-03",
+      "title": "PB&J Disco Anniversary",
+      "date": "2025-03",
+      "crew": [
+        "j"
+      ],
+      "description": "To celebrate the 1 year anniversary of PB&J, Jack went all out in his house with a disco-themed party. The lighting, video and crowd was sublime, and it represented the first true coming together of the truss setup.",
+      "media": [
+        {
+          "type": "image",
+          "src": "/JackEvents/discoNight.optimized.optimized.webp"
+        },
+        {
+          "type": "image",
+          "src": "/JackEvents/discoParty.optimized.optimized.webp"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/discoJam.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "house-party-2025-01",
+      "title": "House Party",
+      "date": "2025-01",
+      "crew": [
+        "j"
+      ],
+      "description": "Jack set up his full truss system in a friend's house for an intimate dance party. The lighting design transformed the living room into a vibrant dance floor, setting the precedent for future production to come.",
+      "media": [
+        {
+          "type": "video",
+          "src": "/JackEvents/housePartyDance.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/houseVintage.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/JackEvents/houseVibes.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "power-plant-live-2024-10",
+      "title": "Power Plant Live!",
+      "city": "Baltimore",
+      "date": "2024-10",
+      "crew": [
+        "b"
+      ],
+      "description": "Halloween mainstage set",
+      "media": [
+        {
+          "type": "video",
+          "src": "/BrodyEvents/powerplant_pump_it.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/BrodyEvents/powerplant_used_to_know.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "soundcheck-2024-09",
+      "title": "Soundcheck",
+      "city": "DC",
+      "date": "2024-09",
+      "crew": [
+        "b"
+      ],
+      "description": "Opening for Ownboss",
+      "media": [
+        {
+          "type": "image",
+          "src": "/BrodyEvents/ownboss_focused.webp"
+        },
+        {
+          "type": "image",
+          "src": "/BrodyEvents/silvertone_duo.webp"
+        }
+      ]
+    },
+    {
+      "slug": "somewhere-nowhere-2024-07",
+      "title": "Somewhere Nowhere",
+      "city": "NYC",
+      "date": "2024-07",
+      "crew": [
+        "b"
+      ],
+      "description": "4th of July rooftop set",
+      "media": [
+        {
+          "type": "video",
+          "src": "/BrodyEvents/swnw_kill_bill.mp4"
+        },
+        {
+          "type": "image",
+          "src": "/BrodyEvents/swnw_bottles.webp"
+        },
+        {
+          "type": "video",
+          "src": "/BrodyEvents/swnw_hype.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "looneys-pub-2023-09",
+      "title": "Looney's Pub",
+      "city": "College Park",
+      "date": "2023-09",
+      "crew": [
+        "b"
+      ],
+      "description": "Opening + Closing for Jake Shore",
+      "media": [
+        {
+          "type": "video",
+          "src": "/BrodyEvents/jake_shore_2.mp4"
+        }
+      ]
+    }
+  ],
+  "join": {
+    "label": "open call",
+    "heading": "join the team",
+    "intro": "Whether you're an artist, promoter, or passionate about dance music, we'd love to hear from you.",
+    "roles": [
+      "producer",
+      "artist",
+      "engineer"
+    ],
+    "send": "a portfolio, demo or CV",
+    "subject": "PB&J open call"
+  }
+}
