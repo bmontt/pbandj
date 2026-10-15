@@ -1,226 +1,294 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Neue Haas Grotesk Medium";
-  src: url("/fonts/NeueHaasDisplayMedium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@custom-variant dark (&:is(.dark *));
-
+/* ── PB&J design tokens ────────────────────────────────────────────────────────
+   Dark only. The foreground is the logo's warm cream, not white. Color is for
+   accents: one family per letter and per founder (from the old lib/colors.ts),
+   each with a "-hi" step that stays legible as small text on the background.
+     P  peanut butter #B58657 · apricot #EA9A6C      Peter Gomes ("Peter Jacob")
+     B  bread cream   #F5EBDC · toasted #C69A6C      Brody Montag ("Monty")
+     J  grape         #935BAD · strawberry #C44D58   Jack Humphreys
+   Photos, logos and icons always show in full color. */
 :root {
-  /* Monoschrome color palette with yellow accents */
-  --background: oklch(0.08 0 0);
-  --foreground: oklch(0.95 0 0);
-  --accent: oklch(0.85 0.08 100);
-  --accent-foreground: oklch(0.08 0 0);
+  --background: oklch(0.13 0.003 70);
+  --foreground: oklch(0.944 0.023 78.2); /* #F5EBDC, bread cream */
+  --mark: oklch(0.964 0.015 90.2); /* the logo's own cream, #F7F3E8 */
 
-  --card: oklch(0.12 0 0);
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.12 0 0);
-  --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.85 0.08 100);
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.25 0 0);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.35 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.15 0 0);
-  --input: oklch(0.12 0 0);
-  --ring: oklch(0.85 0.08 100);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.85 0.08 100);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.3 0 0);
-  --sidebar-accent-foreground: oklch(0.95 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.85 0.08 100);
+  --p: oklch(0.655 0.086 65.4); /* peanut butter */
+  --p-hi: oklch(0.756 0.114 50.2); /* apricot */
+  --b: oklch(0.944 0.023 78.2); /* bread cream */
+  --b-hi: oklch(0.717 0.081 67.2); /* toasted */
+  --j: oklch(0.566 0.135 314.3); /* grape */
+  --j-2: oklch(0.581 0.152 17.7); /* strawberry */
+  --j-hi: oklch(0.74 0.12 314); /* grape, lifted for text */
+  --j-2-hi: oklch(0.72 0.13 18); /* strawberry, lifted for text */
+
+  /* the accent a subtree speaks in: cream by default; a founder's family
+     inside [data-founder] */
+  --accent: var(--b-hi);
+  --accent-soft: oklch(0.717 0.081 67.2 / 0.35);
+
+  --card: oklch(0.17 0.004 70);
+  --muted-foreground: oklch(0.944 0.023 78.2 / 0.6);
+  --border: oklch(0.944 0.023 78.2 / 0.12);
+  --ring: oklch(0.944 0.023 78.2 / 0.6);
+
+  color-scheme: dark;
 }
 
-.dark {
-  --background: oklch(0.08 0 0);
-  --foreground: oklch(0.95 0 0);
-  --accent: oklch(0.85 0.08 100);
-  --accent-foreground: oklch(0.08 0 0);
-  --card: oklch(0.12 0 0);
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.12 0 0);
-  --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.85 0.08 100);
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.25 0 0);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.35 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.15 0 0);
-  --input: oklch(0.12 0 0);
-  --ring: oklch(0.85 0.08 100);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.85 0.08 100);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.3 0 0);
-  --sidebar-accent-foreground: oklch(0.95 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.85 0.08 100);
-}
+[data-founder="p"] { --accent: var(--p-hi); --accent-soft: oklch(0.756 0.114 50.2 / 0.35); }
+[data-founder="b"] { --accent: var(--b-hi); --accent-soft: oklch(0.717 0.081 67.2 / 0.35); }
+[data-founder="j"] { --accent: var(--j-hi); --accent-soft: oklch(0.74 0.12 314 / 0.35); }
 
 @theme inline {
-  --font-sans: "Neue Haas Grotesk Medium", "Helvetica Neue", sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-sans: var(--font-neue), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-mark: var(--mark);
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
-  --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-accent: var(--accent);
+  --color-p: var(--p);
+  --color-p-hi: var(--p-hi);
+  --color-b: var(--b);
+  --color-b-hi: var(--b-hi);
+  --color-j: var(--j);
+  --color-j-2: var(--j-2);
+  --color-j-hi: var(--j-hi);
+  --color-j-2-hi: var(--j-2-hi);
+}
+
+/* ── type scale ────────────────────────────────────────────────────────────────
+   Brody's reading-size scale (brodymontag.com, type-scale-up): labels and meta
+   stay on small mono steps; running text gets a reading size of its own that
+   grows with the screen. 3xl and up are display sizes. */
+@theme {
+  --text-2xs: 0.78125rem; /* 12.5px */
+  --text-2xs--line-height: 1.5;
+  --text-xs: 0.84375rem; /* 13.5px */
+  --text-sm: 0.96875rem; /* 15.5px */
+  --text-base: 1.09375rem; /* 17.5px */
+  --text-lg: 1.21875rem; /* 19.5px */
+  --text-xl: 1.34375rem; /* 21.5px */
+  --text-2xl: 1.59375rem; /* 25.5px */
+  --text-body: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem); /* 17 → 18px */
+  --text-body--line-height: 1.65;
+  --text-body-sm: clamp(1rem, 0.95rem + 0.15vw, 1.0625rem); /* 16 → 17px */
+  --text-body-sm--line-height: 1.6;
+}
+
+/* reading layer: the sans face at a reading size, near-full contrast */
+@utility copy {
+  @apply font-sans text-body text-pretty text-foreground/88;
+}
+@utility copy-sm {
+  @apply font-sans text-body-sm text-pretty text-foreground/88;
+}
+
+/* labels: tiny mono meta, never prose */
+@utility label {
+  @apply font-mono text-xs lowercase text-foreground/60;
+}
+
+/* display scale: huge Neue Haas Medium at tight tracking. Words with f/t
+   crossbar joints go through <DisplayWord> (components/display-word.tsx),
+   which opens just those joints. */
+@utility display-hero {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(3.5rem, 13vw, 12rem);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+}
+@utility display-choice {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(3rem, 11vw, 9.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+@utility display-section {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+@utility display-sub {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.6vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    background-color: var(--background);
+    /* phones inflate text by their own heuristics unless told not to */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  /* no horizontal pan: clip (not hidden) so position: sticky still works */
+  html,
   body {
-    @apply bg-background text-foreground;
+    overflow-x: clip;
+  }
+  body {
+    @apply min-h-svh bg-background font-sans text-foreground;
+  }
+  ::selection {
+    background: oklch(0.756 0.114 50.2 / 0.35);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
-/* Add yellow glow utility classes */
-@layer components {
-  .glow-yellow {
-    @apply shadow-[0_0_20px_rgba(234,179,8,0.3)];
-  }
-
-  .glow-yellow-lg {
-    @apply shadow-[0_0_40px_rgba(234,179,8,0.4)];
-  }
-
-  .glow-yellow-sm {
-    @apply shadow-[0_0_10px_rgba(234,179,8,0.2)];
-  }
-
-  .font-cinzel {
-    font-family: var(--font-cinzel), 'Times New Roman', serif;
-  }
+/* ── the halo ──────────────────────────────────────────────────────────────────
+   A soft dark halo behind reading text: where the background crosses copy,
+   labels or meta it falls away around the letters. Painted once with the
+   text; no per-frame cost. Display words stand on their own. */
+:root {
+  --text-halo: 0 0 clamp(10px, 0.6em, 16px) oklch(0.13 0.003 70 / 0.85),
+    0 0 clamp(3px, 0.18em, 5px) oklch(0.13 0.003 70 / 0.9);
+}
+main :where(p, li, h3, h4, dd, dt, td),
+footer :where(p, li, a) {
+  text-shadow: var(--text-halo);
+}
+.halo-none,
+.halo-none * {
+  text-shadow: none;
 }
 
-/* Hide scrollbars */
-::-webkit-scrollbar {
-  display: none;
+/* ── the background slot ───────────────────────────────────────────────────────
+   The ASCII stage (revamp-stage, <StageRoot />) mounts here. Until it does, a
+   plain CSS field: three faint, static glows, one per letter, set like the
+   three bodies of the field. Pinned to the large viewport (lvh) so mobile
+   toolbars never resize it mid-scroll. */
+.stage-box {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  height: 100vh;
+  height: 100lvh;
+  pointer-events: none;
+  z-index: 0;
+}
+.stage-fallback {
+  background:
+    radial-gradient(38rem 30rem at 18% 22%, oklch(0.655 0.086 65.4 / 0.09), transparent 70%),
+    radial-gradient(34rem 28rem at 82% 30%, oklch(0.566 0.135 314.3 / 0.08), transparent 70%),
+    radial-gradient(40rem 26rem at 50% 92%, oklch(0.944 0.023 78.2 / 0.045), transparent 70%);
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-* {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+/* ── the spread ────────────────────────────────────────────────────────────────
+   PB&J's hairline: one rule in three lengths of its three families, drawn out
+   of a section label as it arrives (.spread-on, components/motion.tsx). */
+.spread {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-
-html {
-  scrollbar-width: none; /* Firefox */
-}
-
-html::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
-
-/* Glassy Navigation Effects */
-.glass-nav {
-  backdrop-filter: blur(20px) saturate(180%);
-  background: linear-gradient(135deg, 
-    rgba(0, 0, 0, 0.2) 0%, 
-    rgba(0, 0, 0, 0.1) 50%, 
-    rgba(0, 0, 0, 0.05) 100%
+.spread::after {
+  content: "";
+  flex: 1;
+  max-width: 22rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    oklch(0.756 0.114 50.2 / 0.7) 0 33%,
+    oklch(0.944 0.023 78.2 / 0.5) 33% 66%,
+    oklch(0.74 0.12 314 / 0.7) 66% 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  mask-image: linear-gradient(90deg, #000 60%, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.spread.spread-on::after,
+.no-js .spread::after {
+  transform: scaleX(1);
 }
 
-.glass-text {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.glass-border {
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.05),
-    0 -1px 0 rgba(0, 0, 0, 0.3);
-}
-
-@keyframes flipAnimation {
-  0% {
-    transform: rotateX(0deg);
-    opacity: 1;
+/* ── entrances ─────────────────────────────────────────────────────────────────
+   One-shot CSS mount animations (no runtime), started at first paint:
+     <div className="enter" style={enterStyle({ y: 16, dur: 0.8, delay: 0.2 })}>
+   Scroll reveals below the fold are GSAP's (components/motion.tsx). */
+@keyframes mount-in {
+  from {
+    opacity: 0;
+    translate: var(--ex, 0) var(--ey, 0);
+    filter: blur(var(--eb, 0));
   }
+}
+.enter {
+  animation: mount-in var(--ed, 0.6s) var(--ee, cubic-bezier(0.22, 1, 0.36, 1)) var(--edl, 0s) backwards;
+}
+
+/* the live dot beside a "now" line */
+.now-dot {
+  animation: now-pulse 2.4s ease-in-out infinite;
+}
+@keyframes now-pulse {
   50% {
-    transform: rotateX(90deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: rotateX(0deg);
-    opacity: 1;
+    opacity: 0.35;
   }
 }
 
-/* Hide PQINA branding */
-.tick::after {
-  display: none !important;
+/* links: transform-only hover motion */
+.nudge {
+  display: inline-block;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+:is(a, button):is(:hover, :focus-visible) .nudge {
+  transform: translateX(0.18em);
 }
 
-.tick a {
-  display: none !important;
+/* landing choices: the one in focus stays, the others step back */
+.choices:has(a:hover, a:focus-visible) .choice:not(:hover, :focus-visible) {
+  opacity: 0.3;
+}
+.choice {
+  transition: opacity 0.45s ease;
 }
 
-.tick a[href*="pqina"],
-.tick a[href*="PQINA"] {
-  display: none !important;
+/* touch screens: text links get a taller hit area without moving layout */
+@media (pointer: coarse) {
+  main p a,
+  main li a,
+  footer a {
+    padding-block: 0.6rem;
+  }
 }
 
+/* media frames: a quiet placeholder until a photo or poster paints */
+.frame {
+  background: oklch(0.17 0.004 70);
+}
+
+/* ── reduced motion: a static page with every word visible ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .enter,
+  .now-dot {
+    animation: none;
+  }
+  .spread::after {
+    transform: none;
+    transition: none;
+  }
+  .nudge,
+  .choice {
+    transition: none;
+  }
+  :is(a, button):is(:hover, :focus-visible) .nudge {
+    transform: none;
+  }
+}
