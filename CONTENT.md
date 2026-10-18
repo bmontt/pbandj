@@ -40,7 +40,6 @@ written out in full:
 {
   "slug": "waterfront-hotel-2026-03",
   "title": "Waterfront Hotel",
-  "city": "Baltimore",
   "date": "2026-03-14",
   "crew": ["j"],
   "description": "Jack provided the lighting design for a show at the Waterfront with Offstage.",
@@ -55,8 +54,7 @@ written out in full:
 | field | what to put |
 |---|---|
 | `slug` | The page address: `pbandjsounds.com/events/<slug>`. Use lowercase words joined by hyphens, and end it with the date so it is unique, e.g. `bass-barn-2026-02`. **Don't change it once it is live,** because links to it would break. |
-| `title` | The venue or the name of the night. |
-| `city` | Optional, e.g. `"DC"` or `"Baltimore"`. Leave it out if you don't know it. |
+| `title` | The venue or the name of the night, as you would write it on a flyer. Brody's sets add the city in parentheses, e.g. `"Soundcheck (DC)"`. |
 | `date` | An ISO date at the precision you know (see the next table). |
 | `crew` | Who was involved: `"p"` for Peter, `"b"` for Brody, `"j"` for Jack. Use one or more. |
 | `description` | One or two sentences, or `""` if there is nothing to say yet. |
@@ -114,10 +112,12 @@ All of these are in `lib/content.json`:
   is its own string in the `"bio"` list.
 - **Support logos:** under `"supportArtists"`. Put the image in
   `public/artistLogos/`, add `{ "name": …, "logo": … }`, and run `npm run media`.
-- **Photos on /collective:** under `"collective" › "moments"`. Each one needs
-  `src` and `alt`. The `alt` is a short description of what the photo shows,
-  for people using screen readers.
-- **The collective blurb and the join copy:** `"collective" › "blurb"` and `"join"`.
+- **The six photos at the top of /events (the original "Highlights"):** under
+  `"highlights" › "photos"`. Each one needs `src` and `alt`. The `alt` is a
+  short description of what the photo shows, for people using screen readers.
+- **Section labels and headings, the collective blurb, the join copy:**
+  `"collective"`, `"highlights"`, `"releases"`, `"join"` and `"founderLabels"`.
+  They are the original site's words. Change them only if Brody asks.
 
 ## Please don't
 

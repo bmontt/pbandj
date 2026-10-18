@@ -28,7 +28,7 @@ const videos = new Set();
 const logos = new Set();
 for (const e of content.events) for (const m of e.media) (m.type === "video" ? videos : images).add(m.src);
 for (const f of content.founders) images.add(f.image);
-for (const m of content.collective.moments) images.add(m.src);
+for (const m of content.highlights.photos) images.add(m.src);
 for (const a of content.supportArtists) logos.add(a.logo);
 
 const missing = [...images, ...videos, ...logos].filter((p) => !existsSync(pub(p)));

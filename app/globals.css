@@ -87,9 +87,10 @@
   @apply font-sans text-body-sm text-pretty text-foreground/88;
 }
 
-/* labels: tiny mono meta, never prose */
+/* labels: tiny mono meta, never prose. The text shows as written: the
+   original section labels keep their own capitals. */
 @utility label {
-  @apply font-mono text-xs lowercase text-foreground/60;
+  @apply font-mono text-xs text-foreground/60;
 }
 
 /* display scale: huge Neue Haas Medium at tight tracking. Words with f/t

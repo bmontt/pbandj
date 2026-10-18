@@ -1,7 +1,8 @@
 // ── section opener ────────────────────────────────────────────────────────────
-// Each section page opens the same way: the index label with its founders' rule
-// hairline, the section word huge, a line saying what's here, and the live
-// line. The background steps back behind it ([data-stage-anchor="opener"]).
+// Each section page opens the same way: the index and the original small label
+// with the founders' rule, the original heading huge, and the section's own
+// copy under it when the original had some. The background steps back behind
+// it ([data-stage-anchor="opener"]).
 
 import type { ReactNode } from "react";
 import { DisplayWord } from "@/components/display-word";
@@ -23,7 +24,7 @@ export default function Opener({
   children?: ReactNode;
 }) {
   return (
-    <header data-stage-anchor="opener" className="relative flex min-h-[62svh] flex-col justify-end px-5 pt-32 pb-12 md:min-h-[82svh] md:px-12 md:pb-16">
+    <header data-stage-anchor="opener" className="relative flex min-h-[56svh] flex-col justify-end px-5 pt-32 pb-12 md:min-h-[72svh] md:px-12 md:pb-16">
       <div className="mx-auto w-full max-w-6xl">
         <p className="label rule-line enter" style={enterStyle({ dur: 0.7 })}>
           <span>

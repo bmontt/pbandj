@@ -86,7 +86,7 @@ test.describe("routes", () => {
     const srcs = new Set<string>([
       ...content.events.flatMap((e) => e.media.map((m) => m.src)),
       ...content.founders.map((f) => f.image),
-      ...content.collective.moments.map((m) => m.src),
+      ...content.highlights.photos.map((m) => m.src),
       ...content.supportArtists.map((a) => a.logo),
     ]);
     const bad: string[] = [];
@@ -138,7 +138,7 @@ test.describe("pages", () => {
     const body = await res.text();
     expect(body).toMatch(/^# PB&J Sounds\n\n> /);
     expect(body).toContain("## Founders");
-    expect(body).toContain("## Events played");
+    expect(body).toContain(`## ${content.highlights.heading}`);
   });
 
   test("every page wrapper names its stage scene; founder pages their artist", async ({ page }) => {
@@ -191,7 +191,7 @@ test.describe("phone width", () => {
     const ctx = await browser.newContext({ viewport: { width: 320, height: 640 }, isMobile: true, hasTouch: true });
     const page = await ctx.newPage();
     await page.goto("/events");
-    for (const label of ["events", "sounds", "collective", "join"]) {
+    for (const label of ["collective", "events", "releases", "join"]) {
       await expect(page.getByRole("navigation", { name: "site" }).getByRole("link", { name: label, exact: true })).toBeVisible();
     }
     await ctx.close();

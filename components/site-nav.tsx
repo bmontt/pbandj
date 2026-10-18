@@ -2,8 +2,8 @@
 
 // ── site nav ──────────────────────────────────────────────────────────────────
 // The section pages' top bar: the mark home on the left, the four sections on
-// the right. One row at every width (it fits 320px), so it never hides on
-// phones. The landing has no nav: it is the nav.
+// the right, in the original order. One row at every width (it fits 320px),
+// so it never hides on phones. The landing has no nav: it is the nav.
 
 import Image from "next/image";
 import Link from "next/link";
@@ -33,7 +33,7 @@ export default function SiteNav() {
                       : "text-foreground/55 hover:text-foreground/90"
                   }`}
                 >
-                  {s.label}
+                  {s.nav}
                 </Link>
               </li>
             );

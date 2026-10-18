@@ -1,6 +1,7 @@
 // ── /events/[slug] ────────────────────────────────────────────────────────────
-// One night: what it was, who was behind it, and every photo and video in full
-// color. Prerendered for every event in content.json.
+// One event, as the original event cards had it: the title, the date, the
+// description and every photo and video in full color, plus who was behind
+// it. Prerendered for every event in content.json.
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -25,10 +26,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/events/[slug]">): Promise<Metadata> {
   const e = eventBySlug((await params).slug);
   if (!e) return {};
-  const title = e.city ? `${e.title} (${e.city})` : e.title;
   return pageMeta({
-    title: `${title}, ${formatDate(e.date)}`,
-    description: e.description || `${title}, ${formatDate(e.date)}. Photos and video from PB&J Sounds.`,
+    title: `${e.title}, ${formatDate(e.date)}`,
+    description: e.description || `${e.title}, ${formatDate(e.date)}`,
     path: `/events/${e.slug}`,
   });
 }
@@ -40,7 +40,6 @@ export default async function EventPage({ params }: PageProps<"/events/[slug]">)
   const i = events.indexOf(e);
   const newer = events[i - 1];
   const older = events[i + 1];
-  const name = e.city ? `${e.title} (${e.city})` : e.title;
 
   return (
     <main data-stage-scene="event" className="relative z-10 px-5 md:px-12">
@@ -51,8 +50,7 @@ export default async function EventPage({ params }: PageProps<"/events/[slug]">)
           </Link>
           <p className="label rule-line mt-6 enter" style={enterStyle({ dur: 0.7 })}>
             <span>
-              {soon ? "next up" : "played"} · {formatDate(e.date)}
-              {e.city ? ` · ${e.city.toLowerCase()}` : ""}
+              {soon ? `next up · ${formatDate(e.date)}` : formatDate(e.date)}
             </span>
           </p>
           <h1 className="display-section halo-none mt-5 text-foreground enter" style={enterStyle({ y: 20, blur: 6, dur: 1, delay: 0.06 })}>
@@ -88,7 +86,7 @@ export default async function EventPage({ params }: PageProps<"/events/[slug]">)
 
         {e.media.length > 0 && (
           <section aria-label="photos and video">
-            <MediaGrid items={e.media} title={name} />
+            <MediaGrid items={e.media} title={e.title} />
           </section>
         )}
 

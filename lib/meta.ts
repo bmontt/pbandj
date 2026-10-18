@@ -5,10 +5,10 @@
 import type { Metadata } from "next";
 import { content } from "./content";
 
-const card = { url: "/opengraph-image", width: 1200, height: 630, type: "image/png", alt: "PB&J Sounds: east coast collective & label" };
+const card = { url: "/opengraph-image", width: 1200, height: 630, type: "image/png", alt: "PB&J Sounds" };
 
 export function pageMeta({ title, description, path }: { title?: string; description: string; path: string }): Metadata {
-  const full = title ? `${title} · ${content.site.name}` : `${content.site.name} · ${content.site.tagline}`;
+  const full = title ? `${title} · ${content.site.short}` : content.site.short;
   return {
     ...(title ? { title } : {}),
     description,
