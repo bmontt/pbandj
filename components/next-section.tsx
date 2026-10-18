@@ -1,6 +1,6 @@
 // ── next section ──────────────────────────────────────────────────────────────
 // The end of a page hands off to the next instead of dead-ending:
-// events → sounds → collective → join → back to the start.
+// events → music → about → join → back to the start.
 
 import Link from "next/link";
 import { DisplayWord } from "@/components/display-word";

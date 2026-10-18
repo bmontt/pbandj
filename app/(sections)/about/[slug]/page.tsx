@@ -1,4 +1,4 @@
-// ── /collective/[slug] ────────────────────────────────────────────────────────
+// ── /about/[slug] ────────────────────────────────────────────────────────
 // One founder, in their letter's family: who they are, in their words, their
 // gear, the artists they've supported, and their nights. The old /artists/p|b|j
 // URLs redirect here (next.config.ts).
@@ -24,20 +24,20 @@ export function generateStaticParams() {
   return founders.map((f) => ({ slug: f.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps<"/collective/[slug]">): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/about/[slug]">): Promise<Metadata> {
   const f = founderBySlug((await params).slug);
   if (!f) return {};
   return pageMeta({
     title: `${f.alias} (${f.name})`,
     description: `${f.name}, ${f.alias}: ${f.role} at PB&J Sounds. ${firstSentence(f.bio[0])}`,
-    path: `/collective/${f.slug}`,
+    path: `/about/${f.slug}`,
   });
 }
 
 const RISE = "cubic-bezier(0.22, 1, 0.36, 1)";
 const LINK_ORDER = ["spotify", "soundcloud", "instagram", "github"] as const;
 
-export default async function FounderPage({ params }: PageProps<"/collective/[slug]">) {
+export default async function FounderPage({ params }: PageProps<"/about/[slug]">) {
   const f = founderBySlug((await params).slug);
   if (!f) notFound();
   const i = founders.indexOf(f);
@@ -50,8 +50,8 @@ export default async function FounderPage({ params }: PageProps<"/collective/[sl
     <main data-stage-scene="artist" data-stage-artist={f.id} data-founder={f.id} className="relative z-10 px-5 md:px-12">
       <article className="mx-auto max-w-6xl">
         <header data-stage-anchor="artist" className="pt-32 md:pt-40">
-          <Link href="/collective" className="-my-3 inline-flex min-h-11 items-center font-mono text-xs text-foreground/60 hover:text-foreground">
-            ← collective
+          <Link href="/about" className="-my-3 inline-flex min-h-11 items-center font-mono text-xs text-foreground/60 hover:text-foreground">
+            ← about
           </Link>
           <p className="label rule-line mt-6 enter" style={enterStyle({ dur: 0.7 })}>
             <span>
@@ -154,7 +154,7 @@ export default async function FounderPage({ params }: PageProps<"/collective/[sl
       </article>
       <div className="-mx-5 md:-mx-12">
         {next ? (
-          <NextSection href={`/collective/${next.slug}`} word={next.alias.toLowerCase()} caption={`${next.name.toLowerCase()} · ${next.role.toLowerCase()}`} />
+          <NextSection href={`/about/${next.slug}`} word={next.alias.toLowerCase()} caption={`${next.name.toLowerCase()} · ${next.role.toLowerCase()}`} />
         ) : (
           <NextSection href="/join" word="join" caption={`open call · ${content.join.roles.join(", ")}`} />
         )}

@@ -24,7 +24,7 @@ export function musicGroupLd() {
     foundingDate: site.founded,
     email: site.email,
     sameAs: [site.instagram],
-    member: founders.map((f) => ({ "@type": "Person", "@id": `${ORIGIN}/collective/${f.slug}#person`, name: f.name, alternateName: f.alias })),
+    member: founders.map((f) => ({ "@type": "Person", "@id": `${ORIGIN}/about/${f.slug}#person`, name: f.name, alternateName: f.alias })),
   };
 }
 
@@ -32,12 +32,12 @@ export function personLd(f: Founder) {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": `${ORIGIN}/collective/${f.slug}#person`,
+    "@id": `${ORIGIN}/about/${f.slug}#person`,
     name: f.name,
     alternateName: f.alias,
     jobTitle: f.role,
     image: `${ORIGIN}${f.image}`,
-    url: `${ORIGIN}/collective/${f.slug}`,
+    url: `${ORIGIN}/about/${f.slug}`,
     memberOf: { "@id": GROUP_ID },
     sameAs: Object.values(f.links).filter(Boolean),
   };

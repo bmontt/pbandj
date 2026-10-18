@@ -32,8 +32,8 @@ export default async function Home() {
 
   const choices = [
     { ...section("events"), caption: `${played.length} events since ${since}`, place: "md:justify-self-start" },
-    { ...section("sounds"), caption: "releases, tracks & mixes", place: "md:justify-self-center" },
-    { ...section("collective"), caption: founders.map((f) => f.slug).join(" · "), place: "md:justify-self-end md:text-right" },
+    { ...section("music"), caption: "releases, tracks & mixes", place: "md:justify-self-center" },
+    { ...section("about"), caption: founders.map((f) => f.slug).join(" · "), place: "md:justify-self-end md:text-right" },
   ];
   const Instagram = ICONS.instagram;
 

@@ -1,4 +1,4 @@
-// ── /collective ───────────────────────────────────────────────────────────────
+// ── /about ───────────────────────────────────────────────────────────────
 // The story, the three founders (one letter each), moments from the nights,
 // and the artists the members have supported.
 
@@ -13,22 +13,22 @@ import { pageMeta } from "@/lib/meta";
 import { nextOf, section } from "@/lib/sections";
 
 export const metadata = pageMeta({
-  title: "collective",
+  title: "about",
   description: "PB&J Sounds is Peter Gomes (Peter Jacob), Brody Montag (Monty) and Jack Humphreys: an east coast collective and label for underground house.",
-  path: "/collective",
+  path: "/about",
 });
 
 export default function CollectivePage() {
-  const s = section("collective");
-  const next = nextOf("collective");
+  const s = section("about");
+  const next = nextOf("about");
   const { collective, supportArtists, site } = content;
 
   return (
-    <main data-stage-scene="collective" className="relative z-10">
+    <main data-stage-scene="about" className="relative z-10">
       <Opener
         index={s.index}
         label={s.label}
-        title="collective"
+        title="about"
         line={
           <p className="display-sub text-foreground/85">
             {founders.map((f) => f.name.split(" ")[0]).join(", ").replace(/, ([^,]*)$/, " and $1")}. Est. {site.founded}, east coast.
@@ -57,7 +57,7 @@ export default function CollectivePage() {
               const info = media[f.image];
               return (
                 <li key={f.id} data-founder={f.id} data-reveal>
-                  <Link href={`/collective/${f.slug}`} className="group block">
+                  <Link href={`/about/${f.slug}`} className="group block">
                     <span className="frame relative block aspect-[4/5] overflow-hidden">
                       {info && (
                         <Image

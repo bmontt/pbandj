@@ -1,4 +1,4 @@
-// ── /sounds ───────────────────────────────────────────────────────────────────
+// ── /music ───────────────────────────────────────────────────────────────────
 // The founders' latest releases, fetched on the server (lib/tracks.ts) and
 // cached with the page for an hour; the mix playlist behind a click; and
 // where to follow each of them. If no source answers, the page still lists
@@ -18,26 +18,26 @@ import { getTracks } from "@/lib/tracks";
 export const revalidate = 3600;
 
 export const metadata = pageMeta({
-  title: "sounds",
+  title: "music",
   description: "Latest releases, tracks and mixes from the PB&J Sounds collective: Peter Jacob, Monty and Humphreys.",
-  path: "/sounds",
+  path: "/music",
 });
 
 const PLAYLIST = process.env.NEXT_PUBLIC_SOUNDCLOUD_PLAYLIST_URL;
 const LINK_ORDER = ["spotify", "soundcloud", "instagram"] as const;
 
 export default async function SoundsPage() {
-  const s = section("sounds");
-  const next = nextOf("sounds");
+  const s = section("music");
+  const next = nextOf("music");
   const tracks = await getTracks(9);
   const playlist = PLAYLIST && !PLAYLIST.includes("/you/") ? PLAYLIST : null;
 
   return (
-    <main data-stage-scene="sounds" className="relative z-10">
+    <main data-stage-scene="music" className="relative z-10">
       <Opener
         index={s.index}
         label={s.label}
-        title="sounds"
+        title="music"
         line={<p className="display-sub text-foreground/85">Releases, tracks and mixes from the collective, newest first.</p>}
       />
 

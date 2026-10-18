@@ -19,19 +19,23 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 85],
-    // track artwork from the sounds page (lib/tracks.ts): Spotify and SoundCloud CDNs
+    // track artwork from the music page (lib/tracks.ts): Spotify and SoundCloud CDNs
     remotePatterns: [
       { protocol: "https", hostname: "i.scdn.co" },
       { protocol: "https", hostname: "*.sndcdn.com" },
     ],
   },
   async redirects() {
-    // the v0 site's artist pages
     return [
-      { source: "/artists/p", destination: "/collective/peter", permanent: true },
-      { source: "/artists/b", destination: "/collective/brody", permanent: true },
-      { source: "/artists/j", destination: "/collective/jack", permanent: true },
-      { source: "/artists", destination: "/collective", permanent: true },
+      // the v0 site's artist pages
+      { source: "/artists/p", destination: "/about/peter", permanent: true },
+      { source: "/artists/b", destination: "/about/brody", permanent: true },
+      { source: "/artists/j", destination: "/about/jack", permanent: true },
+      { source: "/artists", destination: "/about", permanent: true },
+      // the sections' earlier names
+      { source: "/sounds", destination: "/music", permanent: true },
+      { source: "/collective", destination: "/about", permanent: true },
+      { source: "/collective/:slug", destination: "/about/:slug", permanent: true },
     ];
   },
   async headers() {

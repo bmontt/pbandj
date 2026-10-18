@@ -19,7 +19,7 @@ export function llmsText(now: Date = new Date()): string {
   L.push(`Genres: ${site.genres.join(", ")}. Founded ${site.founded}. Contact: ${site.email}. Instagram: ${site.instagram}`, "");
 
   L.push("## Founders");
-  for (const f of founders) L.push(`- [${f.alias} (${f.name})](${ORIGIN}/collective/${f.slug}): ${f.role}. “${f.quote}”`);
+  for (const f of founders) L.push(`- [${f.alias} (${f.name})](${ORIGIN}/about/${f.slug}): ${f.role}. “${f.quote}”`);
 
   const soon = upcoming(now);
   L.push("", "## Next up");
@@ -33,7 +33,7 @@ export function llmsText(now: Date = new Date()): string {
   L.push(`- [Open call](${ORIGIN}/join): ${join.intro} Roles: ${join.roles.join(", ")}. Send ${join.send}.`);
 
   L.push("", "## Optional");
-  L.push(`- [Sounds](${ORIGIN}/sounds): latest releases from Spotify and SoundCloud`);
+  L.push(`- [Music](${ORIGIN}/music): latest releases from Spotify and SoundCloud`);
   L.push(`- [Sitemap](${ORIGIN}/sitemap.xml)`);
   return L.join("\n") + "\n";
 }

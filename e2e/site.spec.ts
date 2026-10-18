@@ -8,8 +8,8 @@
 import { expect, test, type Page } from "@playwright/test";
 import content from "../lib/content.json" with { type: "json" };
 
-const SECTIONS = ["/", "/events", "/sounds", "/collective", "/join"];
-const FOUNDERS = content.founders.map((f) => `/collective/${f.slug}`);
+const SECTIONS = ["/", "/events", "/music", "/about", "/join"];
+const FOUNDERS = content.founders.map((f) => `/about/${f.slug}`);
 const EVENTS = content.events.map((e) => `/events/${e.slug}`);
 const PAGES = [...SECTIONS, ...FOUNDERS, ...EVENTS];
 // the pages that differ in layout; every event page shares one template
@@ -74,7 +74,7 @@ test.describe("routes", () => {
     expect((await request.get("/events/no-such-night")).status()).toBe(404);
   });
 
-  for (const [from, to] of [["/artists/p", "/collective/peter"], ["/artists/b", "/collective/brody"], ["/artists/j", "/collective/jack"], ["/artists", "/collective"]]) {
+  for (const [from, to] of [["/artists/p", "/about/peter"], ["/artists/b", "/about/brody"], ["/artists/j", "/about/jack"], ["/artists", "/about"], ["/sounds", "/music"], ["/collective", "/about"], ["/collective/peter", "/about/peter"]]) {
     test(`${from} redirects to ${to}`, async ({ request }) => {
       const res = await request.get(from, { maxRedirects: 0 });
       expect(res.status()).toBe(308);
@@ -142,7 +142,7 @@ test.describe("pages", () => {
   });
 
   test("every page wrapper names its stage scene; founder pages their artist", async ({ page }) => {
-    const scenes: Record<string, string> = { "/": "landing", "/events": "events", "/sounds": "sounds", "/collective": "collective", "/join": "join" };
+    const scenes: Record<string, string> = { "/": "landing", "/events": "events", "/music": "music", "/about": "about", "/join": "join" };
     for (const [path, scene] of Object.entries(scenes)) {
       await page.goto(path);
       await expect(page.locator(`main[data-stage-scene="${scene}"]`)).toHaveCount(1);
@@ -151,7 +151,7 @@ test.describe("pages", () => {
     await page.goto(EVENTS[0]);
     await expect(page.locator('main[data-stage-scene="event"]')).toHaveCount(1);
     for (const f of content.founders) {
-      await page.goto(`/collective/${f.slug}`);
+      await page.goto(`/about/${f.slug}`);
       await expect(page.locator(`main[data-stage-scene="artist"][data-stage-artist="${f.id}"]`)).toHaveCount(1);
     }
   });
@@ -191,7 +191,7 @@ test.describe("phone width", () => {
     const ctx = await browser.newContext({ viewport: { width: 320, height: 640 }, isMobile: true, hasTouch: true });
     const page = await ctx.newPage();
     await page.goto("/events");
-    for (const label of ["events", "sounds", "collective", "join"]) {
+    for (const label of ["events", "music", "about", "join"]) {
       await expect(page.getByRole("navigation", { name: "site" }).getByRole("link", { name: label, exact: true })).toBeVisible();
     }
     await ctx.close();
@@ -223,7 +223,7 @@ test.describe("reduced motion and no JavaScript", () => {
   });
 
   test("with motion on, reveals below the fold end fully shown", async ({ page }) => {
-    for (const path of ["/events", "/collective/brody"]) {
+    for (const path of ["/events", "/about/brody"]) {
       await page.goto(path, { waitUntil: "networkidle" });
       await scrollThrough(page);
       await page.waitForTimeout(1200);

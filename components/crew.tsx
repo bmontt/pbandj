@@ -15,7 +15,7 @@ export default function Crew({ ids, link = false }: { ids: FounderId[]; link?: b
           </>
         );
         return link ? (
-          <Link key={id} href={`/collective/${f.slug}`} data-founder={id} className="hover:text-foreground">
+          <Link key={id} href={`/about/${f.slug}`} data-founder={id} className="hover:text-foreground">
             {inner}
           </Link>
         ) : (
