@@ -10,10 +10,14 @@ import { notFound } from "next/navigation";
 import JsonLd from "@/components/json-ld";
 import NextSection from "@/components/next-section";
 import SupportLogos from "@/components/support-logos";
+import EmbedPlayer from "@/components/embed-player";
+import LinkChip from "@/components/link-chip";
 import { DisplayWord } from "@/components/display-word";
 import { ICONS } from "@/components/icons";
 import { content, eventsFor, firstSentence, founderBySlug, founders, media } from "@/lib/content";
 import { formatShort } from "@/lib/dates";
+import { embedFor } from "@/lib/embeds";
+import { PLATFORM_NAME } from "@/lib/links";
 import { enterStyle } from "@/lib/enter";
 import { pageMeta } from "@/lib/meta";
 import { personLd } from "@/lib/schema";
@@ -45,6 +49,11 @@ export default async function FounderPage({ params }: PageProps<"/about/[slug]">
   const nights = eventsFor(f.id);
   const supported = content.supportArtists.filter((a) => f.supports.includes(a.name));
   const info = media[f.image];
+  // one player per founder: their Spotify artist page, else their SoundCloud
+  const playerHref = f.links.spotify ?? f.links.soundcloud;
+  const playerEmbed = playerHref ? embedFor(playerHref, f.id) : null;
+  const player = playerHref && playerEmbed ? { href: playerHref, embed: playerEmbed } : null;
+  const PlayerIcon = player ? ICONS[player.embed.platform] : null;
 
   return (
     <main data-stage-scene="artist" data-stage-artist={f.id} data-founder={f.id} className="relative z-10 px-5 md:px-12">
@@ -72,22 +81,11 @@ export default async function FounderPage({ params }: PageProps<"/about/[slug]">
               <Image src={f.image} alt={`${f.name} (${f.alias})`} width={info.w} height={info.h} priority sizes="(min-width: 768px) 26rem, 92vw" className="frame h-auto w-full" />
             )}
             <ul className="mt-5 flex flex-wrap gap-2">
-              {LINK_ORDER.filter((k) => f.links[k]).map((k) => {
-                const Icon = ICONS[k];
-                return (
-                  <li key={k}>
-                    <a
-                      href={f.links[k]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex min-h-11 items-center gap-2 border border-border px-3 font-mono text-xs text-foreground/75 transition-colors hover:border-foreground/30 hover:text-foreground"
-                    >
-                      <Icon aria-hidden="true" className="h-3.5 w-3.5" />
-                      {k}
-                    </a>
-                  </li>
-                );
-              })}
+              {LINK_ORDER.filter((k) => f.links[k]).map((k) => (
+                <li key={k}>
+                  <LinkChip href={f.links[k]!} platform={k} />
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -104,6 +102,33 @@ export default async function FounderPage({ params }: PageProps<"/about/[slug]">
                 </p>
               ))}
             </div>
+
+            {player && PlayerIcon && (
+              <section aria-labelledby="listen" className="mt-14">
+                <h2 id="listen" className="label rule-line mb-5">
+                  <span>listen</span>
+                </h2>
+                <div data-reveal>
+                  <EmbedPlayer
+                    embed={player.embed}
+                    href={player.href}
+                    title={f.alias}
+                    className="h-[352px]"
+                    icon={<PlayerIcon aria-hidden="true" className="h-3.5 w-3.5" />}
+                  >
+                    <span className="absolute inset-0 flex flex-col justify-center px-6 md:px-10">
+                      <span aria-hidden="true" className="display-hero halo-none block leading-none text-founder/80">
+                        {f.id.toUpperCase()}
+                      </span>
+                      <span className="mt-4 block font-sans text-xl text-foreground">{f.alias}</span>
+                      <span className="mt-1 block font-mono text-xs text-foreground/55">
+                        {player.embed.platform === "spotify" ? "top tracks" : "tracks"} on {PLATFORM_NAME[player.embed.platform].toLowerCase()} · press play to load the player
+                      </span>
+                    </span>
+                  </EmbedPlayer>
+                </div>
+              </section>
+            )}
 
             {f.gear.length > 0 && (
               <section aria-labelledby="gear" className="mt-14">

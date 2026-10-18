@@ -7,10 +7,13 @@
 import Image from "next/image";
 import NextSection from "@/components/next-section";
 import Opener from "@/components/opener";
-import SoundCloudEmbed from "@/components/soundcloud-embed";
+import EmbedPlayer from "@/components/embed-player";
+import LinkChip from "@/components/link-chip";
 import { ICONS } from "@/components/icons";
 import { founders } from "@/lib/content";
 import { formatShort } from "@/lib/dates";
+import { embedFor } from "@/lib/embeds";
+import { PLATFORM_NAME } from "@/lib/links";
 import { pageMeta } from "@/lib/meta";
 import { nextOf, section } from "@/lib/sections";
 import { getTracks } from "@/lib/tracks";
@@ -31,6 +34,7 @@ export default async function SoundsPage() {
   const next = nextOf("music");
   const tracks = await getTracks(9);
   const playlist = PLAYLIST && !PLAYLIST.includes("/you/") ? PLAYLIST : null;
+  const playlistEmbed = playlist ? embedFor(playlist) : null;
 
   return (
     <main data-stage-scene="music" className="relative z-10">
@@ -48,27 +52,52 @@ export default async function SoundsPage() {
           </h2>
           {tracks.length ? (
             <ul className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-8">
-              {tracks.map((t) => (
-                <li key={t.id} data-reveal data-founder={t.founder}>
-                  <a href={t.url} target="_blank" rel="noopener noreferrer" className="group block">
-                    <span className="frame relative block aspect-square overflow-hidden">
-                      {t.image ? (
-                        <Image src={t.image} alt="" fill sizes="(min-width: 768px) 22rem, 46vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                      ) : (
-                        // no artwork (some tracks block embeds): the founder's letter
-                        <span aria-hidden="true" className="display-hero halo-none absolute inset-0 flex items-center justify-center text-founder/70">
-                          {t.founder.toUpperCase()}
+              {tracks.map((t) => {
+                const embed = embedFor(t.url, t.founder);
+                const Icon = ICONS[t.platform];
+                const poster = t.image ? (
+                  <Image src={t.image} alt="" fill sizes="(min-width: 768px) 22rem, 46vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                ) : (
+                  // no artwork (some tracks block embeds): the founder's letter
+                  <span aria-hidden="true" className="display-hero halo-none absolute inset-0 flex items-center justify-center text-founder/70">
+                    {t.founder.toUpperCase()}
+                  </span>
+                );
+                return (
+                  <li key={t.id} data-reveal data-founder={t.founder}>
+                    {embed ? (
+                      <EmbedPlayer embed={embed} href={t.url} title={t.title} className="aspect-square" icon={<Icon aria-hidden="true" className="h-3.5 w-3.5" />}>
+                        {poster}
+                      </EmbedPlayer>
+                    ) : (
+                      <a
+                        href={t.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${t.title} on ${PLATFORM_NAME[t.platform]} (opens in a new tab)`}
+                        className="frame group relative block aspect-square overflow-hidden"
+                      >
+                        {poster}
+                        <span aria-hidden="true" className="absolute bottom-3 left-3 flex h-9 w-9 items-center justify-center rounded-full bg-background/80 text-foreground backdrop-blur-sm">
+                          <Icon className="h-4 w-4" />
                         </span>
-                      )}
-                    </span>
-                    <span className="mt-3 block font-sans text-lg leading-snug text-foreground md:text-xl">{t.title}</span>
-                    <span className="mt-1 flex flex-wrap items-center gap-x-2 font-mono text-xs text-foreground/55">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-founder" />
-                      {t.artist.toLowerCase()} · {t.kind} · {formatShort(t.releaseDate)} · {t.platform} ↗
-                    </span>
-                  </a>
-                </li>
-              ))}
+                      </a>
+                    )}
+                    <a href={t.url} target="_blank" rel="noopener noreferrer" className="group mt-3 block">
+                      <span className="block font-sans text-lg leading-snug text-foreground md:text-xl">{t.title}</span>
+                      <span className="mt-1 flex flex-wrap items-center gap-x-2 font-mono text-xs text-foreground/55">
+                        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-founder" />
+                        {t.artist.toLowerCase()} · {t.kind} · {formatShort(t.releaseDate)} ·
+                        <span className="inline-flex items-center gap-1.5 transition-colors group-hover:text-foreground/85">
+                          <Icon aria-hidden="true" className="h-3.5 w-3.5" />
+                          {PLATFORM_NAME[t.platform].toLowerCase()} <span aria-hidden="true" className="nudge">↗</span>
+                        </span>
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           ) : (
             <p className="copy max-w-2xl" data-reveal>
@@ -84,7 +113,16 @@ export default async function SoundsPage() {
             <h2 id="mixes" className="label rule-line mb-8">
               <span>mixes</span>
             </h2>
-            <SoundCloudEmbed url={playlist} title="the pb&j playlist" />
+            {playlistEmbed ? (
+              <EmbedPlayer embed={playlistEmbed} href={playlist} title="the PB&J playlist" className="h-[450px]" icon={<ICONS.soundcloud aria-hidden="true" className="h-3.5 w-3.5" />}>
+                <span className="absolute inset-0 flex flex-col justify-center px-6 md:px-10">
+                  <span className="display-section halo-none block text-foreground">the pb&amp;j playlist</span>
+                  <span className="mt-3 block font-mono text-xs text-foreground/55">mixes on soundcloud · press play to load the player</span>
+                </span>
+              </EmbedPlayer>
+            ) : (
+              <LinkChip href={playlist} label="the pb&j playlist" className="inline-flex" />
+            )}
           </div>
         </section>
       )}
@@ -103,22 +141,11 @@ export default async function SoundsPage() {
                 </p>
                 <p className="mt-1 font-mono text-xs text-foreground/55">{f.name.toLowerCase()}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
-                  {LINK_ORDER.filter((k) => f.links[k]).map((k) => {
-                    const Icon = ICONS[k];
-                    return (
-                      <li key={k}>
-                        <a
-                          href={f.links[k]}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex min-h-11 items-center gap-2 border border-border px-3 font-mono text-xs text-foreground/75 transition-colors hover:border-foreground/30 hover:text-foreground"
-                        >
-                          <Icon aria-hidden="true" className="h-3.5 w-3.5" />
-                          {k}
-                        </a>
-                      </li>
-                    );
-                  })}
+                  {LINK_ORDER.filter((k) => f.links[k]).map((k) => (
+                    <li key={k}>
+                      <LinkChip href={f.links[k]!} platform={k} />
+                    </li>
+                  ))}
                 </ul>
               </li>
             ))}

@@ -14,6 +14,7 @@ import { countdown, formatDate, isUpcoming } from "@/lib/dates";
 import { enterStyle } from "@/lib/enter";
 import { pageMeta } from "@/lib/meta";
 import { eventLd } from "@/lib/schema";
+import LinkChip from "@/components/link-chip";
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -75,10 +76,8 @@ export default async function EventPage({ params }: PageProps<"/events/[slug]">)
               {e.links?.map((l) => (
                 <div key={l.href}>
                   <dt className="text-foreground/45">{l.label}</dt>
-                  <dd className="mt-1">
-                    <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-foreground/80 underline decoration-foreground/40 underline-offset-4 hover:text-foreground">
-                      {new URL(l.href).hostname.replace(/^www\./, "")} ↗
-                    </a>
+                  <dd className="mt-2">
+                    <LinkChip href={l.href} label={new URL(l.href).hostname.replace(/^www\./, "")} className="inline-flex" />
                   </dd>
                 </div>
               ))}

@@ -1,5 +1,7 @@
 // The live line: next event, latest release, or last event (lib/now.ts).
 import Link from "next/link";
+import { ICONS } from "@/components/icons";
+import { PLATFORM_NAME, platformOf } from "@/lib/links";
 import type { NowLine as Line } from "@/lib/now";
 
 export default function NowLine({ line, className = "" }: { line: Line; className?: string }) {
@@ -12,10 +14,14 @@ export default function NowLine({ line, className = "" }: { line: Line; classNam
     />
   );
   const cls = `inline-block font-mono text-xs text-foreground/70 transition-colors hover:text-foreground ${className}`;
+  const platform = platformOf(line.href);
+  const Icon = ICONS[platform];
   return line.external ? (
     <a href={line.href} target="_blank" rel="noopener noreferrer" className={cls}>
       {dot}
-      {line.text} <span aria-hidden="true">↗</span>
+      {line.text}{" "}
+      <Icon aria-hidden="true" className="ml-1 inline h-3.5 w-3.5 -translate-y-px" />
+      <span className="sr-only"> on {PLATFORM_NAME[platform]} (opens in a new tab)</span> <span aria-hidden="true" className="nudge">↗</span>
     </a>
   ) : (
     <Link href={line.href} className={cls}>

@@ -17,6 +17,8 @@ import { pageMeta } from "@/lib/meta";
 import { nextLine } from "@/lib/now";
 import { eventLd } from "@/lib/schema";
 import { nextOf, section } from "@/lib/sections";
+import LinkChip from "@/components/link-chip";
+import { ICONS } from "@/components/icons";
 
 export const revalidate = 3600;
 
@@ -66,13 +68,13 @@ export default function EventsPage() {
                   </Link>
                   {e.description && <p className="copy mt-4 max-w-2xl">{e.description}</p>}
                   {e.links?.length ? (
-                    <p className="mt-3 flex gap-5 font-mono text-xs">
+                    <ul className="mt-4 flex flex-wrap gap-2">
                       {e.links.map((l) => (
-                        <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="text-foreground/80 underline decoration-foreground/40 underline-offset-4 hover:text-foreground">
-                          {l.label} ↗
-                        </a>
+                        <li key={l.href}>
+                          <LinkChip href={l.href} label={l.label} />
+                        </li>
                       ))}
-                    </p>
+                    </ul>
                   ) : null}
                 </li>
               ))}
@@ -81,6 +83,7 @@ export default function EventsPage() {
             <p className="copy max-w-2xl" data-reveal>
               Nothing announced yet.{" "}
               <a href={content.site.instagram} target="_blank" rel="noopener noreferrer" className="underline decoration-foreground/40 underline-offset-4 hover:text-foreground">
+                <ICONS.instagram aria-hidden="true" className="mr-1.5 inline h-[0.9em] w-[0.9em] -translate-y-px" />
                 Follow @pbandjsounds
               </a>{" "}
               for the next one.

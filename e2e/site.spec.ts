@@ -170,6 +170,55 @@ test.describe("pages", () => {
   });
 });
 
+test.describe("links and players", () => {
+  test("no third-party player loads until someone presses play", async ({ page }) => {
+    const thirdParty: string[] = [];
+    page.on("request", (r) => {
+      if (/w\.soundcloud\.com|open\.spotify\.com\/embed|youtube-nocookie\.com/.test(r.url())) thirdParty.push(r.url());
+    });
+    for (const path of PAGES) {
+      await page.goto(path);
+      await expect(page.locator("iframe")).toHaveCount(0);
+    }
+    expect(thirdParty).toEqual([]);
+  });
+
+  test("pressing play on a founder's player loads the official player in place", async ({ page }) => {
+    // Brody has a Spotify artist page in content.json, so his page always has a player
+    await page.route(/open\.spotify\.com\/embed/, (r) => r.fulfill({ status: 200, contentType: "text/html", body: "<html></html>" }));
+    await page.goto("/about/brody");
+    const facade = page.locator("[data-embed-facade]");
+    await expect(facade).toHaveCount(1);
+    // the player sits in a section that fades in on scroll; scroll to it like a reader
+    await facade.scrollIntoViewIfNeeded();
+    await expect(facade).toHaveAccessibleName("Play Monty on Spotify");
+    await expect(facade).toHaveAttribute("href", /open\.spotify\.com\/artist\//);
+    const size = async () => {
+      const b = await page.locator("[data-embed]").boundingBox();
+      return b && { width: Math.round(b.width), height: Math.round(b.height) };
+    };
+    const before = await size();
+    await facade.click();
+    const frame = page.locator('[data-embed] iframe[src^="https://open.spotify.com/embed/artist/"]');
+    await expect(frame).toHaveCount(1);
+    await expect(frame).toHaveAttribute("title", "Monty on Spotify");
+    // the player takes the poster's box: nothing around it moves
+    expect(await size()).toEqual(before);
+    await expect(page).toHaveURL(/\/about\/brody$/);
+  });
+
+  test("every outbound link shows an icon and has a name", async ({ page }) => {
+    for (const path of PAGES) {
+      await page.goto(path);
+      for (const a of await page.locator('a[target="_blank"], a[href^="mailto:"]').all()) {
+        const href = await a.getAttribute("href");
+        expect(await a.locator("svg").count(), `${path}: ${href} has an icon`).toBeGreaterThan(0);
+        expect((await a.evaluate((el) => (el.getAttribute("aria-label") ?? el.textContent ?? "").trim())).length, `${path}: ${href} has a name`).toBeGreaterThan(0);
+      }
+    }
+  });
+});
+
 test.describe("phone width", () => {
   for (const width of [320, 390]) {
     test(`no horizontal scroll at ${width}px`, async ({ browser }) => {

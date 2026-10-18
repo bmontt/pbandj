@@ -9,6 +9,7 @@ import { DisplayWord } from "@/components/display-word";
 import { content } from "@/lib/content";
 import { pageMeta } from "@/lib/meta";
 import { section } from "@/lib/sections";
+import { ICONS } from "@/components/icons";
 
 export const metadata = pageMeta({
   title: "join",
@@ -57,7 +58,10 @@ export default function JoinPage() {
           </div>
           <div className="mt-10 md:mt-0" data-reveal>
             <a href={mailto} className="group block border border-border px-6 py-6 transition-colors hover:border-foreground/30 md:px-8 md:py-8">
-              <span className="block font-mono text-xs text-foreground/55">email</span>
+              <span className="flex items-center gap-2 font-mono text-xs text-foreground/55">
+                <ICONS.email aria-hidden="true" className="h-3.5 w-3.5" />
+                email
+              </span>
               <span className="mt-2 block break-all font-sans text-2xl text-foreground md:text-3xl">{site.email}</span>
               <span className="mt-4 inline-flex items-center gap-2 font-mono text-xs text-foreground/70 group-hover:text-foreground">
                 subject: {join.subject.toLowerCase()} <span className="nudge">→</span>
