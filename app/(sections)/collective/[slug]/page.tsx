@@ -56,15 +56,13 @@ export default async function FounderPage({ params }: PageProps<"/collective/[sl
           </Link>
           <h1
             data-drift
-            className="display-hero halo-none mt-6 pb-[0.16em] text-foreground enter"
-            // pb: the box holds the descenders (y, g, p) at any size, so the
-            // role under it never touches them
+            className="display-hero halo-none mt-6 text-foreground enter"
             style={{ ...enterStyle({ y: 26, blur: 8, dur: 1, delay: 0.08, ease: RISE }), fontSize: "clamp(3rem, 12.5vw, 11rem)" }}
           >
             <span className="text-founder">{f.name.charAt(0)}</span>
             {f.name.slice(1)}
           </h1>
-          <p data-role className="mt-3 font-mono text-xs text-foreground/65 enter md:mt-4" style={enterStyle({ dur: 0.8, delay: 0.3 })}>
+          <p className="mt-6 font-mono text-xs text-foreground/65 enter md:mt-8" style={enterStyle({ dur: 0.8, delay: 0.3 })}>
             {f.role}
           </p>
         </header>

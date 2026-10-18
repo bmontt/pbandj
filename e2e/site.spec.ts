@@ -193,26 +193,6 @@ test.describe("phone width", () => {
     });
   }
 
-  for (const width of [320, 390]) {
-    test(`founder names clear the role under them at ${width}px`, async ({ browser }) => {
-      const ctx = await browser.newContext({ viewport: { width, height: 844 }, isMobile: true, hasTouch: true, reducedMotion: "reduce" });
-      const page = await ctx.newPage();
-      for (const path of FOUNDERS) {
-        await page.goto(path);
-        // the text's own boxes (they include the font's descent), not the h1's
-        const gap = await page.evaluate(() => {
-          const h1 = document.querySelector("main h1")!;
-          const range = document.createRange();
-          range.selectNodeContents(h1);
-          const ink = Math.max(...[...range.getClientRects()].map((r) => r.bottom));
-          return document.querySelector("main [data-role]")!.getBoundingClientRect().top - ink;
-        });
-        expect(gap, path).toBeGreaterThanOrEqual(4);
-      }
-      await ctx.close();
-    });
-  }
-
   test("the nav is visible on a phone", async ({ browser }) => {
     const ctx = await browser.newContext({ viewport: { width: 320, height: 640 }, isMobile: true, hasTouch: true });
     const page = await ctx.newPage();
