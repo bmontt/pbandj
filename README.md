@@ -63,5 +63,5 @@ Set these in Vercel. They are never committed.
 | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` | submissions, newsletter |
 | `RESEND_API_KEY`, `EMAIL_FROM`, `DEMO_RECIPIENT_EMAIL` | submission and newsletter emails |
 | `BLOB_READ_WRITE_TOKEN` | submission attachments |
-| `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET` | releases on /releases and the founder pages |
-| `NEXT_PUBLIC_SOUNDCLOUD_PLAYLIST_URL` | the SoundCloud playlist on /releases (optional) |
+| `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET` | releases on /sounds |
+| `NEXT_PUBLIC_SOUNDCLOUD_PLAYLIST_URL` | the mix playlist on /sounds (optional) |

@@ -8,7 +8,7 @@
 import { expect, test, type Page } from "@playwright/test";
 import content from "../lib/content.json" with { type: "json" };
 
-const SECTIONS = ["/", "/collective", "/events", "/releases", "/join"];
+const SECTIONS = ["/", "/events", "/sounds", "/collective", "/join"];
 const FOUNDERS = content.founders.map((f) => `/collective/${f.slug}`);
 const EVENTS = content.events.map((e) => `/events/${e.slug}`);
 const PAGES = [...SECTIONS, ...FOUNDERS, ...EVENTS];
@@ -74,13 +74,7 @@ test.describe("routes", () => {
     expect((await request.get("/events/no-such-night")).status()).toBe(404);
   });
 
-  for (const [from, to] of [
-    ["/artists/p", "/collective/peter"],
-    ["/artists/b", "/collective/brody"],
-    ["/artists/j", "/collective/jack"],
-    ["/artists", "/collective"],
-    ["/sounds", "/releases"],
-  ]) {
+  for (const [from, to] of [["/artists/p", "/collective/peter"], ["/artists/b", "/collective/brody"], ["/artists/j", "/collective/jack"], ["/artists", "/collective"]]) {
     test(`${from} redirects to ${to}`, async ({ request }) => {
       const res = await request.get(from, { maxRedirects: 0 });
       expect(res.status()).toBe(308);
@@ -148,7 +142,7 @@ test.describe("pages", () => {
   });
 
   test("every page wrapper names its stage scene; founder pages their artist", async ({ page }) => {
-    const scenes: Record<string, string> = { "/": "landing", "/events": "events", "/releases": "sounds", "/collective": "collective", "/join": "join" };
+    const scenes: Record<string, string> = { "/": "landing", "/events": "events", "/sounds": "sounds", "/collective": "collective", "/join": "join" };
     for (const [path, scene] of Object.entries(scenes)) {
       await page.goto(path);
       await expect(page.locator(`main[data-stage-scene="${scene}"]`)).toHaveCount(1);

@@ -15,7 +15,7 @@ import { getTracks } from "@/lib/tracks";
 
 export const revalidate = 3600;
 
-export const metadata = pageMeta({ title: content.releases.heading, description: content.site.description, path: "/releases" });
+export const metadata = pageMeta({ title: content.releases.heading, description: content.site.description, path: "/sounds" });
 
 const PLAYLIST = process.env.NEXT_PUBLIC_SOUNDCLOUD_PLAYLIST_URL;
 
@@ -25,7 +25,6 @@ export default async function ReleasesPage() {
   const tracks = await getTracks(9);
   const playlist = PLAYLIST && !PLAYLIST.includes("/you/") ? PLAYLIST : null;
 
-  // scene id "sounds": the stage's contract predates the rename to /releases
   return (
     <main data-stage-scene="sounds" className="relative z-10">
       <Opener index={s.index} label={s.label} title={s.heading} />

@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     page("/", 1, "daily"),
     page("/events", 0.9, "daily"),
-    page("/releases", 0.8, "daily"),
+    page("/sounds", 0.8, "daily"),
     page("/collective", 0.8),
     page("/join", 0.6, "monthly"),
     ...founders.map((f) => page(`/collective/${f.slug}`, 0.7, "monthly")),
