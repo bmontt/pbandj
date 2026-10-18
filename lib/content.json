@@ -1,22 +1,24 @@
 {
-  "_README": "The single source of truth for pbandjsounds.com. Every page, the sitemap, the JSON-LD and /llms.txt read this file through lib/content.ts. The copy is the original site's wording (main before the 2026 revamp); keep it that way unless Brody changes it. How to add an event or media: CONTENT.md. Dates are ISO 8601: \"2026-02\" (month), \"2026-02-14\" (day), or \"2026-02-14T22:00-05:00\" (with doors time, which turns on the countdown). Event order is computed from dates, so position in this list doesn't matter. Media paths are under public/.",
+  "_README": "The single source of truth for pbandjsounds.com. Every page, the sitemap, the JSON-LD and /llms.txt read this file through lib/content.ts. How to add an event or media: CONTENT.md. Dates are ISO 8601: \"2026-02\" (month), \"2026-02-14\" (day), or \"2026-02-14T22:00-05:00\" (with doors time, which turns on the countdown). Event order is computed from dates, so position in this list doesn't matter. Media paths are under public/.",
   "site": {
     "name": "PB&J Sounds",
     "short": "PB&J",
     "domain": "pbandjsounds.com",
     "description": "East coast-based music collective and record label focused on bringing underground uk/minimal house to the forefront of electronic music.",
+    "tagline": "east coast collective & label",
+    "genres": [
+      "uk house",
+      "minimal",
+      "deep house"
+    ],
+    "founded": "2024",
     "email": "pbandjmgmt@gmail.com",
-    "_emailNote": "Not on the original site (main shows no address). From brodymontag.com (\"pb&j mgmt\"), used only as the join page's fallback until the form is in. The founders' own addresses use the unconfirmed domain pbanjsounds.com and are not shown until Brody confirms it."
+    "_emailNote": "From brodymontag.com (\"pb&j mgmt\"). The founders' own addresses use the unconfirmed domain pbanjsounds.com and are not shown until Brody confirms it.",
+    "instagram": "https://www.instagram.com/pbandjsounds"
   },
   "collective": {
-    "label": "The Collective",
-    "heading": "PB&J Sounds",
-    "blurb": "Bringing a fresh new sound to the electronic music scene, PB&J Sounds is a dynamic collective of artists and producers backed by a grassroots team dedicated to crafting immersive audio-visual experiences. With a focus on innovative sound design and genre-blending compositions, PB&J aims to captivate audiences while shaping the future of underground electronic music."
-  },
-  "highlights": {
-    "label": "Highlights",
-    "heading": "Past Events",
-    "photos": [
+    "blurb": "Bringing a fresh new sound to the electronic music scene, PB&J Sounds is a dynamic collective of artists and producers backed by a grassroots team dedicated to crafting immersive audio-visual experiences. With a focus on innovative sound design and genre-blending compositions, PB&J aims to captivate audiences while shaping the future of underground electronic music.",
+    "moments": [
       {
         "src": "/echostage.optimized.webp",
         "alt": "PB&J on the screens at Echostage"
@@ -42,23 +44,6 @@
         "alt": "A DJ in ski goggles celebrating at the decks"
       }
     ]
-  },
-  "releases": {
-    "label": "Music",
-    "heading": "Latest Releases"
-  },
-  "join": {
-    "label": "Career",
-    "heading": "Join Our Team",
-    "intro": "Whether you're an artist, promoter, or passionate about dance music, we'd love to hear from you.",
-    "prompt": "Tell us about yourself and why you'd like to join PB&J.",
-    "_promptNote": "Adapted from the form's placeholder (\"Tell us about yourself and why you'd like to join PB&J...\"), shown only with the email fallback."
-  },
-  "founderLabels": {
-    "equipment": "Equipment",
-    "support": "Support",
-    "events": "Past Events",
-    "releases": "Latest Releases"
   },
   "founders": [
     {
@@ -178,6 +163,7 @@
     {
       "slug": "waterfront-hotel-2026-02",
       "title": "Waterfront Hotel",
+      "city": "Baltimore",
       "date": "2026-02",
       "crew": [
         "j"
@@ -201,6 +187,7 @@
     {
       "slug": "bass-barn-2026-02",
       "title": "Bass Barn",
+      "city": "Joppa, MD",
       "date": "2026-02",
       "crew": [
         "j"
@@ -220,6 +207,7 @@
     {
       "slug": "livs-tavern-club-room-2026-02",
       "title": "Liv's Tavern \"Club Room\"",
+      "city": "Baltimore",
       "date": "2026-02",
       "crew": [
         "j"
@@ -247,6 +235,7 @@
     {
       "slug": "chop-shop-with-gunpoint-2026-01",
       "title": "Chop Shop with Gunpoint",
+      "city": "Baltimore",
       "date": "2026-01",
       "crew": [
         "j"
@@ -262,6 +251,7 @@
     {
       "slug": "soundgarden-2025-11",
       "title": "SoundGarden",
+      "city": "Baltimore",
       "date": "2025-11",
       "crew": [
         "j"
@@ -281,6 +271,7 @@
     {
       "slug": "waterfront-hotel-2025-11",
       "title": "Waterfront Hotel",
+      "city": "Baltimore",
       "date": "2025-11",
       "crew": [
         "j"
@@ -300,6 +291,7 @@
     {
       "slug": "friends-wedding-2025-10",
       "title": "Friend's Wedding",
+      "city": "Eastern Shore, MD",
       "date": "2025-10",
       "crew": [
         "j",
@@ -315,7 +307,8 @@
     },
     {
       "slug": "flash-rooftop-2025-09",
-      "title": "Flash Rooftop (DC)",
+      "title": "Flash Rooftop",
+      "city": "DC",
       "date": "2025-09",
       "crew": [
         "b"
@@ -335,6 +328,7 @@
     {
       "slug": "office-jam-session-2025-09",
       "title": "Office Jam Session",
+      "city": "DC",
       "date": "2025-09",
       "crew": [
         "j"
@@ -357,7 +351,8 @@
     },
     {
       "slug": "soundcheck-2025-07",
-      "title": "Soundcheck (DC)",
+      "title": "Soundcheck",
+      "city": "DC",
       "date": "2025-07",
       "crew": [
         "b"
@@ -380,7 +375,8 @@
     },
     {
       "slug": "public-art-space-2025-06",
-      "title": "Public Art Space (NYC)",
+      "title": "Public Art Space",
+      "city": "NYC",
       "date": "2025-06",
       "crew": [
         "b"
@@ -400,6 +396,7 @@
     {
       "slug": "bonnaroo-renegade-stage-2025-06",
       "title": "Bonnaroo Renegade Stage",
+      "city": "Tennessee",
       "date": "2025-06",
       "crew": [
         "j"
@@ -426,7 +423,8 @@
     },
     {
       "slug": "zebbies-garden-2025-04",
-      "title": "Zebbie's Garden (DC)",
+      "title": "Zebbie's Garden",
+      "city": "DC",
       "date": "2025-04",
       "crew": [
         "b"
@@ -514,7 +512,8 @@
     },
     {
       "slug": "power-plant-live-2024-10",
-      "title": "Power Plant Live! (Baltimore)",
+      "title": "Power Plant Live!",
+      "city": "Baltimore",
       "date": "2024-10",
       "crew": [
         "b"
@@ -533,7 +532,8 @@
     },
     {
       "slug": "soundcheck-2024-09",
-      "title": "Soundcheck (DC)",
+      "title": "Soundcheck",
+      "city": "DC",
       "date": "2024-09",
       "crew": [
         "b"
@@ -552,7 +552,8 @@
     },
     {
       "slug": "somewhere-nowhere-2024-07",
-      "title": "Somewhere Nowhere (NYC)",
+      "title": "Somewhere Nowhere",
+      "city": "NYC",
       "date": "2024-07",
       "crew": [
         "b"
@@ -575,7 +576,8 @@
     },
     {
       "slug": "looneys-pub-2023-09",
-      "title": "Looney's Pub (College Park)",
+      "title": "Looney's Pub",
+      "city": "College Park",
       "date": "2023-09",
       "crew": [
         "b"
@@ -588,5 +590,17 @@
         }
       ]
     }
-  ]
+  ],
+  "join": {
+    "label": "open call",
+    "heading": "join the team",
+    "intro": "Whether you're an artist, promoter, or passionate about dance music, we'd love to hear from you.",
+    "roles": [
+      "producer",
+      "artist",
+      "engineer"
+    ],
+    "send": "a portfolio, demo or CV",
+    "subject": "PB&J open call"
+  }
 }

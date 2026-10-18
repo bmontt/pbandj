@@ -16,10 +16,10 @@ export default function SoundCloudEmbed({ url, title }: { url: string; title: st
       >
         <span>
           <span className="block font-sans text-xl text-foreground">{title}</span>
-          <span className="mt-1 block font-mono text-xs text-foreground/55">load the player</span>
+          <span className="mt-1 block font-mono text-xs text-foreground/55">loads the soundcloud player · nothing plays until you press play</span>
         </span>
         <span aria-hidden="true" className="nudge font-mono text-sm text-foreground/70">
-          ▸
+          load ▸
         </span>
       </button>
     );

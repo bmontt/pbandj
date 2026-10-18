@@ -1,12 +1,12 @@
-// The share card for every page: the blackletter mark in the logo cream on the
-// site's near-black, the name under it, and the founders' rule (P, B, J in
-// their colors). Rendered once at build.
+// The share card for every page: the blackletter mark in cream on the site's
+// near-black, the line under it, and the founders' rule (three lengths, one per
+// letter). Rendered once at build.
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { content } from "@/lib/content";
 
-export const alt = "PB&J Sounds";
+export const alt = "PB&J Sounds: east coast collective & label";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -33,7 +33,7 @@ export default function OpengraphImage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={mark} width={560} height={285} alt="" />
         <div style={{ display: "flex", marginTop: 44, fontSize: 38, letterSpacing: "-0.02em", color: "rgba(245,235,220,0.78)" }}>
-          {content.site.name}
+          {content.site.tagline}
         </div>
         <div style={{ display: "flex", marginTop: 30, width: 300, height: 3 }}>
           <div style={{ flex: 1, background: "#B58657" }} />

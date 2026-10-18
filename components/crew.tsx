@@ -1,7 +1,7 @@
-// Who was behind an event: the founders' first names, each with a dot in
-// their color, linking to their page.
+// Who was behind a night: the founders' stage names, each in their letter's
+// family, linking to their page.
 import Link from "next/link";
-import { firstName, founderById, type FounderId } from "@/lib/content";
+import { founderById, type FounderId } from "@/lib/content";
 
 export default function Crew({ ids, link = false }: { ids: FounderId[]; link?: boolean }) {
   return (
@@ -11,7 +11,7 @@ export default function Crew({ ids, link = false }: { ids: FounderId[]; link?: b
         const inner = (
           <>
             <span aria-hidden="true" className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-founder align-middle" />
-            {firstName(f)}
+            {f.alias.toLowerCase()}
           </>
         );
         return link ? (

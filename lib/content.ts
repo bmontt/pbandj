@@ -23,8 +23,8 @@ export interface Link {
 
 export interface Event {
   slug: string;
-  /** the original title; Brody's sets carry the city in parentheses */
   title: string;
+  city?: string;
   /** ISO 8601 at known precision; see lib/dates.ts */
   date: string;
   /** the founders behind it (their sets, their lights) */
@@ -55,22 +55,28 @@ export interface SupportArtist {
   logo: string;
 }
 
-export interface Photo {
+export interface Moment {
   src: string;
   alt: string;
 }
 
 export interface Content {
-  site: { name: string; short: string; domain: string; description: string; email: string };
-  /** each section's small label and heading, as the original site set them */
-  collective: { label: string; heading: string; blurb: string };
-  highlights: { label: string; heading: string; photos: Photo[] };
-  releases: { label: string; heading: string };
-  join: { label: string; heading: string; intro: string; prompt: string };
-  founderLabels: { equipment: string; support: string; events: string; releases: string };
+  site: {
+    name: string;
+    short: string;
+    domain: string;
+    description: string;
+    tagline: string;
+    genres: string[];
+    founded: string;
+    email: string;
+    instagram: string;
+  };
+  collective: { blurb: string; moments: Moment[] };
   founders: Founder[];
   supportArtists: SupportArtist[];
   events: Event[];
+  join: { label: string; heading: string; intro: string; roles: string[]; send: string; subject: string };
 }
 
 export interface MediaInfo {
@@ -137,12 +143,6 @@ export function coverOf(e: Event): { src: string; w: number; h: number } | null 
   }
   return null;
 }
-
-/** "DC" from "Soundcheck (DC)": the city Brody's titles carry, for structured data */
-export const cityOf = (e: Event) => e.title.match(/\(([^)]+)\)$/)?.[1];
-
-/** the first name, for crew lists: "Brody" */
-export const firstName = (f: Founder) => f.name.split(" ")[0];
 
 export const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
 

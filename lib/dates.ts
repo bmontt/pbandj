@@ -46,9 +46,9 @@ export function isUpcoming(iso: string, now: Date = new Date()): boolean {
   return iso > today.slice(0, iso.length);
 }
 
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
-/** "April 2025" (as the original site wrote dates), "October 24, 2026", "October 24, 2026 · 10pm" */
+/** "april 2025", "october 24, 2026", "october 24, 2026 · 10pm" */
 export function formatDate(iso: string): string {
   const p = precision(iso);
   const [y, m, d] = iso.slice(0, 10).split("-");
@@ -65,7 +65,7 @@ export function formatDate(iso: string): string {
   return `${day} · ${time}`;
 }
 
-/** "Apr 2025" — the short form for dense lists */
+/** "apr 2025" — the short form for dense lists */
 export function formatShort(iso: string): string {
   const p = precision(iso);
   const [y, m, d] = iso.slice(0, 10).split("-");
@@ -78,7 +78,7 @@ const dayNumber = (ymd: string) => Date.UTC(Number(ymd.slice(0, 4)), Number(ymd.
 
 /**
  * The countdown in words, for an upcoming date: "tonight", "tomorrow",
- * "in 9 days", "in December". Exact to the hour when doors are listed.
+ * "in 9 days", "in december". Exact to the hour when doors are listed.
  */
 export function countdown(iso: string, now: Date = new Date()): string {
   const p = precision(iso);

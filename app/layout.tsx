@@ -24,8 +24,7 @@ const { site } = content;
 
 export const metadata: Metadata = {
   metadataBase: new URL(ORIGIN),
-  // the original site's title was "PB&J"
-  title: { default: site.short, template: `%s · ${site.short}` },
+  title: { default: `${site.name} · ${site.tagline}`, template: `%s · ${site.name}` },
   description: site.description,
   applicationName: site.name,
   openGraph: { siteName: site.name, type: "website", locale: "en_US", url: ORIGIN },
