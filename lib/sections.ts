@@ -23,7 +23,7 @@ const { collective, highlights, releases, join } = content;
 export const SECTIONS: Section[] = [
   { id: "collective", href: "/collective", index: "01", nav: "collective", label: collective.label, heading: collective.heading, name: collective.label },
   { id: "events", href: "/events", index: "02", nav: "events", label: highlights.label, heading: highlights.heading, name: highlights.heading },
-  { id: "releases", href: "/sounds", index: "03", nav: "releases", label: releases.label, heading: releases.heading, name: releases.heading },
+  { id: "releases", href: "/releases", index: "03", nav: "releases", label: releases.label, heading: releases.heading, name: releases.heading },
   { id: "join", href: "/join", index: "04", nav: "join", label: join.label, heading: join.heading, name: join.heading },
 ];
 

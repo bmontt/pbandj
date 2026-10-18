@@ -19,15 +19,17 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 85],
-    // track artwork from the sounds page (lib/tracks.ts): Spotify and SoundCloud CDNs
+    // track artwork on /releases and the founder pages (lib/tracks.ts): Spotify and SoundCloud CDNs
     remotePatterns: [
       { protocol: "https", hostname: "i.scdn.co" },
       { protocol: "https", hostname: "*.sndcdn.com" },
     ],
   },
   async redirects() {
-    // the v0 site's artist pages
+    // the v0 site's artist pages, and /sounds from before the section took
+    // its original name back ("Latest Releases")
     return [
+      { source: "/sounds", destination: "/releases", permanent: true },
       { source: "/artists/p", destination: "/collective/peter", permanent: true },
       { source: "/artists/b", destination: "/collective/brody", permanent: true },
       { source: "/artists/j", destination: "/collective/jack", permanent: true },

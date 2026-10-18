@@ -32,7 +32,7 @@ export function llmsText(now: Date = new Date()): string {
   L.push(`- [${join.heading}](${ORIGIN}/join): ${join.intro}`);
 
   L.push("", "## Optional");
-  L.push(`- [${content.releases.heading}](${ORIGIN}/sounds)`);
+  L.push(`- [${content.releases.heading}](${ORIGIN}/releases)`);
   L.push(`- [Sitemap](${ORIGIN}/sitemap.xml)`);
   return L.join("\n") + "\n";
 }

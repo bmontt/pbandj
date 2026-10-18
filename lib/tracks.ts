@@ -1,5 +1,5 @@
 // ── tracks ────────────────────────────────────────────────────────────────────
-// Server-side releases for /sounds and the landing's "now" line, fetched at
+// Server-side releases for /releases and the landing's "now" line, fetched at
 // render and cached with the page (ISR, hourly). The same sources the old
 // /api/latest-tracks route used, which stays as-is for anything still
 // calling it:
