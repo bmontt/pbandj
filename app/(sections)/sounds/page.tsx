@@ -33,7 +33,7 @@ export default async function SoundsPage() {
   const playlist = PLAYLIST && !PLAYLIST.includes("/you/") ? PLAYLIST : null;
 
   return (
-    <main data-stage-scene="sounds" data-accent={s.accent} className="relative z-10">
+    <main data-stage-scene="sounds" className="relative z-10">
       <Opener
         index={s.index}
         label={s.label}
@@ -43,7 +43,7 @@ export default async function SoundsPage() {
 
       <section aria-labelledby="latest" data-stage-anchor="latest" className="px-5 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <h2 id="latest" className="label spread mb-8">
+          <h2 id="latest" className="label rule-line mb-8">
             <span>latest</span>
           </h2>
           {tracks.length ? (
@@ -56,14 +56,14 @@ export default async function SoundsPage() {
                         <Image src={t.image} alt="" fill sizes="(min-width: 768px) 22rem, 46vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                       ) : (
                         // no artwork (some tracks block embeds): the founder's letter
-                        <span aria-hidden="true" className="display-hero halo-none absolute inset-0 flex items-center justify-center text-accent/70">
+                        <span aria-hidden="true" className="display-hero halo-none absolute inset-0 flex items-center justify-center text-founder/70">
                           {t.founder.toUpperCase()}
                         </span>
                       )}
                     </span>
                     <span className="mt-3 block font-sans text-lg leading-snug text-foreground md:text-xl">{t.title}</span>
                     <span className="mt-1 flex flex-wrap items-center gap-x-2 font-mono text-xs text-foreground/55">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" />
+                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-founder" />
                       {t.artist.toLowerCase()} · {t.kind} · {formatShort(t.releaseDate)} · {t.platform} ↗
                     </span>
                   </a>
@@ -81,7 +81,7 @@ export default async function SoundsPage() {
       {playlist && (
         <section aria-labelledby="mixes" data-stage-anchor="mixes" className="mt-24 px-5 md:mt-32 md:px-12">
           <div className="mx-auto max-w-6xl" data-reveal>
-            <h2 id="mixes" className="label spread mb-8">
+            <h2 id="mixes" className="label rule-line mb-8">
               <span>mixes</span>
             </h2>
             <SoundCloudEmbed url={playlist} title="the pb&j playlist" />
@@ -91,7 +91,7 @@ export default async function SoundsPage() {
 
       <section aria-labelledby="listen" data-stage-anchor="listen" className="mt-24 px-5 md:mt-32 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <h2 id="listen" className="label spread mb-8">
+          <h2 id="listen" className="label rule-line mb-8">
             <span>listen</span>
           </h2>
           <ul className="grid gap-px border-y border-border md:grid-cols-3 md:border-y-0">
@@ -126,7 +126,7 @@ export default async function SoundsPage() {
         </div>
       </section>
 
-      <NextSection href={next.href} word={next.label} caption={founders.map((f) => f.slug).join(" · ")} accent={next.accent} />
+      <NextSection href={next.href} word={next.label} caption={founders.map((f) => f.slug).join(" · ")} />
     </main>
   );
 }

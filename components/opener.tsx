@@ -1,5 +1,5 @@
 // ── section opener ────────────────────────────────────────────────────────────
-// Each section page opens the same way: the index label with its spread
+// Each section page opens the same way: the index label with its founders' rule
 // hairline, the section word huge, a line saying what's here, and the live
 // line. The background steps back behind it ([data-stage-anchor="opener"]).
 
@@ -25,7 +25,7 @@ export default function Opener({
   return (
     <header data-stage-anchor="opener" className="relative flex min-h-[62svh] flex-col justify-end px-5 pt-32 pb-12 md:min-h-[82svh] md:px-12 md:pb-16">
       <div className="mx-auto w-full max-w-6xl">
-        <p className="label spread enter" style={enterStyle({ dur: 0.7 })}>
+        <p className="label rule-line enter" style={enterStyle({ dur: 0.7 })}>
           <span>
             {index} <span className="text-foreground/35">/</span> {label}
           </span>

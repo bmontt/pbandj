@@ -23,13 +23,13 @@ export default function SiteNav() {
           {SECTIONS.map((s) => {
             const active = path === s.href || path.startsWith(`${s.href}/`);
             return (
-              <li key={s.id} data-accent={s.accent}>
+              <li key={s.id}>
                 <Link
                   href={s.href}
                   aria-current={active ? "page" : undefined}
                   className={`flex min-h-11 items-center transition-colors duration-200 ${
                     active
-                      ? "text-foreground underline decoration-accent decoration-1 underline-offset-[6px]"
+                      ? "text-foreground underline decoration-foreground/40 decoration-1 underline-offset-[6px]"
                       : "text-foreground/55 hover:text-foreground/90"
                   }`}
                 >

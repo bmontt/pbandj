@@ -32,8 +32,8 @@ One lockfile: `package-lock.json` (npm).
   - Client code is limited to small islands: the nav's active state, smooth
     scroll, the motion controller, the countdown and the SoundCloud player.
 - **Design system:** `app/globals.css`.
-  - oklch tokens: cream on near-black, with one accent family per letter and
-    founder (P peanut butter, B bread, J jelly).
+  - oklch tokens: the logo cream on near-black, with one accent color per
+    founder (P = Peter #B58657, B = Brody #C44D58, J = Jack #935BAD).
   - A reading-size type scale, a clamp() display scale, a text halo, and
     reduced-motion rules.
   - Fonts: Neue Haas Grotesk Display Medium (`app/fonts`, WOFF2) and Geist Mono.

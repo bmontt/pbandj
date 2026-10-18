@@ -58,16 +58,16 @@ export default async function Home() {
           {choices.map((c, i) => (
             <div
               key={c.id}
-              data-accent={c.accent}
+             
               className={`choice enter ${c.place}`}
               style={enterStyle({ y: 24, blur: 8, dur: 1, delay: 0.85 + i * 0.14, ease: RISE })}
             >
               <Link href={c.href} data-stage-anchor={`choice-${c.id}`} className="group inline-block">
-                <span style={{ fontSize: "clamp(3rem, 14vw, 7rem)" }} className="display-choice halo-none block text-foreground transition-colors duration-500 group-hover:text-accent group-focus-visible:text-accent">
+                <span style={{ fontSize: "clamp(3rem, 14vw, 7rem)" }} className="display-choice halo-none block text-foreground transition-colors duration-500">
                   <DisplayWord text={c.label} tracking={-0.045} />
                 </span>
                 <span className="mt-2 flex items-center gap-2 font-mono text-xs text-foreground/55 transition-colors group-hover:text-foreground/80 md:inline-flex">
-                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-foreground/45" />
                   {c.caption}
                   <span aria-hidden="true" className="nudge">→</span>
                 </span>

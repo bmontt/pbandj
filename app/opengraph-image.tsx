@@ -1,5 +1,5 @@
 // The share card for every page: the blackletter mark in cream on the site's
-// near-black, the line under it, and the spread (three lengths, one per
+// near-black, the line under it, and the founders' rule (three lengths, one per
 // letter). Rendered once at build.
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
@@ -26,7 +26,7 @@ export default function OpengraphImage() {
           justifyContent: "center",
           background: "#080706",
           backgroundImage:
-            "radial-gradient(circle at 18% 22%, rgba(181,134,87,0.16), transparent 45%), radial-gradient(circle at 82% 30%, rgba(147,91,173,0.14), transparent 45%)",
+            "radial-gradient(circle at 18% 22%, rgba(181,134,87,0.14), transparent 45%), radial-gradient(circle at 50% 100%, rgba(196,77,88,0.10), transparent 45%), radial-gradient(circle at 82% 30%, rgba(147,91,173,0.14), transparent 45%)",
           fontFamily: "Neue",
         }}
       >
@@ -36,9 +36,9 @@ export default function OpengraphImage() {
           {content.site.tagline}
         </div>
         <div style={{ display: "flex", marginTop: 30, width: 300, height: 3 }}>
-          <div style={{ flex: 1, background: "#EA9A6C" }} />
-          <div style={{ flex: 1, background: "#F5EBDC" }} />
-          <div style={{ flex: 1, background: "#B88CD0" }} />
+          <div style={{ flex: 1, background: "#B58657" }} />
+          <div style={{ flex: 1, background: "#C44D58" }} />
+          <div style={{ flex: 1, background: "#935BAD" }} />
         </div>
       </div>
     ),

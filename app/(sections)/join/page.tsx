@@ -22,18 +22,18 @@ export default function JoinPage() {
   const mailto = `mailto:${site.email}?subject=${encodeURIComponent(join.subject)}`;
 
   return (
-    <main data-stage-scene="join" data-accent={s.accent} className="relative z-10">
+    <main data-stage-scene="join" className="relative z-10">
       <Opener index={s.index} label={join.label} title="join" line={<p className="display-sub text-foreground/85">{join.intro}</p>} />
 
       <section aria-labelledby="roles" data-stage-anchor="roles" className="px-5 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <h2 id="roles" className="label spread mb-8">
+          <h2 id="roles" className="label rule-line mb-8">
             <span>{join.heading}</span>
           </h2>
           <ul className="grid gap-2">
             {join.roles.map((r, i) => (
-              <li key={r} data-reveal data-founder={(["p", "b", "j"] as const)[i % 3]} className="display-section halo-none text-foreground">
-                <span className="mr-4 align-middle font-mono text-xs text-accent">0{i + 1}</span>
+              <li key={r} data-reveal className="display-section halo-none text-foreground">
+                <span className="mr-4 align-middle font-mono text-xs text-foreground/50">0{i + 1}</span>
                 {r}
               </li>
             ))}
@@ -48,7 +48,7 @@ export default function JoinPage() {
       <section id="apply" data-join-form aria-labelledby="apply-heading" data-stage-anchor="apply" className="mt-24 px-5 md:mt-32 md:px-12">
         <div className="mx-auto max-w-6xl md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-16">
           <div data-reveal>
-            <h2 id="apply-heading" className="label spread mb-6">
+            <h2 id="apply-heading" className="label rule-line mb-6">
               <span>apply</span>
             </h2>
             <p className="copy max-w-xl">
@@ -69,11 +69,11 @@ export default function JoinPage() {
 
       <section aria-label="next" className="relative z-10 px-5 pt-32 pb-16 md:px-12 md:pt-48">
         <div className="mx-auto max-w-6xl" data-reveal>
-          <p className="label spread mb-5">
+          <p className="label rule-line mb-5">
             <span>start over</span>
           </p>
           <Link href="/" className="group inline-block">
-            <span className="display-choice halo-none inline-block text-foreground transition-colors duration-500 group-hover:text-accent">
+            <span className="display-choice halo-none inline-block text-foreground transition-colors duration-500">
               <DisplayWord text="pb&j" tracking={-0.045} /> <span className="nudge" aria-hidden="true">→</span>
             </span>
             <span className="mt-4 block font-mono text-xs text-foreground/55 group-hover:text-foreground/75">back to the start</span>

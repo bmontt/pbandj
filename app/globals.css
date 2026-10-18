@@ -1,31 +1,32 @@
 @import "tailwindcss";
 
 /* ── PB&J design tokens ────────────────────────────────────────────────────────
-   Dark only. The foreground is the logo's warm cream, not white. Color is for
-   accents: one family per letter and per founder (from the old lib/colors.ts),
-   each with a "-hi" step that stays legible as small text on the background.
-     P  peanut butter #B58657 · apricot #EA9A6C      Peter Gomes ("Peter Jacob")
-     B  bread cream   #F5EBDC · toasted #C69A6C      Brody Montag ("Monty")
-     J  grape         #935BAD · strawberry #C44D58   Jack Humphreys
+   Dark only. The foreground is the logo cream (#F5EBDC), not white. Color is
+   for accents: one per founder and letter, the colors the original site gave
+   their initials (main: components/epk-section.tsx):
+     P  #B58657   Peter Gomes
+     B  #C44D58   Brody Montag
+     J  #935BAD   Jack Humphreys
+   On the near-black background P passes WCAG AA as small text (6.2:1); B
+   (4.4:1) and J (4.2:1) don't, so small text uses each founder's "-hi" step:
+   the same hue, lightened until it clears 5:1. The base colors are for dots,
+   rules and the large initials (3:1 is enough at display size).
    Photos, logos and icons always show in full color. */
 :root {
   --background: oklch(0.13 0.003 70);
-  --foreground: oklch(0.944 0.023 78.2); /* #F5EBDC, bread cream */
-  --mark: oklch(0.964 0.015 90.2); /* the logo's own cream, #F7F3E8 */
+  --foreground: oklch(0.944 0.023 78.2); /* the logo cream, #F5EBDC */
+  --mark: oklch(0.964 0.015 90.2); /* the mark's own cream, #F7F3E8 */
 
-  --p: oklch(0.655 0.086 65.4); /* peanut butter */
-  --p-hi: oklch(0.756 0.114 50.2); /* apricot */
-  --b: oklch(0.944 0.023 78.2); /* bread cream */
-  --b-hi: oklch(0.717 0.081 67.2); /* toasted */
-  --j: oklch(0.566 0.135 314.3); /* grape */
-  --j-2: oklch(0.581 0.152 17.7); /* strawberry */
-  --j-hi: oklch(0.74 0.12 314); /* grape, lifted for text */
-  --j-2-hi: oklch(0.72 0.13 18); /* strawberry, lifted for text */
+  --p: oklch(0.655 0.086 65.4); /* #B58657 */
+  --p-hi: oklch(0.655 0.086 65.4); /* already AA: 6.2:1 */
+  --b: oklch(0.581 0.152 17.7); /* #C44D58 */
+  --b-hi: oklch(0.631 0.152 17.7); /* #D55D66, 5.4:1 */
+  --j: oklch(0.566 0.135 314.3); /* #935BAD */
+  --j-hi: oklch(0.626 0.135 314.3); /* #A66DC0, 5.3:1 */
 
-  /* the accent a subtree speaks in: cream by default; a founder's family
-     inside [data-founder] */
-  --accent: var(--b-hi);
-  --accent-soft: oklch(0.717 0.081 67.2 / 0.35);
+  /* the accent a subtree speaks in: the logo cream by default; a founder's
+     text shade inside [data-founder] */
+  --accent: var(--foreground);
 
   --card: oklch(0.17 0.004 70);
   --muted-foreground: oklch(0.944 0.023 78.2 / 0.6);
@@ -35,9 +36,9 @@
   color-scheme: dark;
 }
 
-[data-founder="p"], [data-accent="p"] { --accent: var(--p-hi); --accent-soft: oklch(0.756 0.114 50.2 / 0.35); }
-[data-founder="b"], [data-accent="b"] { --accent: var(--b-hi); --accent-soft: oklch(0.717 0.081 67.2 / 0.35); }
-[data-founder="j"], [data-accent="j"] { --accent: var(--j-hi); --accent-soft: oklch(0.74 0.12 314 / 0.35); }
+[data-founder="p"] { --accent: var(--p-hi); --founder: var(--p); }
+[data-founder="b"] { --accent: var(--b-hi); --founder: var(--b); }
+[data-founder="j"] { --accent: var(--j-hi); --founder: var(--j); }
 
 @theme inline {
   --font-sans: var(--font-neue), "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -49,14 +50,14 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
   --color-accent: var(--accent);
+  /* a founder's base color inside [data-founder]: dots, rules, initials */
+  --color-founder: var(--founder, var(--foreground));
   --color-p: var(--p);
   --color-p-hi: var(--p-hi);
   --color-b: var(--b);
   --color-b-hi: var(--b-hi);
   --color-j: var(--j);
-  --color-j-2: var(--j-2);
   --color-j-hi: var(--j-hi);
-  --color-j-2-hi: var(--j-2-hi);
 }
 
 /* ── type scale ────────────────────────────────────────────────────────────────
@@ -144,7 +145,7 @@
     @apply min-h-svh bg-background font-sans text-foreground;
   }
   ::selection {
-    background: oklch(0.756 0.114 50.2 / 0.35);
+    background: oklch(0.655 0.086 65.4 / 0.4);
   }
   :focus-visible {
     outline: 2px solid var(--ring);
@@ -172,8 +173,7 @@ footer :where(p, li, a) {
 
 /* ── the background slot ───────────────────────────────────────────────────────
    The ASCII stage (revamp-stage, <StageRoot />) mounts here. Until it does, a
-   plain CSS field: three faint, static glows, one per letter, set like the
-   three bodies of the field. Pinned to the large viewport (lvh) so mobile
+   plain CSS field: three faint, static glows, one per founder. Pinned to the large viewport (lvh) so mobile
    toolbars never resize it mid-scroll. */
 .stage-box {
   position: fixed;
@@ -186,29 +186,30 @@ footer :where(p, li, a) {
 }
 .stage-fallback {
   background:
-    radial-gradient(38rem 30rem at 18% 22%, oklch(0.655 0.086 65.4 / 0.09), transparent 70%),
-    radial-gradient(34rem 28rem at 82% 30%, oklch(0.566 0.135 314.3 / 0.08), transparent 70%),
-    radial-gradient(40rem 26rem at 50% 92%, oklch(0.944 0.023 78.2 / 0.045), transparent 70%);
+    radial-gradient(38rem 30rem at 18% 22%, oklch(0.655 0.086 65.4 / 0.08), transparent 70%),
+    radial-gradient(40rem 26rem at 50% 92%, oklch(0.581 0.152 17.7 / 0.06), transparent 70%),
+    radial-gradient(34rem 28rem at 82% 30%, oklch(0.566 0.135 314.3 / 0.08), transparent 70%);
 }
 
-/* ── the spread ────────────────────────────────────────────────────────────────
-   PB&J's hairline: one rule in three lengths of its three families, drawn out
-   of a section label as it arrives (.spread-on, components/motion.tsx). */
-.spread {
+/* ── the founders' rule ────────────────────────────────────────────────────────
+   PB&J's hairline: one rule in three lengths, P, B and J in the founders'
+   colors, drawn out of a section label as it arrives (.rule-on,
+   components/motion.tsx). */
+.rule-line {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.spread::after {
+.rule-line::after {
   content: "";
   flex: 1;
   max-width: 22rem;
   height: 1px;
   background: linear-gradient(
     90deg,
-    oklch(0.756 0.114 50.2 / 0.7) 0 33%,
-    oklch(0.944 0.023 78.2 / 0.5) 33% 66%,
-    oklch(0.74 0.12 314 / 0.7) 66% 100%
+    oklch(0.655 0.086 65.4 / 0.8) 0 33%,
+    oklch(0.631 0.152 17.7 / 0.8) 33% 66%,
+    oklch(0.626 0.135 314.3 / 0.8) 66% 100%
   );
   mask-image: linear-gradient(90deg, #000 60%, transparent);
   transform-origin: left;
@@ -216,7 +217,7 @@ footer :where(p, li, a) {
 }
 /* drawn by default (no JS, reduced motion); motion.tsx sets data-motion and
    marks the ones already on screen before hiding the rest */
-[data-motion] .spread:not(.spread-on)::after {
+[data-motion] .rule-line:not(.rule-on)::after {
   transform: scaleX(0);
 }
 
@@ -282,7 +283,7 @@ footer :where(p, li, a) {
   .now-dot {
     animation: none;
   }
-  .spread::after {
+  .rule-line::after {
     transform: none;
     transition: none;
   }

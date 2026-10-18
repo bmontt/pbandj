@@ -43,13 +43,13 @@ export default async function EventPage({ params }: PageProps<"/events/[slug]">)
   const name = e.city ? `${e.title} (${e.city})` : e.title;
 
   return (
-    <main data-stage-scene="event" data-accent="j" className="relative z-10 px-5 md:px-12">
+    <main data-stage-scene="event" className="relative z-10 px-5 md:px-12">
       <article className="mx-auto max-w-6xl">
         <header data-stage-anchor="event" className="pt-32 pb-12 md:pt-40 md:pb-16">
           <Link href="/events" className="-my-3 inline-flex min-h-11 items-center font-mono text-xs text-foreground/60 hover:text-foreground">
             ← events
           </Link>
-          <p className="label spread mt-6 enter" style={enterStyle({ dur: 0.7 })}>
+          <p className="label rule-line mt-6 enter" style={enterStyle({ dur: 0.7 })}>
             <span>
               {soon ? "next up" : "played"} · {formatDate(e.date)}
               {e.city ? ` · ${e.city.toLowerCase()}` : ""}
@@ -59,7 +59,7 @@ export default async function EventPage({ params }: PageProps<"/events/[slug]">)
             {e.title}
           </h1>
           {soon && (
-            <p className="mt-4 font-mono text-sm text-j-2-hi">
+            <p className="mt-4 font-mono text-sm text-foreground/85">
               <Countdown date={e.date} initial={countdown(e.date)} />
             </p>
           )}
@@ -76,7 +76,7 @@ export default async function EventPage({ params }: PageProps<"/events/[slug]">)
                 <div key={l.href}>
                   <dt className="text-foreground/45">{l.label}</dt>
                   <dd className="mt-1">
-                    <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-foreground/80 underline decoration-accent underline-offset-4 hover:text-foreground">
+                    <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-foreground/80 underline decoration-foreground/40 underline-offset-4 hover:text-foreground">
                       {new URL(l.href).hostname.replace(/^www\./, "")} ↗
                     </a>
                   </dd>

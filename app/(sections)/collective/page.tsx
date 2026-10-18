@@ -24,7 +24,7 @@ export default function CollectivePage() {
   const { collective, supportArtists, site } = content;
 
   return (
-    <main data-stage-scene="collective" data-accent={s.accent} className="relative z-10">
+    <main data-stage-scene="collective" className="relative z-10">
       <Opener
         index={s.index}
         label={s.label}
@@ -49,7 +49,7 @@ export default function CollectivePage() {
 
       <section aria-labelledby="founders" data-stage-anchor="founders" className="mt-24 px-5 md:mt-32 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <h2 id="founders" className="label spread mb-10">
+          <h2 id="founders" className="label rule-line mb-10">
             <span>founders</span>
           </h2>
           <ul className="grid gap-14 md:grid-cols-3 md:gap-8">
@@ -68,11 +68,11 @@ export default function CollectivePage() {
                           className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                         />
                       )}
-                      <span aria-hidden="true" className="display-hero halo-none absolute bottom-2 left-3 text-accent mix-blend-normal drop-shadow-[0_2px_24px_oklch(0.13_0.003_70/0.7)]">
+                      <span aria-hidden="true" className="display-hero halo-none absolute bottom-2 left-3 text-founder mix-blend-normal drop-shadow-[0_2px_24px_oklch(0.13_0.003_70/0.7)]">
                         {f.id.toUpperCase()}
                       </span>
                     </span>
-                    <span className="mt-5 block font-sans text-3xl leading-none text-foreground transition-colors group-hover:text-accent">{f.alias}</span>
+                    <span className="mt-5 block font-sans text-3xl leading-none text-foreground transition-colors">{f.alias}</span>
                     <span className="mt-2 block font-mono text-xs text-foreground/60">
                       {f.name.toLowerCase()} · {f.role.toLowerCase()}
                     </span>
@@ -89,7 +89,7 @@ export default function CollectivePage() {
 
       <section aria-labelledby="moments" data-stage-anchor="moments" className="mt-24 px-5 md:mt-32 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <h2 id="moments" className="label spread mb-8">
+          <h2 id="moments" className="label rule-line mb-8">
             <span>moments</span>
           </h2>
           <ul className="columns-1 gap-4 sm:columns-2 lg:columns-3 [&>li]:mb-4 [&>li]:break-inside-avoid">
@@ -104,7 +104,7 @@ export default function CollectivePage() {
 
       <section aria-labelledby="supported" data-stage-anchor="supported" className="mt-24 px-5 md:mt-32 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <h2 id="supported" className="label spread mb-3">
+          <h2 id="supported" className="label rule-line mb-3">
             <span>supported</span>
           </h2>
           <p className="mb-10 font-mono text-xs text-foreground/50">artists our members have supported</p>
@@ -112,7 +112,7 @@ export default function CollectivePage() {
         </div>
       </section>
 
-      <NextSection href={next.href} word={next.label} caption={`open call · ${content.join.roles.join(", ")}`} accent={next.accent} />
+      <NextSection href={next.href} word={next.label} caption={`open call · ${content.join.roles.join(", ")}`} />
     </main>
   );
 }

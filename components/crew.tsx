@@ -10,7 +10,7 @@ export default function Crew({ ids, link = false }: { ids: FounderId[]; link?: b
         const f = founderById(id);
         const inner = (
           <>
-            <span aria-hidden="true" className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-accent align-middle" />
+            <span aria-hidden="true" className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-founder align-middle" />
             {f.alias.toLowerCase()}
           </>
         );

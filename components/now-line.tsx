@@ -7,7 +7,7 @@ export default function NowLine({ line, className = "" }: { line: Line; classNam
     <span
       aria-hidden="true"
       className={`mr-2.5 inline-block h-1.5 w-1.5 shrink-0 translate-y-[-1px] rounded-full align-middle ${
-        line.kind === "next" ? "now-dot bg-j-2-hi" : line.kind === "latest" ? "bg-p-hi" : "bg-foreground/45"
+        line.kind === "next" ? "now-dot bg-foreground" : line.kind === "latest" ? "bg-foreground/70" : "bg-foreground/45"
       }`}
     />
   );

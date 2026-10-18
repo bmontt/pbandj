@@ -8,7 +8,7 @@
 //     (batched, so a list arrives as one gentle stagger, however fast you
 //     scroll). Anything already on screen is left alone; the CSS .enter
 //     entrances own the first screen.
-//   - .spread labels draw their three-colour hairline once.
+//   - .rule-line labels draw the founders' three-color hairline once.
 //   - [data-drift] display words lift a little as their opener scrolls away
 //     (scrubbed with damping, capped at 10% of their height).
 // Reduced motion registers nothing: every element keeps its rendered state,
@@ -32,10 +32,10 @@ export default function Motion() {
         const html = document.documentElement;
         const fold = window.innerHeight * 0.9;
 
-        const spreads = gsap.utils.toArray<HTMLElement>(".spread");
-        for (const el of spreads) {
-          if (el.getBoundingClientRect().top < fold) el.classList.add("spread-on");
-          else ScrollTrigger.create({ trigger: el, start: "top 88%", once: true, onEnter: () => el.classList.add("spread-on") });
+        const rules = gsap.utils.toArray<HTMLElement>(".rule-line");
+        for (const el of rules) {
+          if (el.getBoundingClientRect().top < fold) el.classList.add("rule-on");
+          else ScrollTrigger.create({ trigger: el, start: "top 88%", once: true, onEnter: () => el.classList.add("rule-on") });
         }
         html.dataset.motion = "on";
 
@@ -55,7 +55,7 @@ export default function Motion() {
         }
 
         return () => {
-          for (const el of spreads) el.classList.remove("spread-on");
+          for (const el of rules) el.classList.remove("rule-on");
           delete html.dataset.motion;
         };
       });

@@ -34,7 +34,7 @@ export default function EventsPage() {
   const years = [...new Set(played.map((e) => e.date.slice(0, 4)))];
 
   return (
-    <main data-stage-scene="events" data-accent={s.accent} className="relative z-10">
+    <main data-stage-scene="events" className="relative z-10">
       <Opener
         index={s.index}
         label={s.label}
@@ -50,7 +50,7 @@ export default function EventsPage() {
 
       <section aria-labelledby="next-up" data-stage-anchor="next-up" className="px-5 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <h2 id="next-up" className="label spread mb-8">
+          <h2 id="next-up" className="label rule-line mb-8">
             <span>next up</span>
           </h2>
           {soon.length ? (
@@ -58,17 +58,17 @@ export default function EventsPage() {
               {soon.map((e, i) => (
                 <li key={e.slug} data-reveal>
                   <Link href={`/events/${e.slug}`} className="group block">
-                    <span className="block font-mono text-xs text-j-2-hi">
+                    <span className="block font-mono text-xs text-foreground/85">
                       {formatDate(e.date)} · {i === 0 ? <Countdown date={e.date} initial={countdown(e.date)} /> : countdown(e.date)}
                     </span>
-                    <span className="display-section halo-none mt-2 block text-foreground transition-colors group-hover:text-accent">{e.title}</span>
+                    <span className="display-section halo-none mt-2 block text-foreground transition-colors">{e.title}</span>
                     {e.city && <span className="mt-2 block font-mono text-xs text-foreground/60">{e.city.toLowerCase()}</span>}
                   </Link>
                   {e.description && <p className="copy mt-4 max-w-2xl">{e.description}</p>}
                   {e.links?.length ? (
                     <p className="mt-3 flex gap-5 font-mono text-xs">
                       {e.links.map((l) => (
-                        <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="text-foreground/80 underline decoration-accent underline-offset-4 hover:text-foreground">
+                        <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="text-foreground/80 underline decoration-foreground/40 underline-offset-4 hover:text-foreground">
                           {l.label} ↗
                         </a>
                       ))}
@@ -80,7 +80,7 @@ export default function EventsPage() {
           ) : (
             <p className="copy max-w-2xl" data-reveal>
               Nothing announced yet.{" "}
-              <a href={content.site.instagram} target="_blank" rel="noopener noreferrer" className="underline decoration-accent underline-offset-4 hover:text-foreground">
+              <a href={content.site.instagram} target="_blank" rel="noopener noreferrer" className="underline decoration-foreground/40 underline-offset-4 hover:text-foreground">
                 Follow @pbandjsounds
               </a>{" "}
               for the next one.
@@ -91,7 +91,7 @@ export default function EventsPage() {
 
       <section aria-labelledby="archive" data-stage-anchor="archive" className="mt-24 px-5 md:mt-32 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <h2 id="archive" className="label spread mb-4">
+          <h2 id="archive" className="label rule-line mb-4">
             <span>played · {played.length}</span>
           </h2>
           {years.map((y) => (
@@ -129,7 +129,7 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <NextSection href={next.href} word={next.label} caption="releases, tracks & mixes" accent={next.accent} />
+      <NextSection href={next.href} word={next.label} caption="releases, tracks & mixes" />
       <JsonLd data={[...soon, ...played].map(eventLd)} />
     </main>
   );

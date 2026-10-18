@@ -53,7 +53,7 @@ export default async function FounderPage({ params }: PageProps<"/collective/[sl
           <Link href="/collective" className="-my-3 inline-flex min-h-11 items-center font-mono text-xs text-foreground/60 hover:text-foreground">
             ← collective
           </Link>
-          <p className="label spread mt-6 enter" style={enterStyle({ dur: 0.7 })}>
+          <p className="label rule-line mt-6 enter" style={enterStyle({ dur: 0.7 })}>
             <span>
               <span className="text-accent">{f.id}</span> <span className="text-foreground/35">/</span> {f.name.toLowerCase()}
             </span>
@@ -107,7 +107,7 @@ export default async function FounderPage({ params }: PageProps<"/collective/[sl
 
             {f.gear.length > 0 && (
               <section aria-labelledby="gear" className="mt-14">
-                <h2 id="gear" className="label spread mb-5">
+                <h2 id="gear" className="label rule-line mb-5">
                   <span>gear</span>
                 </h2>
                 <ul className="divide-y divide-border border-y border-border">
@@ -122,7 +122,7 @@ export default async function FounderPage({ params }: PageProps<"/collective/[sl
 
             {nights.length > 0 && (
               <section aria-labelledby="nights" className="mt-14">
-                <h2 id="nights" className="label spread mb-5">
+                <h2 id="nights" className="label rule-line mb-5">
                   <span>events · {nights.length}</span>
                 </h2>
                 <ul className="divide-y divide-border border-y border-border">
@@ -145,7 +145,7 @@ export default async function FounderPage({ params }: PageProps<"/collective/[sl
 
         {supported.length > 0 && (
           <section aria-labelledby="supported" className="mt-24">
-            <h2 id="supported" className="label spread mb-10">
+            <h2 id="supported" className="label rule-line mb-10">
               <span>supported</span>
             </h2>
             <SupportLogos artists={supported} />
@@ -154,9 +154,9 @@ export default async function FounderPage({ params }: PageProps<"/collective/[sl
       </article>
       <div className="-mx-5 md:-mx-12">
         {next ? (
-          <NextSection href={`/collective/${next.slug}`} word={next.alias.toLowerCase()} caption={`${next.name.toLowerCase()} · ${next.role.toLowerCase()}`} accent={next.id} />
+          <NextSection href={`/collective/${next.slug}`} word={next.alias.toLowerCase()} caption={`${next.name.toLowerCase()} · ${next.role.toLowerCase()}`} />
         ) : (
-          <NextSection href="/join" word="join" caption={`open call · ${content.join.roles.join(", ")}`} accent="b" />
+          <NextSection href="/join" word="join" caption={`open call · ${content.join.roles.join(", ")}`} />
         )}
       </div>
       <JsonLd data={personLd(f)} />
