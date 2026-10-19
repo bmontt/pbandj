@@ -3,11 +3,12 @@ import type React from "react"
 interface DemoSubmissionEmailProps {
   name: string
   email: string
+  role?: string | null
   message?: string
-  audioUrl: string
+  audioUrl?: string | null
 }
 
-export const DemoSubmissionEmail: React.FC<DemoSubmissionEmailProps> = ({ name, email, message, audioUrl }) => (
+export const DemoSubmissionEmail: React.FC<DemoSubmissionEmailProps> = ({ name, email, role, message, audioUrl }) => (
   <div style={{ fontFamily: "Arial, sans-serif", maxWidth: "600px", margin: "0 auto" }}>
     <div
       style={{
@@ -34,31 +35,40 @@ export const DemoSubmissionEmail: React.FC<DemoSubmissionEmailProps> = ({ name, 
         }}
       >
         <p style={{ marginTop: "0" }}>
-          <strong>Artist Name:</strong> {name}
+          <strong>Name:</strong> {name}
         </p>
         <p>
           <strong>Email:</strong> {email}
         </p>
-        {message && (
+        {role && (
           <p>
+            <strong>Role:</strong> {role}
+          </p>
+        )}
+        {message && (
+          <p style={{ whiteSpace: "pre-wrap" }}>
             <strong>Message:</strong>
             <br />
             {message}
           </p>
         )}
         <p style={{ marginBottom: "0" }}>
-          <strong>Audio File:</strong>
+          <strong>Attachment:</strong>
           <br />
-          <a
-            href={audioUrl}
-            style={{
-              color: "#ff0051",
-              textDecoration: "none",
-              wordBreak: "break-all",
-            }}
-          >
-            {audioUrl}
-          </a>
+          {audioUrl ? (
+            <a
+              href={audioUrl}
+              style={{
+                color: "#ff0051",
+                textDecoration: "none",
+                wordBreak: "break-all",
+              }}
+            >
+              {audioUrl}
+            </a>
+          ) : (
+            <span style={{ color: "#666" }}>None provided</span>
+          )}
         </p>
       </div>
 

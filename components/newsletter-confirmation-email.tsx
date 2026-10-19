@@ -41,6 +41,11 @@ export const NewsletterConfirmationEmail: React.FC<NewsletterConfirmationEmailPr
 
         <p>We're excited to have you in our community. Stay tuned for updates!</p>
       </div>
+
+      <p style={{ fontSize: "12px", color: "#666", lineHeight: "1.6", margin: "0" }}>
+        This email was sent to {email} because it was entered in the newsletter signup on pbandjsounds.com. If that
+        wasn't you, you can ignore this email.
+      </p>
     </div>
 
     <div
