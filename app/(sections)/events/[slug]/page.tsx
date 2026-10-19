@@ -9,7 +9,7 @@ import Countdown from "@/components/countdown";
 import Crew from "@/components/crew";
 import JsonLd from "@/components/json-ld";
 import { MediaGrid } from "@/components/media";
-import { eventBySlug, events, upcoming } from "@/lib/content";
+import { cityLabel, eventBySlug, eventName, events, upcoming } from "@/lib/content";
 import { countdown, formatDate, isUpcoming } from "@/lib/dates";
 import { enterStyle } from "@/lib/enter";
 import { pageMeta } from "@/lib/meta";
@@ -26,7 +26,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/events/[slug]">): Promise<Metadata> {
   const e = eventBySlug((await params).slug);
   if (!e) return {};
-  const title = e.city ? `${e.title} (${e.city})` : e.title;
+  const title = eventName(e);
   return pageMeta({
     title: `${title}, ${formatDate(e.date)}`,
     description: e.description || `${title}, ${formatDate(e.date)}. Photos and video from PB&J Sounds.`,
@@ -41,7 +41,7 @@ export default async function EventPage({ params }: PageProps<"/events/[slug]">)
   const i = events.indexOf(e);
   const newer = events[i - 1];
   const older = events[i + 1];
-  const name = e.city ? `${e.title} (${e.city})` : e.title;
+  const name = eventName(e);
 
   return (
     <main data-stage-scene="event" className="relative z-10 px-5 md:px-12">
@@ -53,7 +53,7 @@ export default async function EventPage({ params }: PageProps<"/events/[slug]">)
           <p className="label rule-line mt-6 enter" style={enterStyle({ dur: 0.7 })}>
             <span>
               {soon ? "next up" : "played"} · {formatDate(e.date)}
-              {e.city ? ` · ${e.city.toLowerCase()}` : ""}
+              {cityLabel(e) ? ` · ${cityLabel(e)!.toLowerCase()}` : ""}
             </span>
           </p>
           <h1 className="display-section halo-none mt-5 text-foreground enter" style={enterStyle({ y: 20, blur: 6, dur: 1, delay: 0.06 })}>

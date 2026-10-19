@@ -136,6 +136,16 @@ export const upcoming = (now: Date = new Date()) => events.filter((e) => isUpcom
 /** played events, newest first */
 export const past = (now: Date = new Date()) => events.filter((e) => !isUpcoming(e.date, now));
 
+// Titles keep the old site's wording, and some already end in the city
+// ("Zebbie's Garden (DC)"). These keep the city from showing twice.
+const titleHasCity = (e: Event) => !!e.city && e.title.toLowerCase().endsWith(`(${e.city.toLowerCase()})`);
+/** the city to show beside the title, unless the title already says it */
+export const cityLabel = (e: Event) => (e.city && !titleHasCity(e) ? e.city : undefined);
+/** title and city in one string: "Zebbie's Garden (DC)", "Waterfront Hotel (Baltimore)" */
+export const eventName = (e: Event) => (e.city && !titleHasCity(e) ? `${e.title} (${e.city})` : e.title);
+/** the venue alone, for structured data: "Zebbie's Garden" */
+export const venueName = (e: Event) => (titleHasCity(e) ? e.title.slice(0, -(e.city!.length + 2)).trim() : e.title);
+
 export const eventsFor = (id: FounderId) => events.filter((e) => e.crew.includes(id));
 
 /** the image to show for an event in a list: its first photo, else a video's poster */

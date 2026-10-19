@@ -2,12 +2,12 @@
 // The machine-readable face of the site: /llms.txt (llmstxt.org), every fact
 // as plain text, generated from content.json so it can't drift from the pages.
 
-import { content, founders, ORIGIN, past, upcoming, type Event } from "./content";
+import { content, eventName, founders, ORIGIN, past, upcoming, type Event } from "./content";
 import { formatDate } from "./dates";
 
 const line = (e: Event) => {
   const crew = e.crew.map((id) => founders.find((f) => f.id === id)!.alias).join(", ");
-  const where = e.city ? `${e.title} (${e.city})` : e.title;
+  const where = eventName(e);
   return `- [${where}](${ORIGIN}/events/${e.slug}): ${formatDate(e.date)}${e.description ? ` — ${e.description}` : ""} · with ${crew}`;
 };
 

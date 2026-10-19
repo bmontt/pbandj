@@ -14,7 +14,7 @@ import EmbedPlayer from "@/components/embed-player";
 import LinkChip from "@/components/link-chip";
 import { DisplayWord } from "@/components/display-word";
 import { ICONS } from "@/components/icons";
-import { content, eventsFor, firstSentence, founderBySlug, founders, media } from "@/lib/content";
+import { cityLabel, content, eventsFor, firstSentence, founderBySlug, founders, media } from "@/lib/content";
 import { formatShort } from "@/lib/dates";
 import { embedFor } from "@/lib/embeds";
 import { PLATFORM_NAME } from "@/lib/links";
@@ -171,7 +171,7 @@ export default async function FounderPage({ params }: PageProps<"/about/[slug]">
                       <Link href={`/events/${e.slug}`} className="group flex items-baseline justify-between gap-4 py-3">
                         <span className="copy-sm min-w-0 transition-transform duration-500 group-hover:translate-x-1">
                           {e.title}
-                          {e.city && <span className="ml-2 font-mono text-xs text-foreground/50">{e.city.toLowerCase()}</span>}
+                          {cityLabel(e) && <span className="ml-2 font-mono text-xs text-foreground/50">{cityLabel(e)!.toLowerCase()}</span>}
                         </span>
                         <span className="shrink-0 font-mono text-xs text-foreground/50">{formatShort(e.date)}</span>
                       </Link>

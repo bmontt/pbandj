@@ -11,7 +11,7 @@ import JsonLd from "@/components/json-ld";
 import NextSection from "@/components/next-section";
 import NowLine from "@/components/now-line";
 import Opener from "@/components/opener";
-import { content, coverOf, past, plural, upcoming } from "@/lib/content";
+import { cityLabel, content, coverOf, past, plural, upcoming } from "@/lib/content";
 import { countdown, formatDate, formatShort } from "@/lib/dates";
 import { pageMeta } from "@/lib/meta";
 import { nextLine } from "@/lib/now";
@@ -64,7 +64,7 @@ export default function EventsPage() {
                       {formatDate(e.date)} · {i === 0 ? <Countdown date={e.date} initial={countdown(e.date)} /> : countdown(e.date)}
                     </span>
                     <span className="display-section halo-none mt-2 block text-foreground transition-colors">{e.title}</span>
-                    {e.city && <span className="mt-2 block font-mono text-xs text-foreground/60">{e.city.toLowerCase()}</span>}
+                    {cityLabel(e) && <span className="mt-2 block font-mono text-xs text-foreground/60">{cityLabel(e)!.toLowerCase()}</span>}
                   </Link>
                   {e.description && <p className="copy mt-4 max-w-2xl">{e.description}</p>}
                   {e.links?.length ? (
@@ -115,7 +115,7 @@ export default function EventsPage() {
                             <span className="block font-sans text-xl leading-tight text-foreground transition-transform duration-500 group-hover:translate-x-1 md:text-2xl">{e.title}</span>
                             <span className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-foreground/55">
                               <span className="sm:hidden">{formatShort(e.date)}</span>
-                              {e.city && <span>{e.city.toLowerCase()}</span>}
+                              {cityLabel(e) && <span>{cityLabel(e)!.toLowerCase()}</span>}
                               <Crew ids={e.crew} />
                             </span>
                           </span>

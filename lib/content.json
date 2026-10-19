@@ -257,7 +257,7 @@
     },
     {
       "slug": "chop-shop-with-gunpoint-2026-01",
-      "title": "Chop Shop",
+      "title": "Chop Shop with Gunpoint",
       "city": "Baltimore",
       "date": "2026-01",
       "crew": [
@@ -313,7 +313,7 @@
     },
     {
       "slug": "friends-wedding-2025-10",
-      "title": "Private Wedding",
+      "title": "Friend's Wedding",
       "city": "Eastern Shore, MD",
       "date": "2025-10",
       "crew": [
@@ -330,7 +330,7 @@
     },
     {
       "slug": "flash-rooftop-2025-09",
-      "title": "Flash Rooftop",
+      "title": "Flash Rooftop (DC)",
       "city": "DC",
       "date": "2025-09",
       "crew": [
@@ -374,7 +374,7 @@
     },
     {
       "slug": "soundcheck-2025-07",
-      "title": "Soundcheck",
+      "title": "Soundcheck (DC)",
       "city": "DC",
       "date": "2025-07",
       "crew": [
@@ -398,7 +398,7 @@
     },
     {
       "slug": "public-art-space-2025-06",
-      "title": "Public Art Space",
+      "title": "Public Art Space (NYC)",
       "city": "NYC",
       "date": "2025-06",
       "crew": [
@@ -446,7 +446,7 @@
     },
     {
       "slug": "zebbies-garden-2025-04",
-      "title": "Zebbie's Garden",
+      "title": "Zebbie's Garden (DC)",
       "city": "DC",
       "date": "2025-04",
       "crew": [
@@ -535,7 +535,7 @@
     },
     {
       "slug": "power-plant-live-2024-10",
-      "title": "Power Plant Live!",
+      "title": "Power Plant Live! (Baltimore)",
       "city": "Baltimore",
       "date": "2024-10",
       "crew": [
@@ -555,7 +555,7 @@
     },
     {
       "slug": "soundcheck-2024-09",
-      "title": "Soundcheck",
+      "title": "Soundcheck (DC)",
       "city": "DC",
       "date": "2024-09",
       "crew": [
@@ -575,7 +575,7 @@
     },
     {
       "slug": "somewhere-nowhere-2024-07",
-      "title": "Somewhere Nowhere",
+      "title": "Somewhere Nowhere (NYC)",
       "city": "NYC",
       "date": "2024-07",
       "crew": [
@@ -599,7 +599,7 @@
     },
     {
       "slug": "looneys-pub-2023-09",
-      "title": "Looney's Pub",
+      "title": "Looney's Pub (College Park)",
       "city": "College Park",
       "date": "2023-09",
       "crew": [

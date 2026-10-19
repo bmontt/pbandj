@@ -262,8 +262,8 @@
     "poster": "/generated/posters/JackEvents/officeSetup.webp"
   },
   "/JackEvents/rooAftermath.optimized.optimized.webp": {
-    "w": 4032,
-    "h": 3024
+    "w": 3024,
+    "h": 4032
   },
   "/JackEvents/rooftopParty.mp4": {
     "w": 640,
@@ -285,8 +285,8 @@
     "poster": "/generated/posters/JackEvents/rooReel.webp"
   },
   "/JackEvents/wedding.optimized.optimized.webp": {
-    "w": 5712,
-    "h": 4284
+    "w": 4284,
+    "h": 5712
   },
   "/lfsystem.optimized.webp": {
     "w": 3953,

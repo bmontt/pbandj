@@ -5,7 +5,7 @@
 // (revalidate = 3600), so a show moves from "next" to the archive on its own.
 
 import { countdown, formatDate, formatShort } from "./dates";
-import { past, upcoming, type Event } from "./content";
+import { eventName, past, upcoming, type Event } from "./content";
 import type { Track } from "./tracks";
 
 export interface NowLine {
@@ -15,7 +15,7 @@ export interface NowLine {
   external?: boolean;
 }
 
-const where = (e: Event) => (e.city ? `${e.title} (${e.city})` : e.title).toLowerCase();
+const where = (e: Event) => eventName(e).toLowerCase();
 
 export function nextLine(e: Event, now: Date = new Date()): NowLine {
   return { kind: "next", text: `next: ${where(e)} · ${formatDate(e.date)} · ${countdown(e.date, now)}`, href: `/events/${e.slug}` };
