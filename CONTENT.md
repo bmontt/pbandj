@@ -112,8 +112,10 @@ All of these are in `lib/content.json`:
 
 - **Bios, quotes, gear, socials:** under `"founders"`. Each paragraph of a bio
   is its own string in the `"bio"` list.
-- **Support logos:** under `"supportArtists"`. Put the image in
-  `public/artistLogos/`, add `{ "name": …, "logo": … }`, and run `npm run media`.
+- **Supported artists:** under `"supportArtists"`, add `{ "name": … }`, and add
+  the same name to the founder's `"supports"` list. With a logo, put the image in
+  `public/artistLogos/`, add `"logo": "/artistLogos/…"`, and run `npm run media`.
+  Without one, the site shows the artist's name.
 - **Photos on /collective:** under `"collective" › "moments"`. Each one needs
   `src` and `alt`. The `alt` is a short description of what the photo shows,
   for people using screen readers.

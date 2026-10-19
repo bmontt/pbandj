@@ -32,5 +32,5 @@ export const artists: Artist[] = content.founders.map((f) => ({
 }));
 
 export const supportArtistLogos: Record<string, string> = Object.fromEntries(
-  content.supportArtists.map((a) => [a.name, a.logo]),
+  content.supportArtists.flatMap((a) => (a.logo ? [[a.name, a.logo]] : [])),
 );

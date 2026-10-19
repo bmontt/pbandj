@@ -87,7 +87,7 @@ test.describe("routes", () => {
       ...content.events.flatMap((e) => e.media.map((m) => m.src)),
       ...content.founders.map((f) => f.image),
       ...content.collective.moments.map((m) => m.src),
-      ...content.supportArtists.map((a) => a.logo),
+      ...content.supportArtists.flatMap((a) => ("logo" in a && a.logo ? [a.logo] : [])),
     ]);
     const bad: string[] = [];
     await Promise.all(

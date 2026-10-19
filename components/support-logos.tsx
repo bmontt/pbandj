@@ -10,7 +10,7 @@ export default function SupportLogos({ artists }: { artists: SupportArtist[] }) 
   return (
     <ul className="flex flex-wrap items-center gap-x-10 gap-y-8 md:gap-x-14">
       {artists.map((a) => {
-        const info = media[a.logo];
+        const info = a.logo ? media[a.logo] : undefined;
         const w = info?.tw ?? info?.w ?? 200;
         const h = info?.th ?? info?.h ?? 80;
         const ratio = w / h;
@@ -19,7 +19,7 @@ export default function SupportLogos({ artists }: { artists: SupportArtist[] }) 
           <li key={a.name} data-reveal>
             {info ? (
               <Image
-                src={info.trimmed ?? a.logo}
+                src={info.trimmed ?? a.logo!}
                 alt={a.name}
                 width={w}
                 height={h}

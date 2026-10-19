@@ -60,7 +60,9 @@
       "gear": [
         "Bose L1"
       ],
-      "supports": [],
+      "supports": [
+        "Jackie Hollander"
+      ],
       "email": "peter@pbanjsounds.com",
       "links": {
         "instagram": "https://www.instagram.com/peterjacobmusic/",
@@ -86,11 +88,14 @@
       ],
       "supports": [
         "Biscits",
+        "Ian Asher",
         "Jake Shore",
         "Madds",
         "Martin Ikin",
+        "MOONLGHT",
         "Ownboss",
         "Side Quest",
+        "Syre",
         "Veggi"
       ],
       "email": "brody@pbanjsounds.com",
@@ -135,6 +140,12 @@
       "logo": "/artistLogos/biscits_logo.webp"
     },
     {
+      "name": "Ian Asher"
+    },
+    {
+      "name": "Jackie Hollander"
+    },
+    {
       "name": "Jake Shore",
       "logo": "/artistLogos/jake_shore.webp"
     },
@@ -147,12 +158,18 @@
       "logo": "/artistLogos/martin_ikin_logo.webp"
     },
     {
+      "name": "MOONLGHT"
+    },
+    {
       "name": "Ownboss",
       "logo": "/artistLogos/ownboss_logo.webp"
     },
     {
       "name": "Side Quest",
       "logo": "/artistLogos/sidequest_logo.webp"
+    },
+    {
+      "name": "Syre"
     },
     {
       "name": "Veggi",

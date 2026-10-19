@@ -52,7 +52,8 @@ export interface Founder {
 
 export interface SupportArtist {
   name: string;
-  logo: string;
+  /** path under public/artistLogos/; without one, the name is shown instead */
+  logo?: string;
 }
 
 export interface Moment {
@@ -110,6 +111,10 @@ function validate(c: Content) {
       if (!m.src.startsWith("/")) problems.push(`${where}: media src "${m.src}" must start with / (a path under public/)`);
     }
   }
+  const supported = new Set(c.supportArtists.map((a) => a.name));
+  for (const f of c.founders)
+    for (const name of f.supports)
+      if (!supported.has(name)) problems.push(`founders › "${f.alias}": supports "${name}", which isn't in supportArtists`);
   if (problems.length) throw new Error(`lib/content.json has problems:\n  - ${problems.join("\n  - ")}`);
 }
 validate(content);
