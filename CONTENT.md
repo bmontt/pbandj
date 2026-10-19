@@ -112,6 +112,8 @@ All of these are in `lib/content.json`:
 
 - **Bios, quotes, gear, socials:** under `"founders"`. Each paragraph of a bio
   is its own string in the `"bio"` list.
+  `"highlights"` is an optional list of short notes (a DJ who played their
+  track, a chart placing); the founder's page shows it under the bio.
 - **Supported artists:** under `"supportArtists"`, add `{ "name": … }`, and add
   the same name to the founder's `"supports"` list. With a logo, put the image in
   `public/artistLogos/`, add `"logo": "/artistLogos/…"`, and run `npm run media`.

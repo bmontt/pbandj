@@ -45,6 +45,8 @@ export interface Founder {
   image: string;
   gear: string[];
   supports: string[];
+  /** short notes: tracks other DJs played, chart placings */
+  highlights?: string[];
   /** on the unconfirmed pbanjsounds.com domain: not rendered (see site._emailNote) */
   email: string;
   links: { instagram?: string; spotify?: string; soundcloud?: string; github?: string };

@@ -103,6 +103,21 @@ export default async function FounderPage({ params }: PageProps<"/about/[slug]">
               ))}
             </div>
 
+            {f.highlights && f.highlights.length > 0 && (
+              <section aria-labelledby="highlights" className="mt-14">
+                <h2 id="highlights" className="label rule-line mb-5">
+                  <span>highlights</span>
+                </h2>
+                <ul className="divide-y divide-border border-y border-border">
+                  {f.highlights.map((h) => (
+                    <li key={h} className="copy-sm py-3" data-reveal>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             {player && PlayerIcon && (
               <section aria-labelledby="listen" className="mt-14">
                 <h2 id="listen" className="label rule-line mb-5">
