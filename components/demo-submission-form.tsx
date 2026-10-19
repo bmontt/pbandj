@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useEffect, useId, useRef, useState } from "react"
-import { motion } from "framer-motion"
 import { upload } from "@vercel/blob/client"
 import {
   FIELD_LIMITS,
@@ -179,7 +178,7 @@ export default function DemoSubmissionForm() {
 
       setSubmitState({
         status: "success",
-        message: result.message || "Thank you for applying! We'll review your application and get back to you soon.",
+        message: result.message || "Application sent. We'll review it and get back to you.",
       })
       setFormData(EMPTY_FORM)
       clearFile()
@@ -194,11 +193,12 @@ export default function DemoSubmissionForm() {
   }
 
   const inputClass =
-    "w-full px-4 py-3 bg-gray-900/20 border rounded-sm text-white placeholder-gray-600 focus:outline-none transition-all disabled:opacity-50"
-  const borderClass = (field: Field) => (fieldError(field) ? "border-[#C44D58]/70" : "border-gray-700/30")
+    "w-full border bg-transparent px-4 py-3 font-sans text-body-sm text-foreground placeholder:text-foreground/35 transition-colors focus:border-foreground/45 focus:outline-none disabled:opacity-50"
+  const borderClass = (field: Field) => (fieldError(field) ? "border-[var(--b-hi)]" : "border-border")
+  const labelClass = "mb-2 block font-mono text-xs text-foreground/60"
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-describedby={ids.status} className="relative space-y-8 z-20">{/* Ensure form is above particle filter */}
+    <form onSubmit={handleSubmit} noValidate aria-describedby={ids.status} className="relative space-y-7">
       {/* Honeypot: hidden from people and assistive tech; bots that fill every field trip it. */}
       <div aria-hidden="true" className="absolute -left-[10000px] top-auto w-px h-px overflow-hidden">
         <label htmlFor={ids.honeypot}>Website (leave this empty)</label>
@@ -215,14 +215,9 @@ export default function DemoSubmissionForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Name Field */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: false }}
-        >
-          <label htmlFor={ids.name} className="block text-xs font-light text-[#A07E54] mb-3 uppercase tracking-widest">
-            Your Name <span aria-hidden="true">*</span>
+        <div>
+          <label htmlFor={ids.name} className={labelClass}>
+            name <span aria-hidden="true">*</span>
           </label>
           <input
             id={ids.name}
@@ -236,20 +231,15 @@ export default function DemoSubmissionForm() {
             maxLength={FIELD_LIMITS.name}
             autoComplete="name"
             disabled={busy}
-            placeholder="Enter your name"
-            className={`${inputClass} ${borderClass("name")} focus:border-[#B58657]/50 focus:shadow-[0_0_15px_rgba(181,134,87,0.2)]`}
+            placeholder="Your name"
+            className={`${inputClass} ${borderClass("name")}`}
           />
-        </motion.div>
+        </div>
 
         {/* Email Field */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: false }}
-        >
-          <label htmlFor={ids.email} className="block text-xs font-light text-[#A07E54] mb-3 uppercase tracking-widest">
-            Email Address <span aria-hidden="true">*</span>
+        <div>
+          <label htmlFor={ids.email} className={labelClass}>
+            email <span aria-hidden="true">*</span>
           </label>
           <input
             id={ids.email}
@@ -263,21 +253,16 @@ export default function DemoSubmissionForm() {
             maxLength={FIELD_LIMITS.email}
             autoComplete="email"
             disabled={busy}
-            placeholder="your@email.com"
-            className={`${inputClass} ${borderClass("email")} focus:border-[#C44D58]/50 focus:shadow-[0_0_15px_rgba(196,77,88,0.2)]`}
+            placeholder="you@example.com"
+            className={`${inputClass} ${borderClass("email")}`}
           />
-        </motion.div>
+        </div>
       </div>
 
       {/* Role Field */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        viewport={{ once: false }}
-      >
-        <label htmlFor={ids.role} className="block text-xs font-light text-[#A07E54] mb-3 uppercase tracking-widest">
-          Role / Position <span aria-hidden="true">*</span>
+      <div>
+        <label htmlFor={ids.role} className={labelClass}>
+          role <span aria-hidden="true">*</span>
         </label>
         <select
           id={ids.role}
@@ -288,28 +273,23 @@ export default function DemoSubmissionForm() {
           aria-required="true"
           aria-invalid={fieldError("role") || undefined}
           disabled={busy}
-          className={`${inputClass} ${borderClass("role")} ${formData.role ? "" : "text-gray-600"} focus:border-[#935BAD]/50 focus:shadow-[0_0_15px_rgba(147,91,173,0.2)]`}
+          className={`${inputClass} ${borderClass("role")} ${formData.role ? "" : "text-foreground/35"}`}
         >
           <option value="" disabled>
-            What role are you interested in?
+            Choose a role
           </option>
           {ROLE_OPTIONS.map((role) => (
-            <option key={role.value} value={role.value} className="text-white bg-gray-900">
+            <option key={role.value} value={role.value} className="bg-background text-foreground">
               {role.label}
             </option>
           ))}
         </select>
-      </motion.div>
+      </div>
 
       {/* Message Field */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        viewport={{ once: false }}
-      >
-        <label htmlFor={ids.message} className="block text-xs font-light text-[#A07E54] mb-3 uppercase tracking-widest">
-          Message <span aria-hidden="true">*</span>
+      <div>
+        <label htmlFor={ids.message} className={labelClass}>
+          message <span aria-hidden="true">*</span>
         </label>
         <textarea
           id={ids.message}
@@ -321,25 +301,20 @@ export default function DemoSubmissionForm() {
           aria-invalid={fieldError("message") || undefined}
           maxLength={FIELD_LIMITS.message}
           disabled={busy}
-          placeholder="Tell us about yourself and why you'd like to join PB&J..."
+          placeholder="A short introduction, and links to your work"
           rows={4}
-          className={`${inputClass} ${borderClass("message")} focus:border-[#935BAD]/50 focus:shadow-[0_0_15px_rgba(147,91,173,0.2)] resize-none`}
+          className={`${inputClass} ${borderClass("message")} resize-none`}
         />
-      </motion.div>
+      </div>
 
       {/* File Upload - OPTIONAL */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        viewport={{ once: false }}
-      >
+      <div>
         <label
           id={ids.fileLabel}
           htmlFor={ids.file}
-          className="block text-xs font-light text-gray-400 mb-3 uppercase tracking-widest"
+          className={labelClass}
         >
-          Attachment (optional: demo, portfolio or CV)
+          attachment (optional): demo, portfolio or CV
         </label>
         <div className="relative">
           <input
@@ -362,11 +337,11 @@ export default function DemoSubmissionForm() {
             aria-labelledby={`${ids.fileLabel} ${ids.file}-button-text`}
             aria-describedby={ids.fileHint}
             aria-invalid={fieldError("file") || undefined}
-            className={`w-full px-4 py-4 bg-gray-900/20 border-2 border-dashed ${fieldError("file") ? "border-[#C44D58]/70" : "border-gray-700/30"} rounded-sm text-gray-400 hover:border-yellow-600/50 hover:text-yellow-600/70 hover:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all disabled:opacity-50 cursor-pointer`}
+            className={`min-h-11 w-full cursor-pointer border border-dashed px-4 py-4 font-mono text-xs text-foreground/60 transition-colors hover:border-foreground/40 hover:text-foreground disabled:opacity-50 ${fieldError("file") ? "border-[var(--b-hi)]" : "border-border"}`}
           >
             {file ? (
               <div className="flex items-center justify-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -374,49 +349,47 @@ export default function DemoSubmissionForm() {
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span id={`${ids.file}-button-text`} className="text-white">
+                <span id={`${ids.file}-button-text`} className="text-foreground">
                   {file.name}
                 </span>
               </div>
             ) : (
               <div className="flex items-center justify-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                 </svg>
-                <span id={`${ids.file}-button-text`}>Click to upload or drag and drop</span>
+                <span id={`${ids.file}-button-text`}>choose a file or drop it here</span>
               </div>
             )}
           </button>
         </div>
         <div className="mt-2 flex items-start justify-between gap-4">
-          <p id={ids.fileHint} className="text-xs text-gray-500">
+          <p id={ids.fileHint} className="font-mono text-xs text-foreground/45">
             {UPLOAD_HINT}.
           </p>
           {file && !busy && (
             <button
               type="button"
               onClick={clearFile}
-              className="text-xs text-gray-400 underline underline-offset-2 hover:text-white shrink-0"
+              className="min-h-11 shrink-0 font-mono text-xs text-foreground/60 underline underline-offset-4 hover:text-foreground"
             >
               Remove file
             </button>
           )}
         </div>
-      </motion.div>
+      </div>
 
       {/* Status Message: always mounted so screen readers announce changes */}
       <div id={ids.status} aria-live="polite" aria-atomic="true">
         {submitState.message && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+          <div
             role={submitState.status === "error" ? "alert" : "status"}
-            className={`p-4 rounded-sm bg-gray-800/50 border ${
-              submitState.status === "error" ? "text-gray-200 border-[#C44D58]/50" : "text-gray-300 border-gray-700/50"
+            className={`border px-4 py-3 font-sans text-body-sm ${
+              submitState.status === "error" ? "border-[var(--b-hi)] text-foreground" : "border-border text-foreground/85"
             }`}
           >
             {submitState.message}
-          </motion.div>
+          </div>
         )}
         {submitState.status === "uploading" && <p className="sr-only">Uploading attachment, {uploadProgress}%.</p>}
         {submitState.status === "submitting" && <p className="sr-only">Sending your application.</p>}
@@ -424,44 +397,34 @@ export default function DemoSubmissionForm() {
 
       {/* Upload Progress */}
       {busy && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-2" aria-hidden="true">
-          <div className="w-full bg-gray-900 rounded-full h-2 overflow-hidden">
+        <div className="space-y-2" aria-hidden="true">
+          <div className="h-px w-full overflow-hidden bg-border">
             {submitState.status === "uploading" ? (
-              <div className="bg-yellow-600/60 h-full transition-[width] duration-200" style={{ width: `${uploadProgress}%` }} />
+              <div className="h-full bg-foreground/70 transition-[width] duration-200" style={{ width: `${uploadProgress}%` }} />
             ) : (
-              <motion.div
-                className="bg-yellow-600/60 h-full"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 3, ease: "easeInOut" }}
-              />
+              <div className="h-full w-full origin-left animate-pulse bg-foreground/50" />
             )}
           </div>
-          <p className="text-sm text-gray-500 text-center">
-            {submitState.status === "uploading" ? `Uploading your file... ${uploadProgress}%` : "Sending your application..."}
+          <p className="font-mono text-xs text-foreground/55">
+            {submitState.status === "uploading" ? `uploading · ${uploadProgress}%` : "sending"}
           </p>
-        </motion.div>
+        </div>
       )}
 
       {/* Submit Button */}
-      <motion.button
+      <button
         type="submit"
         disabled={busy}
         aria-disabled={busy}
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        viewport={{ once: false }}
-        whileHover={{ scale: 0.98, boxShadow: "0 0 20px rgba(181,134,87,0.3)" }}
-        whileTap={{ scale: 0.95 }}
-        className="relative w-full px-6 py-4 bg-[#B58657]/60 hover:bg-[#B58657]/70 text-white font-light rounded-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed text-lg z-30"
+        className="group flex min-h-12 w-full items-center justify-between border border-foreground/70 px-5 py-4 font-mono text-sm text-foreground transition-colors hover:bg-foreground hover:text-background disabled:cursor-not-allowed disabled:opacity-50"
       >
         {submitState.status === "uploading"
-          ? "Uploading..."
+          ? "uploading"
           : submitState.status === "submitting"
-            ? "Submitting..."
-            : "Submit Application"}
-      </motion.button>
+            ? "sending"
+            : "send application"}
+        <span aria-hidden="true" className="nudge">→</span>
+      </button>
     </form>
   )
 }

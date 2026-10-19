@@ -8,7 +8,7 @@ import { enforceRateLimit, jsonError, readJsonBody, withTimeout } from "@/lib/se
 import { roleLabel } from "@/lib/server/submission-rules"
 import { checkForBot, demoSubmissionSchema, firstIssue, type DemoSubmission } from "@/lib/server/validation"
 
-const SUCCESS_MESSAGE = "Thank you for applying! We'll review your application and get back to you soon."
+const SUCCESS_MESSAGE = "Application sent. We'll review it and get back to you."
 const DB_TIMEOUT_MS = 8_000
 
 export async function POST(request: NextRequest) {

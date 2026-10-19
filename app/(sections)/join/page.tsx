@@ -10,6 +10,7 @@ import { content } from "@/lib/content";
 import { pageMeta } from "@/lib/meta";
 import { section } from "@/lib/sections";
 import { ICONS } from "@/components/icons";
+import DemoSubmissionForm from "@/components/demo-submission-form";
 
 export const metadata = pageMeta({
   title: "join",
@@ -42,10 +43,9 @@ export default function JoinPage() {
         </div>
       </section>
 
-      {/* ── join form slot ──────────────────────────────────────────────────
-          At integration: render <DemoSubmissionForm /> inside #apply, in
-          place of the email fallback below (keep the fallback as the form's
-          no-JS / error path). */}
+      {/* The application form (uploads go straight to Vercel Blob with a
+          scoped one-file token; see app/api/upload-url), with email as the
+          no-JS and fallback path. */}
       <section id="apply" data-join-form aria-labelledby="apply-heading" data-stage-anchor="apply" className="mt-24 px-5 md:mt-32 md:px-12">
         <div className="mx-auto max-w-6xl md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-16">
           <div data-reveal>
@@ -57,6 +57,8 @@ export default function JoinPage() {
             </p>
           </div>
           <div className="mt-10 md:mt-0" data-reveal>
+            <DemoSubmissionForm />
+            <p className="mt-10 mb-3 font-mono text-xs text-foreground/50">or by email</p>
             <a href={mailto} className="group block border border-border px-6 py-6 transition-colors hover:border-foreground/30 md:px-8 md:py-8">
               <span className="flex items-center gap-2 font-mono text-xs text-foreground/55">
                 <ICONS.email aria-hidden="true" className="h-3.5 w-3.5" />
