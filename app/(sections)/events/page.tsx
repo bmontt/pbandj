@@ -24,7 +24,7 @@ export const revalidate = 3600;
 
 export const metadata = pageMeta({
   title: "events",
-  description: "Upcoming PB&J Sounds shows and every one so far: DJ sets, lighting and production in DC, Baltimore, New York and beyond.",
+  description: "Upcoming and past PB&J Sounds events: DJ sets, lighting and production in DC, Baltimore and New York.",
   path: "/events",
 });
 
@@ -43,7 +43,7 @@ export default function EventsPage() {
         title="events"
         line={
           <p className="display-sub text-foreground/85">
-            {soon.length ? `${plural(soon.length, "night")} ahead, ${played.length} behind.` : `${played.length} so far: dj sets, lights and production.`}
+            {soon.length ? `${plural(soon.length, "date")} announced, ${played.length} played.` : "DJ sets, lighting and production, from DC and Baltimore to New York."}
           </p>
         }
       >
@@ -81,7 +81,7 @@ export default function EventsPage() {
             </ul>
           ) : (
             <p className="copy max-w-2xl" data-reveal>
-              Nothing announced yet.{" "}
+              No dates announced.{" "}
               <a href={content.site.instagram} target="_blank" rel="noopener noreferrer" className="underline decoration-foreground/40 underline-offset-4 hover:text-foreground">
                 <ICONS.instagram aria-hidden="true" className="mr-1.5 inline h-[0.9em] w-[0.9em] -translate-y-px" />
                 Follow @pbandjsounds
@@ -95,7 +95,7 @@ export default function EventsPage() {
       <section aria-labelledby="archive" data-stage-anchor="archive" className="mt-24 px-5 md:mt-32 md:px-12">
         <div className="mx-auto max-w-6xl">
           <h2 id="archive" className="label rule-line mb-4">
-            <span>played · {played.length}</span>
+            <span>past events · {played.length}</span>
           </h2>
           {years.map((y) => (
             <div key={y} className="mt-10 md:grid md:grid-cols-[8rem_minmax(0,1fr)] md:gap-x-8">

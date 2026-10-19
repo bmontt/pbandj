@@ -11,6 +11,26 @@ You never need to touch a component to add content.
 
 ---
 
+## How we write
+
+The site reads like a label's, not a personal page. Before you add a line:
+
+- **Third person for the collective and the founders.** "PB&J Sounds is…",
+  "Humphreys designed the lighting…". Keep "we" for the open call only.
+- **Facts first, in this order:** who, where, when, then one proof (a venue, a
+  headliner, a chart position, a DJ who played the track).
+- **Names and numbers, not adjectives.** Not "an insane stage" but "a stage
+  for a 125-person campsite". Cut "dynamic", "fresh", "passionate",
+  "immersive", "huge success", emoji and exclamation marks.
+- **Event notes are one or two short sentences, past tense.** "Lighting design
+  by Humphreys for Offstage." "Opening and closing sets for Biscits."
+  "Direct support for Veggi."
+- **Write artist names the way the artist writes them** (Öwnboss, MOONLGHT),
+  and track versions in parentheses: "LoveGame (Peter Jacob Edit)".
+- **No relative time** ("the past year and a half", "this weekend"): it goes
+  stale. Use the year or the date.
+- **Quotes stay word for word.** Only the person quoted changes a quote.
+
 ## Add an event
 
 ### 1. Drop the media into `public/`

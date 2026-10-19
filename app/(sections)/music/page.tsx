@@ -22,7 +22,7 @@ export const revalidate = 3600;
 
 export const metadata = pageMeta({
   title: "music",
-  description: "Latest releases, tracks and mixes from the PB&J Sounds collective: Peter Jacob, Monty and Humphreys.",
+  description: "Latest releases, edits and mixes from PB&J Sounds: Peter Jacob, Monty and Humphreys.",
   path: "/music",
 });
 
@@ -42,13 +42,13 @@ export default async function SoundsPage() {
         index={s.index}
         label={s.label}
         title="music"
-        line={<p className="display-sub text-foreground/85">Releases, tracks and mixes from the collective, newest first.</p>}
+        line={<p className="display-sub text-foreground/85">New edits, releases and mixes from the collective.</p>}
       />
 
       <section aria-labelledby="latest" data-stage-anchor="latest" className="px-5 md:px-12">
         <div className="mx-auto max-w-6xl">
           <h2 id="latest" className="label rule-line mb-8">
-            <span>latest</span>
+            <span>latest releases</span>
           </h2>
           {tracks.length ? (
             <ul className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-8">
@@ -101,7 +101,7 @@ export default async function SoundsPage() {
             </ul>
           ) : (
             <p className="copy max-w-2xl" data-reveal>
-              The release feed from Spotify and SoundCloud isn&apos;t answering right now. Every release is on the profiles below.
+              Releases can&apos;t load right now. Every release is on the profiles below.
             </p>
           )}
         </div>
@@ -114,10 +114,10 @@ export default async function SoundsPage() {
               <span>mixes</span>
             </h2>
             {playlistEmbed ? (
-              <EmbedPlayer embed={playlistEmbed} href={playlist} title="the PB&J playlist" className="h-[450px]" icon={<ICONS.soundcloud aria-hidden="true" className="h-3.5 w-3.5" />}>
+              <EmbedPlayer embed={playlistEmbed} href={playlist} title="PB&J mixes" className="h-[450px]" icon={<ICONS.soundcloud aria-hidden="true" className="h-3.5 w-3.5" />}>
                 <span className="absolute inset-0 flex flex-col justify-center px-6 md:px-10">
-                  <span className="display-section halo-none block text-foreground">the pb&amp;j playlist</span>
-                  <span className="mt-3 block font-mono text-xs text-foreground/55">mixes on soundcloud · press play to load the player</span>
+                  <span className="display-section halo-none block text-foreground">pb&amp;j mixes</span>
+                  <span className="mt-3 block font-mono text-xs text-foreground/55">the playlist on soundcloud · press play to load it</span>
                 </span>
               </EmbedPlayer>
             ) : (

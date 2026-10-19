@@ -14,7 +14,7 @@ import { nextOf, section } from "@/lib/sections";
 
 export const metadata = pageMeta({
   title: "about",
-  description: "PB&J Sounds is Peter Gomes (Peter Jacob), Brody Montag (Monty) and Jack Humphreys: an east coast collective and label for underground house.",
+  description: "PB&J Sounds is Peter Jacob, Monty and Humphreys: an East Coast house collective and label, founded in 2024.",
   path: "/about",
 });
 
@@ -31,7 +31,7 @@ export default function CollectivePage() {
         title="about"
         line={
           <p className="display-sub text-foreground/85">
-            {founders.map((f) => f.name.split(" ")[0]).join(", ").replace(/, ([^,]*)$/, " and $1")}. Est. {site.founded}, east coast.
+            {founders.map((f) => f.alias).join(", ").replace(/, ([^,]*)$/, " and $1")}. Est. {site.founded}.
           </p>
         }
       />
@@ -107,7 +107,7 @@ export default function CollectivePage() {
           <h2 id="supported" className="label rule-line mb-3">
             <span>supported</span>
           </h2>
-          <p className="mb-10 font-mono text-xs text-foreground/50">artists our members have supported</p>
+          <p className="mb-10 font-mono text-xs text-foreground/50">artists pb&amp;j members have supported</p>
           <SupportLogos artists={supportArtists} />
         </div>
       </section>

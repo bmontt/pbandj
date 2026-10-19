@@ -6,7 +6,7 @@ export default function NotFound() {
       <div className="mx-auto w-full max-w-6xl">
         <p className="label">404</p>
         <h1 className="display-hero halo-none mt-4 text-foreground">not here</h1>
-        <p className="copy mt-6">That page doesn&apos;t exist, or moved.</p>
+        <p className="copy mt-6">This page doesn&apos;t exist or has moved.</p>
         <Link href="/" className="mt-6 inline-flex min-h-11 items-center font-mono text-xs text-foreground/70 hover:text-foreground">
           ← back to the start
         </Link>

@@ -53,7 +53,7 @@ export default function JoinPage() {
               <span>apply</span>
             </h2>
             <p className="copy max-w-xl">
-              Tell us about yourself and why you&apos;d like to join PB&amp;J. Attach {join.send}, or link to it.
+              Send a short introduction with {join.send}, attached or as a link.
             </p>
           </div>
           <div className="mt-10 md:mt-0" data-reveal>
