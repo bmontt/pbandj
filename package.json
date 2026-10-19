@@ -25,7 +25,8 @@
     "react-icons": "5.5.0",
     "resend": "6.6.0",
     "sharp": "0.34.5",
-    "soundcloud-scraper": "5.0.3"
+    "soundcloud-scraper": "5.0.3",
+    "zod": "3.25.76"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
